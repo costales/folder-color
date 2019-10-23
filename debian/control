@@ -1,0 +1,17 @@
+Source: folder-color
+Section: utils
+Priority: extra
+Standards-Version: 0.0.88
+Maintainer: costales <costales.marcos@gmail.com>
+Build-Depends: python-distutils-extra, debhelper (>=7)
+Homepage: https://code.launchpad.net/folder-color
+
+Package: folder-color
+Architecture: all
+Section: utils
+Priority: extra
+Depends: python-nautilus, nautilus, ${python:Depends}
+Breaks: folder-color-nemo, folder-color-caja
+Replaces: folder-color-nemo, folder-color-caja
+Description: Folder Color for Nautilus
+ Change a folder color used in Nautilus

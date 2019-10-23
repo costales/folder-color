@@ -1,0 +1,128 @@
+# French translation for folder-color
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the folder-color package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: folder-color\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2017-08-12 17:21+0200\n"
+"PO-Revision-Date: 2017-08-17 17:31+0000\n"
+"Last-Translator: Anne017 <Unknown>\n"
+"Language-Team: French <fr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2019-04-26 16:44+0000\n"
+"X-Generator: Launchpad (build 18928)\n"
+
+#: ../nautilus-extension/folder-color.py:46
+msgid "Black"
+msgstr "Noir"
+
+#: ../nautilus-extension/folder-color.py:47
+msgid "Blue"
+msgstr "Bleu"
+
+#: ../nautilus-extension/folder-color.py:48
+msgid "Brown"
+msgstr "Marron"
+
+#: ../nautilus-extension/folder-color.py:49
+msgid "Cyan"
+msgstr "Bleu cyan"
+
+#: ../nautilus-extension/folder-color.py:50
+msgid "Green"
+msgstr "Vert"
+
+#: ../nautilus-extension/folder-color.py:51
+msgid "Grey"
+msgstr "Gris"
+
+#: ../nautilus-extension/folder-color.py:52
+msgid "Magenta"
+msgstr "Magenta"
+
+#: ../nautilus-extension/folder-color.py:53
+msgid "Orange"
+msgstr "Orange"
+
+#: ../nautilus-extension/folder-color.py:54
+msgid "Pink"
+msgstr "Rose"
+
+#: ../nautilus-extension/folder-color.py:55
+msgid "Purple"
+msgstr "Violet"
+
+#: ../nautilus-extension/folder-color.py:56
+msgid "Red"
+msgstr "Rouge"
+
+#: ../nautilus-extension/folder-color.py:57
+msgid "Violet"
+msgstr "Violet"
+
+#: ../nautilus-extension/folder-color.py:58
+msgid "Yellow"
+msgstr "Jaune"
+
+#: ../nautilus-extension/folder-color.py:69
+msgid "Important"
+msgstr "Important"
+
+#: ../nautilus-extension/folder-color.py:70
+msgid "In Progress"
+msgstr "En cours"
+
+#: ../nautilus-extension/folder-color.py:71
+msgid "Favorite"
+msgstr "Favori"
+
+#: ../nautilus-extension/folder-color.py:72
+msgid "Finished"
+msgstr "Terminé"
+
+#: ../nautilus-extension/folder-color.py:73
+msgid "New"
+msgstr "Nouveau"
+
+#: ../nautilus-extension/folder-color.py:202
+msgid "Folders' Color"
+msgstr "Couleur des dossiers"
+
+#: ../nautilus-extension/folder-color.py:204
+msgid "Folder's Color"
+msgstr "Couleur du dossier"
+
+#: ../nautilus-extension/folder-color.py:225
+msgid "Custom"
+msgstr "Personnalisée"
+
+#: ../nautilus-extension/folder-color.py:231
+#: ../nautilus-extension/folder-color.py:278
+msgid "Restore:"
+msgstr "Récupérer"
+
+#: ../nautilus-extension/folder-color.py:234
+#: ../nautilus-extension/folder-color.py:281
+msgid "Default"
+msgstr "Par défaut"
+
+#: ../nautilus-extension/folder-color.py:241
+msgid "Emblem:"
+msgstr "Emblème :"
+
+#: ../nautilus-extension/folder-color.py:258
+msgid "Files' Emblem"
+msgstr "Emblème des fichiers"
+
+#: ../nautilus-extension/folder-color.py:260
+msgid "File's Emblem"
+msgstr "Emblème du fichier"
+
+#: ../nautilus-extension/folder-color.py:262
+msgid "Emblem"
+msgstr "Emblème"
