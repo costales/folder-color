@@ -4,7 +4,7 @@ Priority: extra
 Standards-Version: 0.0.88
 Maintainer: costales <costales.marcos@gmail.com>
 Build-Depends: python-distutils-extra, debhelper (>=7)
-Homepage: https://code.launchpad.net/folder-color
+Homepage: https://github.com/costales/folder-color
 
 Package: folder-color
 Architecture: all

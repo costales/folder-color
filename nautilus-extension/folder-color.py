@@ -1,5 +1,5 @@
-# Folder Color 0.0.88
-# Copyright (C) 2012-2017 Marcos Alvarez Costales https://launchpad.net/~costales
+# Folder Color 0.0.88 - https://github.com/costales/folder-color
+# Copyright (C) 2012-2020 Marcos Alvarez Costales - https://costales.github.io/
 #
 # Folder Color is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

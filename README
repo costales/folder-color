@@ -1,4 +1,4 @@
-Folder Color © 2012-2017 Marcos Alvarez Costales
+Folder Color © 2012-2020 Marcos Alvarez Costales
 ================================================
 
 WHAT IS IT?
@@ -86,8 +86,6 @@ This icon is not using colors, it's using 3 constants inside the file. Then, whe
     #value_middle = Color selected by user in hexadecimal - 2500
     #value_dark   = Color selected by user in hexadecimal - 5000
 
-Example: http://bazaar.launchpad.net/~costales/folder-color/trunk/view/head:/icons/Humanity/places/48/folder_custom.svg
-
 
 
 5. CUSTOM COLOR FOR DEFAULT FOLDERS (OPTIONAL)
@@ -132,8 +130,8 @@ I'd recommend you to create just the icons of point 1. If you are full of beans,
 
 
 DOUBTS?
-Do you have any doubt or problem? Contact me here: https://launchpad.net/~costales/+contactuser
-I'll help you :)
+Do you have any doubt or problem? Contact me here: https://costales.github.io/
+I'll try to help you :)
 
 
 

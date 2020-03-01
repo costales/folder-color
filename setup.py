@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-# Folder Color 0.0.88 - http://launchpad.net/folder-color
-# Copyright (C) 2012-2017 Marcos Alvarez Costales https://launchpad.net/~costales
+# Folder Color 0.0.88 - https://github.com/costales/folder-color
+# Copyright (C) 2012-2020 Marcos Alvarez Costales - https://costales.github.io/
 #
 # folder-color is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -34,9 +34,9 @@ DistUtilsExtra.auto.setup(
     name         = "folder-color",
     version      = "0.0.88",
     description  = "Change your folder color with just a click",
-    author       = "Marcos Alvarez Costales https://launchpad.net/~costales",
-    author_email = "https://launchpad.net/~costales",
-    url          = "https://launchpad.net/folder-color",
+    author       = "Marcos Alvarez Costales",
+    author_email = "marcos.costales@gmail.com",
+    url          = "https://github.com/costales/folder-color",
     license      = "GPL3",
     data_files   = data
 )
