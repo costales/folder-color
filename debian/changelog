@@ -1,7 +1,6 @@
-folder-color (0.0.88) bionic; urgency=low
+folder-color (0.0.89) bionic; urgency=low
 
-  * Work with Python 3. Bug #1826627
-  * Updated translations
+  * Depedence python3, by default, system installs python2
 
- -- costales <costales.marcos@gmail.com>  Sat, 27 Apr 2017 19:42:31 +0000
+ -- costales <costales.marcos@gmail.com>  Sat, 11 May 2020 19:39:31 +0000
 
