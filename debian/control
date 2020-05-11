@@ -3,7 +3,7 @@ Section: utils
 Priority: extra
 Standards-Version: 0.0.89
 Maintainer: costales <costales.marcos@gmail.com>
-Build-Depends: python-distutils-extra, debhelper (>=7)
+Build-Depends: python3-distutils-extra, debhelper (>=7)
 Homepage: https://github.com/costales/folder-color
 
 Package: folder-color
