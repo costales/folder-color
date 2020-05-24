@@ -8,18 +8,19 @@ msgstr ""
 "Project-Id-Version: folder-color\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-08-12 17:21+0200\n"
-"PO-Revision-Date: 2015-03-24 18:43+0000\n"
+"PO-Revision-Date: 2020-05-24 19:34+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2019-04-26 16:44+0000\n"
-"X-Generator: Launchpad (build 18928)\n"
+"X-Generator: Poedit 2.3.1\n"
+"Language: uk\n"
 
 #: ../nautilus-extension/folder-color.py:46
 msgid "Black"
-msgstr ""
+msgstr "Чорний"
 
 #: ../nautilus-extension/folder-color.py:47
 msgid "Blue"
@@ -31,7 +32,7 @@ msgstr "Коричневий"
 
 #: ../nautilus-extension/folder-color.py:49
 msgid "Cyan"
-msgstr ""
+msgstr "Блакитний"
 
 #: ../nautilus-extension/folder-color.py:50
 msgid "Green"
@@ -43,7 +44,7 @@ msgstr "Сірий"
 
 #: ../nautilus-extension/folder-color.py:52
 msgid "Magenta"
-msgstr ""
+msgstr "Малиновий"
 
 #: ../nautilus-extension/folder-color.py:53
 msgid "Orange"
@@ -63,7 +64,7 @@ msgstr "Червоний"
 
 #: ../nautilus-extension/folder-color.py:57
 msgid "Violet"
-msgstr ""
+msgstr "Фіолетовий"
 
 #: ../nautilus-extension/folder-color.py:58
 msgid "Yellow"
@@ -75,7 +76,7 @@ msgstr "Важливе"
 
 #: ../nautilus-extension/folder-color.py:70
 msgid "In Progress"
-msgstr ""
+msgstr "В процесі"
 
 #: ../nautilus-extension/folder-color.py:71
 msgid "Favorite"
@@ -83,19 +84,19 @@ msgstr "Улюблене"
 
 #: ../nautilus-extension/folder-color.py:72
 msgid "Finished"
-msgstr ""
+msgstr "Завершено"
 
 #: ../nautilus-extension/folder-color.py:73
 msgid "New"
-msgstr ""
+msgstr "Нове"
 
 #: ../nautilus-extension/folder-color.py:202
 msgid "Folders' Color"
-msgstr ""
+msgstr "Колір тек"
 
 #: ../nautilus-extension/folder-color.py:204
 msgid "Folder's Color"
-msgstr ""
+msgstr "Колір теки"
 
 #: ../nautilus-extension/folder-color.py:225
 msgid "Custom"
@@ -113,16 +114,16 @@ msgstr "Типове"
 
 #: ../nautilus-extension/folder-color.py:241
 msgid "Emblem:"
-msgstr ""
+msgstr "Емблема:"
 
 #: ../nautilus-extension/folder-color.py:258
 msgid "Files' Emblem"
-msgstr ""
+msgstr "Емблема файлів"
 
 #: ../nautilus-extension/folder-color.py:260
 msgid "File's Emblem"
-msgstr ""
+msgstr "Емблема файла"
 
 #: ../nautilus-extension/folder-color.py:262
 msgid "Emblem"
-msgstr ""
+msgstr "Емблема"
