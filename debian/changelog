@@ -1,4 +1,4 @@
-folder-color (0.0.90) bionic; urgency=low
+folder-color (0.0.90) groovy; urgency=low
 
   * Fixed issue #11 Depedence gvs-bin in 20.10+
 
