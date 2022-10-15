@@ -1,4 +1,4 @@
-folder-color (0.1.1) jammy; urgency=low
+folder-color (0.1.3) jammy; urgency=low
 
   * Fixed issue #16 Removed depedence gvs-bin in 22.04+
   * Updated default icons to Yaru
