@@ -4,7 +4,7 @@ rm -r ../po
 rm ../README
 
 # setup
-sed -i '25,30d' ../setup.py
+sed -i '25,34d' ../setup.py
 sed -i 's/]),/])]/' ../setup.py
 sed -i 's/Change your folder color with just a click/Change your folder color in Nautilus/' ../setup.py
 

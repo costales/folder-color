@@ -4,7 +4,7 @@ rm -r ../po
 rm ../README
 
 # setup
-sed -i '25,30d' ../setup.py
+sed -i '25,34d' ../setup.py
 sed -i 's/]),/])]/' ../setup.py
 sed -i 's/Change your folder color with just a click/Change your folder color in Nemo/' ../setup.py
 sed -i 's/nautilus-python/nemo-python/' ../setup.py
