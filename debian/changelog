@@ -1,6 +1,8 @@
-folder-color (0.0.90) groovy; urgency=low
+folder-color (0.1.0) jammy; urgency=low
 
-  * Fixed issue #11 Depedence gvs-bin in 20.10+
+  * Fixed issue #16 Removed depedence gvs-bin in 22.04+
+  * Updated default icons to Yaru
+  * Updated translations from Launchpad
 
- -- costales <costales.marcos@gmail.com>  Thu, 24 Dec 2020 18:06:31 +0000
+ -- costales <costales.marcos@gmail.com>  Thu, 15 Oct 2022 11:06:31 +0000
 

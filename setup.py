@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Folder Color 0.0.90 - https://github.com/costales/folder-color
+# Folder Color 0.1.0 - https://github.com/costales/folder-color
 # Copyright (C) 2012-2020 Marcos Alvarez Costales - https://costales.github.io/
 #
 # folder-color is free software; you can redistribute it and/or modify
@@ -32,7 +32,7 @@ data = [ ('/usr/share/nautilus-python/extensions',     ['nautilus-extension/fold
 # Setup stage
 DistUtilsExtra.auto.setup(
     name         = "folder-color",
-    version      = "0.0.90",
+    version      = "0.1.0",
     description  = "Change your folder color with just a click",
     author       = "Marcos Alvarez Costales",
     author_email = "marcos.costales@gmail.com",
