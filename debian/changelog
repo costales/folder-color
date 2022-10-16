@@ -1,8 +1,6 @@
-folder-color (0.1.3) jammy; urgency=low
+folder-color (0.1.4) jammy; urgency=low
 
-  * Fixed issue #16 Removed depedence gvs-bin in 22.04+
-  * Updated default icons to Yaru
-  * Updated translations from Launchpad
+  * Fixed Yaru icons as default theme
 
- -- costales <costales.marcos@gmail.com>  Thu, 15 Oct 2022 11:06:31 +0000
+ -- costales <costales.marcos@gmail.com>  Thu, 16 Oct 2022 20:06:31 +0000
 
