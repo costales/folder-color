@@ -1,5 +1,5 @@
-# intltool-update -p -g folder-color
+# intltool-update -p -g folder_i18n
 # also done automatically with setup.py build or install
 [encoding: UTF-8]
-nautilus-extension/folder-color.py
+folder_path/folder-color.py
 

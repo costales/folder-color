@@ -17,8 +17,8 @@ sed -i 's/Nautilus/Nemo/g' ../nemo-extension/folder-color.py
 
 # po
 sed -i 's/folder_i18n/folder-color-nemo/' ../nemo-extension/folder-color.py
-sed -i 's/folder-color/folder-color-nemo/' ../po/POTFILES.in
-sed -i 's/nautilus-extension/nemo-extension/' ../po/POTFILES.in
+sed -i 's/folder_i18n/folder-color-nemo/' ../po/POTFILES.in
+sed -i 's/folder_path/nemo-extension/' ../po/POTFILES.in
 
 # debian
 rm ../debian/postinst

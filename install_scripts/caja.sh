@@ -25,8 +25,8 @@ sed -i 's/blue  = (color.blue  \* 255)/blue  = int(color.blue  \/ 256)/g' ../caj
 
 # po
 sed -i 's/folder_i18n/folder-color-caja/' ../caja-extension/folder-color.py
-sed -i 's/folder-color/folder-color-caja/' ../po/POTFILES.in
-sed -i 's/nautilus-extension/caja-extension/' ../po/POTFILES.in
+sed -i 's/folder_i18n/folder-color-caja/' ../po/POTFILES.in
+sed -i 's/folder_path/caja-extension/' ../po/POTFILES.in
 
 # debian
 rm ../debian/postinst

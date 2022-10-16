@@ -8,6 +8,8 @@ sed -i 's/]),/])]/' ../setup.py
 sed -i 's/Change your folder color with just a click/Change your folder color in Nautilus/' ../setup.py
 
 # po
+sed -i 's/folder_i18n/folder-color/' ../po/POTFILES.in
+sed -i 's/folder_path/nautilus-extension/' ../po/POTFILES.in
 sed -i 's/folder_i18n/folder-color/' ../nautilus-extension/folder-color.py
 
 # debian
