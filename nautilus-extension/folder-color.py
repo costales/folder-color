@@ -25,7 +25,7 @@ except ImportError:
     from urllib.parse import unquote
 
 # i18n
-gettext.textdomain('folder-color-common')
+gettext.textdomain('folder_i18n')
 _ = gettext.gettext
 
 

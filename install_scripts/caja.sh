@@ -1,6 +1,5 @@
 #!/bin/bash
 rm -r ../icons
-rm -r ../po
 rm ../README
 
 # setup
@@ -24,6 +23,10 @@ sed -i 's/red   = (color.red   \* 255)/red   = int(color.red   \/ 256)/g' ../caj
 sed -i 's/green = (color.green \* 255)/green = int(color.green \/ 256)/g' ../caja-extension/folder-color.py
 sed -i 's/blue  = (color.blue  \* 255)/blue  = int(color.blue  \/ 256)/g' ../caja-extension/folder-color.py
 
+# po
+sed -i 's/folder_i18n/folder-color-caja/' ../caja-extension/folder-color.py
+sed -i 's/folder-color/folder-color-caja/' ../po/POTFILES.in
+sed -i 's/nautilus-extension/caja-extension/' ../po/POTFILES.in
 
 # debian
 rm ../debian/postinst
@@ -36,7 +39,7 @@ sed -i '25,44d' ../debian/copyright
 
 sed -i 's/Source: folder-color/Source: folder-color-caja/' ../debian/control
 sed -i 's/Package: folder-color/Package: folder-color-caja/' ../debian/control
-sed -i 's/python3-nautilus, nautilus, /python-caja, caja, folder-color-common, /' ../debian/control
+sed -i 's/python3-nautilus, nautilus, /python-caja, caja, /' ../debian/control
 sed -i '14,15d' ../debian/control
 sed -i 's/Folder Color for Nautilus/Folder Color for Caja/' ../debian/control
 sed -i 's/Change a folder color used in Nautilus/Change a folder color used in Caja/' ../debian/control
@@ -45,4 +48,3 @@ sed -i 's/folder-color/folder-color-caja/' ../debian/changelog
 
 # me
 rm -r ../install_scripts
-

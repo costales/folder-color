@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-gtk-update-icon-cache /usr/share/icons/hicolor/
+gtk-update-icon-cache /usr/share/icons/Yaru/

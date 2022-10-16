@@ -1,6 +1,7 @@
 folder-color (0.1.4) jammy; urgency=low
 
-  * Fixed Yaru icons as default theme
+  * Don't force to install Yaru theme
+  * Include translations with basic package
 
  -- costales <costales.marcos@gmail.com>  Thu, 16 Oct 2022 20:06:31 +0000
 

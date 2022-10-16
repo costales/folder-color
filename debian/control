@@ -11,7 +11,5 @@ Architecture: all
 Section: utils
 Priority: extra
 Depends: python3-nautilus, nautilus, ${python:Depends}
-Breaks: folder-color-nemo, folder-color-caja
-Replaces: folder-color-nemo, folder-color-caja
 Description: Folder Color for Nautilus
  Change a folder color used in Nautilus
