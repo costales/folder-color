@@ -1,4 +1,4 @@
-folder-color (0.1.5) jammy; urgency=low
+folder-color (0.1.9) jammy; urgency=low
 
   * Don't force to install Yaru theme
   * Include translations with basic package
