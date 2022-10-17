@@ -17,7 +17,6 @@ rm ../debian/postinst
 
 sed -i '2d' ../debian/install
 
-sed -i '14,15d' ../debian/control
 sed -i 's/ python3-nautilus, nautilus, / python3-nautilus, nautilus, /' ../debian/control
 
 sed -i '25,44d' ../debian/copyright

@@ -32,7 +32,6 @@ sed -i '25,44d' ../debian/copyright
 sed -i 's/Source: folder-color/Source: folder-color-nemo/' ../debian/control
 sed -i 's/Package: folder-color/Package: folder-color-nemo/' ../debian/control
 sed -i 's/python3-nautilus, nautilus, /python-nemo, nemo, /' ../debian/control
-sed -i '14,15d' ../debian/control
 sed -i 's/Folder Color for Nautilus/Folder Color for Nemo/' ../debian/control
 sed -i 's/Change a folder color used in Nautilus/Change a folder color used in Nemo/' ../debian/control
 
