@@ -16,7 +16,7 @@
 # for more information.
 
 import os, gettext
-from gi.repository import Nautilus, Gtk, GObject, Gio, GLib
+from gi.repository import Nautilus, Gtk, GObject, Gio, GLib, Gdk
 
 # Python 2 or 3
 try:
@@ -87,11 +87,11 @@ class FolderColor:
     
     def get_icon(self, icon_name):
         """Get icon name and filename (used for check if exists an icon)"""
-        icon_theme = Gtk.IconTheme.get_default()
-        icon = icon_theme.lookup_icon(icon_name, 48, 0)
-        if icon != None:
-            return {'name'    : os.path.splitext(os.path.basename(icon.get_filename()))[0],
-                    'filename': icon.get_filename()}
+        icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
+        icon = icon_theme.lookup_icon(icon_name, None, 48, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
+        if icon_theme.has_icon(icon_name):
+            return {'name'    : icon.get_icon_name(),
+                    'filename': icon.get_file().get_uri()}
         else:
             return {'name': '',
                     'filename': ''}
@@ -161,7 +161,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         self.all_are_directories = True
         self.all_are_files = True
     
-    def get_file_items(self, window, items):
+    def get_file_items(self, items):
         """Nautilus invoke this function in its startup > Create menu entry"""
         # Checks
         if not self._check_generate_menu(items):
