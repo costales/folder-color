@@ -378,9 +378,9 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
             # Color
             color = dialog.get_rgba()
             dialog.destroy()
-            red   = (color.red   * 255)
-            green = (color.green * 255)
-            blue  = (color.blue  * 255)
+            red   = int(color.red   * 255)
+            green = int(color.green * 255)
+            blue  = int(color.blue  * 255)
             # Light
             hex_light = "%02x%02x%02x" % (red, green, blue)
             # Middle
