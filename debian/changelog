@@ -1,7 +1,7 @@
-folder-color (0.1.9) jammy; urgency=low
+folder-color (0.1.10) jammy; urgency=low
 
-  * Don't force to install Yaru theme
-  * Include translations with basic package
+  * Custom color doesn't work. Fix #19
+  * Updated i18n
 
- -- costales <costales.marcos@gmail.com>  Thu, 16 Oct 2022 20:06:31 +0000
+ -- costales <costales.marcos@gmail.com>  Thu, 20 Nov 2022 18:06:31 +0000
 
