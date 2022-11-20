@@ -36,7 +36,7 @@ sed -i '25,44d' ../debian/copyright
 
 sed -i 's/Source: folder-color/Source: folder-color-caja/' ../debian/control
 sed -i 's/Package: folder-color/Package: folder-color-caja/' ../debian/control
-sed -i 's/python3-nautilus, nautilus, /python-caja, caja, /' ../debian/control
+sed -i 's/python3-nautilus, nautilus, /python3-caja, caja, /' ../debian/control
 sed -i 's/Folder Color for Nautilus/Folder Color for Caja/' ../debian/control
 sed -i 's/Change a folder color used in Nautilus/Change a folder color used in Caja/' ../debian/control
 
