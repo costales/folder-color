@@ -1,4 +1,4 @@
-# Folder Color 0.1.10 - https://github.com/costales/folder-color
+# Folder Color 0.2.1 - https://github.com/costales/folder-color
 # Copyright (C) 2012-2022 Marcos Alvarez Costales - https://costales.github.io/
 #
 # Folder Color is free software; you can redistribute it and/or modify
@@ -15,7 +15,8 @@
 # along with Folder Color; if not, see http://www.gnu.org/licenses
 # for more information.
 
-import os, gettext
+import os, gettext, gi
+gi.require_version("Gtk", "4.0")
 from gi.repository import Nautilus, Gtk, GObject, Gio, GLib, Gdk
 
 # Python 2 or 3

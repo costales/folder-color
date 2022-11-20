@@ -1,7 +1,6 @@
-folder-color (0.1.10) jammy; urgency=low
+folder-color (0.2.1) kinetic; urgency=low
 
-  * Custom color doesn't work. Fix #19
-  * Updated i18n
+  * Migrated to GTK4
 
- -- costales <costales.marcos@gmail.com>  Thu, 20 Nov 2022 18:06:31 +0000
+ -- costales <costales.marcos@gmail.com>  Thu, 20 Nov 2022 18:16:31 +0000
 
