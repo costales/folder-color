@@ -19,9 +19,6 @@ sed -i "s/self.foldercolor.set_color(item_path, self._get_skel_folder(item_path,
 sed -i 's/Gtk.ColorChooserDialog()/Gtk.ColorSelectionDialog()/g' ../caja-extension/folder-color.py
 sed -i 's/dialog.set_use_alpha(False)//g' ../caja-extension/folder-color.py
 sed -i 's/color = dialog.get_rgba()/color = dialog.get_color_selection().get_current_color()/g' ../caja-extension/folder-color.py
-sed -i 's/red   = (color.red   \* 255)/red   = int(color.red   \/ 256)/g' ../caja-extension/folder-color.py
-sed -i 's/green = (color.green \* 255)/green = int(color.green \/ 256)/g' ../caja-extension/folder-color.py
-sed -i 's/blue  = (color.blue  \* 255)/blue  = int(color.blue  \/ 256)/g' ../caja-extension/folder-color.py
 
 # po
 sed -i 's/folder_i18n/folder-color-caja/' ../caja-extension/folder-color.py
