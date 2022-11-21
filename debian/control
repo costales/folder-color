@@ -11,5 +11,6 @@ Architecture: all
 Section: utils
 Priority: extra
 Depends: python3-nautilus, nautilus, ${python:Depends}
+Replaces: folder-color-common, folder-color-yaru
 Description: Folder Color for Nautilus
  Change a folder color used in Nautilus
