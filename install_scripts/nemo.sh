@@ -1,11 +1,7 @@
 #!/bin/bash
-rm -r ../icons
 rm ../README
 
 # setup
-sed -i '25,34d' ../setup.py
-sed -i 's/]),/])]/' ../setup.py
-sed -i 's/Change your folder color with just a click/Change your folder color in Nemo/' ../setup.py
 sed -i 's/nautilus-python/nemo-python/' ../setup.py
 sed -i 's/nautilus-extension/nemo-extension/' ../setup.py
 sed -i 's/"folder-color"/"folder-color-nemo"/' ../setup.py
@@ -21,13 +17,9 @@ sed -i 's/folder_i18n/folder-color-nemo/' ../po/POTFILES.in
 sed -i 's/folder_path/nemo-extension/' ../po/POTFILES.in
 
 # debian
-rm ../debian/postinst
-
-sed -i '2d' ../debian/install
 sed -i 's/nautilus/nemo/g' ../debian/install
 
 sed -i 's/Upstream-Name: folder-color/Upstream-Name: folder-color-nemo/' ../debian/copyright
-sed -i '25,44d' ../debian/copyright
 
 sed -i 's/Source: folder-color/Source: folder-color-nemo/' ../debian/control
 sed -i 's/Package: folder-color/Package: folder-color-nemo/' ../debian/control
@@ -38,5 +30,5 @@ sed -i 's/Change a folder color used in Nautilus/Change a folder color used in N
 sed -i 's/folder-color/folder-color-nemo/' ../debian/changelog
 
 # me
-rm -r ../install_scripts
-
+cd ..
+rm -r install_scripts

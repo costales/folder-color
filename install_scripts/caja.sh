@@ -1,11 +1,7 @@
 #!/bin/bash
-rm -r ../icons
 rm ../README
 
 # setup
-sed -i '25,34d' ../setup.py
-sed -i 's/]),/])]/' ../setup.py
-sed -i 's/Change your folder color with just a click/Change your folder color in Caja/' ../setup.py
 sed -i 's/nautilus-python/caja-python/' ../setup.py
 sed -i 's/nautilus-extension/caja-extension/' ../setup.py
 sed -i 's/"folder-color"/"folder-color-caja"/' ../setup.py
@@ -26,13 +22,9 @@ sed -i 's/folder_i18n/folder-color-caja/' ../po/POTFILES.in
 sed -i 's/folder_path/caja-extension/' ../po/POTFILES.in
 
 # debian
-rm ../debian/postinst
-
-sed -i '2d' ../debian/install
 sed -i 's/nautilus/caja/g' ../debian/install
 
 sed -i 's/Upstream-Name: folder-color/Upstream-Name: folder-color-caja/' ../debian/copyright
-sed -i '25,44d' ../debian/copyright
 
 sed -i 's/Source: folder-color/Source: folder-color-caja/' ../debian/control
 sed -i 's/Package: folder-color/Package: folder-color-caja/' ../debian/control
@@ -43,4 +35,5 @@ sed -i 's/Change a folder color used in Nautilus/Change a folder color used in C
 sed -i 's/folder-color/folder-color-caja/' ../debian/changelog
 
 # me
-rm -r ../install_scripts
+cd ..
+rm -r install_scripts

@@ -1,6 +1,6 @@
-folder-color (0.2.1) kinetic; urgency=low
+folder-color (0.2.2) kinetic; urgency=low
 
-  * Migrated to GTK4
+  * Join common to master
 
- -- costales <costales.marcos@gmail.com>  Thu, 20 Nov 2022 18:16:31 +0000
+ -- costales <costales.marcos@gmail.com>  Thu, 21 Nov 2022 18:16:31 +0000
 

@@ -27,11 +27,11 @@ You'll need also to refresh the system icons:
 DEPENDENCIES
 ============
 For Nautilus:
-    python-nautilus, nautilus
+    python3-nautilus, nautilus
 For Nemo:
     python-nemo, nemo
 For Caja:
-    python-caja, caja
+    python3-caja, caja
 
 
     
