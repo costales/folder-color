@@ -1,5 +1,6 @@
 #!/bin/bash
 rm ../README
+rm r ../nautilus-extension-gtk3
 
 # setup
 sed -i 's/nautilus-python/nemo-python/' ../setup.py
@@ -30,5 +31,4 @@ sed -i 's/Change a folder color used in Nautilus/Change a folder color used in N
 sed -i 's/folder-color/folder-color-nemo/' ../debian/changelog
 
 # me
-cd ..
-rm -r install_scripts
+rm -r ../install_scripts
