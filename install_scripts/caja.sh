@@ -1,6 +1,7 @@
 #!/bin/bash
 rm ../README
-rm -r ../nautilus-extension-gtk3
+rm -rf ../nautilus-extension-gtk3
+rm -rf ../.git
 
 # setup
 sed -i 's/nautilus-python/caja-python/' ../setup.py
@@ -36,4 +37,4 @@ sed -i 's/Change a folder color used in Nautilus/Change a folder color used in C
 sed -i 's/folder-color/folder-color-caja/' ../debian/changelog
 
 # me
-rm -r ../install_scripts
+rm -rf ../install_scripts
