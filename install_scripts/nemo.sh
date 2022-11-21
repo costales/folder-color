@@ -1,5 +1,5 @@
 #!/bin/bash
-rm ../README
+rm ../README*
 rm -rf ../nautilus-extension-gtk3
 rm -rf ../.git
 
@@ -27,7 +27,6 @@ sed -i 's/Source: folder-color/Source: folder-color-nemo/' ../debian/control
 sed -i 's/Package: folder-color/Package: folder-color-nemo/' ../debian/control
 sed -i 's/python3-nautilus, nautilus, /python-nemo, nemo, /' ../debian/control
 sed -i 's/Folder Color for Nautilus/Folder Color for Nemo/' ../debian/control
-sed -i 's/Change a folder color used in Nautilus/Change a folder color used in Nemo/' ../debian/control
 
 sed -i 's/folder-color/folder-color-nemo/' ../debian/changelog
 

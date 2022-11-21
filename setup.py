@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Folder Color 0.2.4 - https://github.com/costales/folder-color
+# Folder Color 0.2.5 - https://github.com/costales/folder-color
 # Copyright (C) 2012-2022 Marcos Alvarez Costales - https://costales.github.io/
 #
 # folder-color is free software; you can redistribute it and/or modify
@@ -21,22 +21,22 @@
 import os, sys, glob, DistUtilsExtra.auto
 
 # Create data files
-data = [ ('/usr/share/nautilus-python/extensions',      ['nautilus-extension/folder-color.py']),
-         ('/usr/share/icons/hicolor/16x16/places',      glob.glob('icons/hicolor/16x16/places/*.svg')),
-         ('/usr/share/icons/hicolor/16x16@2x/places',   glob.glob('icons/hicolor/16x16@2x/places/*.svg')),
-         ('/usr/share/icons/hicolor/24x24/places',      glob.glob('icons/hicolor/24x24/places/*.svg')),
-         ('/usr/share/icons/hicolor/24x24@2x/places',   glob.glob('icons/hicolor/24x24@2x/places/*.svg')),
-         ('/usr/share/icons/hicolor/32x32/places',      glob.glob('icons/hicolor/32x32/places/*.svg')),
-         ('/usr/share/icons/hicolor/32x32@2x/places',   glob.glob('icons/hicolor/32x32@2x/places/*.svg')),
-         ('/usr/share/icons/hicolor/48x48/places',      glob.glob('icons/hicolor/48x48/places/*.svg')),
-         ('/usr/share/icons/hicolor/48x48@2x/places',   glob.glob('icons/hicolor/48x48@2x/places/*.svg')),
-         ('/usr/share/icons/hicolor/256x256/places',    glob.glob('icons/hicolor/256x256/places/*.svg')),
-         ('/usr/share/icons/hicolor/256x256@2x/places', glob.glob('icons/hicolor/256x256@2x/places/*.svg')) ]
+data = [ ('/usr/share/nautilus-python/extensions',   ['nautilus-extension/folder-color.py']),
+         ('/usr/share/icons/Yaru/16x16/places',      glob.glob('icons/Yaru/16x16/places/*.svg')),
+         ('/usr/share/icons/Yaru/16x16@2x/places',   glob.glob('icons/Yaru/16x16@2x/places/*.svg')),
+         ('/usr/share/icons/Yaru/24x24/places',      glob.glob('icons/Yaru/24x24/places/*.svg')),
+         ('/usr/share/icons/Yaru/24x24@2x/places',   glob.glob('icons/Yaru/24x24@2x/places/*.svg')),
+         ('/usr/share/icons/Yaru/32x32/places',      glob.glob('icons/Yaru/32x32/places/*.svg')),
+         ('/usr/share/icons/Yaru/32x32@2x/places',   glob.glob('icons/Yaru/32x32@2x/places/*.svg')),
+         ('/usr/share/icons/Yaru/48x48/places',      glob.glob('icons/Yaru/48x48/places/*.svg')),
+         ('/usr/share/icons/Yaru/48x48@2x/places',   glob.glob('icons/Yaru/48x48@2x/places/*.svg')),
+         ('/usr/share/icons/Yaru/256x256/places',    glob.glob('icons/Yaru/256x256/places/*.svg')),
+         ('/usr/share/icons/Yaru/256x256@2x/places', glob.glob('icons/Yaru/256x256@2x/places/*.svg')) ]
 
 # Setup stage
 DistUtilsExtra.auto.setup(
     name         = "folder-color",
-    version      = "0.2.4",
+    version      = "0.2.5",
     description  = "Change your folder color with just a click",
     author       = "Marcos Alvarez Costales",
     author_email = "marcos.costales@gmail.com",

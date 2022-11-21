@@ -1,5 +1,5 @@
 #!/bin/bash
-rm ../README
+rm ../README*
 rm -rf ../nautilus-extension-gtk3
 rm -rf ../.git
 
