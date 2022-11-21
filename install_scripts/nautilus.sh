@@ -1,6 +1,6 @@
 #!/bin/bash
 rm ../README
-rm r ../nautilus-extension-gtk3
+rm -r ../nautilus-extension-gtk3
 
 # po
 sed -i 's/folder_i18n/folder-color/' ../po/POTFILES.in

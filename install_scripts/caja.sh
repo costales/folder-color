@@ -1,6 +1,6 @@
 #!/bin/bash
 rm ../README
-rm r ../nautilus-extension-gtk3
+rm -r ../nautilus-extension-gtk3
 
 # setup
 sed -i 's/nautilus-python/caja-python/' ../setup.py
