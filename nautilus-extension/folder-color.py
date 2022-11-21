@@ -1,4 +1,4 @@
-# Folder Color 0.2.2 - https://github.com/costales/folder-color
+# Folder Color 0.2.4 - https://github.com/costales/folder-color
 # Copyright (C) 2012-2022 Marcos Alvarez Costales - https://costales.github.io/
 #
 # Folder Color is free software; you can redistribute it and/or modify
