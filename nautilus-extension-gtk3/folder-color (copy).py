@@ -1,5 +1,5 @@
 # Folder Color 0.3.0 - https://github.com/costales/folder-color
-# Copyright (C) 2012-2022 Marcos Alvarez Costales - https://costales.github.io/
+# Copyright (C) 2012-2023 Marcos Alvarez Costales - https://costales.github.io/
 #
 # Folder Color is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,9 +15,8 @@
 # along with Folder Color; if not, see http://www.gnu.org/licenses
 # for more information.
 
-import os, gettext, gi
-gi.require_version("Gtk", "4.0")
-from gi.repository import Nautilus, Gtk, GObject, Gio, GLib, Gdk
+import os, gettext
+from gi.repository import Nautilus, Gtk, GObject, Gio, GLib
 
 # Python 2 or 3
 try:
@@ -33,23 +32,7 @@ _ = gettext.gettext
 class FolderColor:
     """Folder Color Class"""
     def __init__(self):
-        # Folder colors
-        self.COLORS = [
-            'black',
-            'blue',
-            'brown',
-            'cyan',
-            'green',
-            'grey',
-            'magenta',
-            'orange',
-            'pink',
-            'purple',
-            'red',
-            'violet',
-            'yellow'
-        ]
-        self.I18N_COLORS = {
+        self.COLORS_ALL = {
             'black'  : _("Black"),
             'blue'   : _("Blue"),
             'brown'  : _("Brown"),
@@ -64,35 +47,23 @@ class FolderColor:
             'violet' : _("Violet"),
             'yellow' : _("Yellow")
         }
-        # Emblems
-        self.EMBLEMS = [
-            'emblem-important',
-            'emblem-urgent',
-            'emblem-favorite',
-            'emblem-default',
-            'emblem-new'
-        ]
-        self.I18N_EMBLEMS = {
+        self.EMBLEMS_ALL = {
             'emblem-important': _("Important"),
             'emblem-urgent'   : _("In Progress"),
             'emblem-favorite' : _("Favorite"),
             'emblem-default'  : _("Finished"),
             'emblem-new'      : _("New")
         }
-        # Custom folder color
-        self.PATH_CUSTOM_COLOR = os.path.join(os.getenv('HOME'), '.local', 'share', 'folder-color', 'icons')
-        self.GRADIENT_RANGE = 15
-        self.VALUE_LIGHT  = 'value_light'
-        self.VALUE_MIDDLE = 'value_middle'
-        self.VALUE_DARK   = 'value_dark'
-    
+        self.COLORS_AVAILABLE = {}
+        self.EMBLEMS_AVAILABLE = {}
+
     def get_icon(self, icon_name):
         """Get icon name and filename (used for check if exists an icon)"""
-        icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
-        icon = icon_theme.lookup_icon(icon_name, None, 48, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
-        if icon_theme.has_icon(icon_name):
-            return {'name'    : icon.get_icon_name(),
-                    'filename': icon.get_file().get_uri()}
+        icon_theme = Gtk.IconTheme.get_default()
+        icon = icon_theme.lookup_icon(icon_name, 48, 0)
+        if icon != None:
+            return {'name'    : os.path.splitext(os.path.basename(icon.get_filename()))[0],
+                    'filename': icon.get_filename()}
         else:
             return {'name': '',
                     'filename': ''}
@@ -151,28 +122,51 @@ class FolderColor:
         """Reload the current file/directory icon"""
         os.utime(item_path, None)
 
-
+    def get_colors_available(self):
+        pass
+    def get_emblems_available(self):
+        pass
 
 class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
     """File Browser Menu"""
     def __init__(self):
         GObject.Object.__init__(self)
         self.foldercolor = FolderColor()
-        self.theme_dirname = ''
-        self.all_are_directories = True
-        self.all_are_files = True
-    
-    def get_file_items(self, items):
-        """Nautilus invoke this function in its startup > Create menu entry"""
-        # Checks
+        
+        #self.theme_dirname = ''
+        #self.all_are_directories = True
+        #self.all_are_files = True
+
+        #! Obtener tema actual
+        #! Obtener colores/emblemas
+
+    def get_file_items(self, window, items):
+        print("get_file_items")
+
         if not self._check_generate_menu(items):
+            print("no menu")
             return
+
+        print("show menu")
+
+        #! Todo ficheros o todo directorios
+        #! Menu (Mostrar colores/emblemas)
+
+    def get_background_items(self, window, directory):
+        print("get_background_items")
+        return
+
+    # def get_file_items(self, window, items):
+    #     """Nautilus invoke this function in its startup > Create menu entry"""
+    #     # Checks
+    #     if not self._check_generate_menu(items):
+    #         return
         
-        # Set current theme directory
-        self.theme_dirname = os.path.dirname(self._legacy_filename('blue')['filename'])
+    #     # Set current theme directory
+    #     self.theme_dirname = os.path.dirname(self._legacy_filename('blue')['filename'])
         
-        # Menu
-        return self._generate_menu(items)
+    #     # Menu
+    #     return self._generate_menu(items)
     
     def _check_generate_menu(self, items):
         """Menu: Show it?"""
