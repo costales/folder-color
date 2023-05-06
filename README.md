@@ -39,7 +39,7 @@ $ caja -q
 
 # LICENSES
 
-Folder Color & (Yaru icons)[https://github.com/ubuntu/yaru] are licensed under the GPL v3.
+Folder Color, (Yaru-Colors)[https://github.com/Jannomag/Yaru-Colors] & (Yaru icons)[https://github.com/ubuntu/yaru] are licensed under the GPL v3.
 
 See file LICENSE.txt for the complete terms.
 
@@ -122,7 +122,7 @@ Folder Color will use any of these standard emblems:
 Reply the previous sections for all resolutions (not only 48px) in points 1, 2 and 3.
 
 
-## CHECK
+## 5. CHECK
 
 Copy your icons into: `~/.icons/<your_theme>/`.
 

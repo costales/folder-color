@@ -275,8 +275,8 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
             item = Gio.File.new_for_path(item_path)
             info = item.query_info('metadata', 0, None)
             # If any metadata > restore menu
-            if info.get_attribute_as_string('metadata::custom-icon-name') or 
-               info.get_attribute_as_string('metadata::custom-icon') or 
+            if info.get_attribute_as_string('metadata::custom-icon-name') or \
+               info.get_attribute_as_string('metadata::custom-icon') or \
                info.get_attribute_as_string('metadata::emblems'):
                 return True
         return False
