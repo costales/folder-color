@@ -1,0 +1,119 @@
+# Turkish translation for folder-color
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the folder-color package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: folder-color\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-05-06 21:09+0200\n"
+"PO-Revision-Date: 2015-09-08 23:34+0000\n"
+"Last-Translator: Şâkir Aşçı <Unknown>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2023-05-06 19:20+0000\n"
+"X-Generator: Launchpad (build 90e2150bef31b411d7bae5c4032c7e320fcaaec8)\n"
+
+#: nautilus-extension-gtk3/folder-color.py:31
+msgid "Black"
+msgstr ""
+
+#: nautilus-extension-gtk3/folder-color.py:32
+msgid "Blue"
+msgstr "Mâvi"
+
+#: nautilus-extension-gtk3/folder-color.py:33
+msgid "Brown"
+msgstr "Kahverengi"
+
+#: nautilus-extension-gtk3/folder-color.py:34
+msgid "Cyan"
+msgstr ""
+
+#: nautilus-extension-gtk3/folder-color.py:35
+msgid "Green"
+msgstr "Yeşil"
+
+#: nautilus-extension-gtk3/folder-color.py:36
+msgid "Grey"
+msgstr "Boz"
+
+#: nautilus-extension-gtk3/folder-color.py:37
+msgid "Magenta"
+msgstr ""
+
+#: nautilus-extension-gtk3/folder-color.py:38
+msgid "Orange"
+msgstr "Turuncu"
+
+#: nautilus-extension-gtk3/folder-color.py:39
+msgid "Pink"
+msgstr "Pembe"
+
+#: nautilus-extension-gtk3/folder-color.py:40
+msgid "Purple"
+msgstr "Mor"
+
+#: nautilus-extension-gtk3/folder-color.py:41
+msgid "Red"
+msgstr "Kırmızı"
+
+#: nautilus-extension-gtk3/folder-color.py:42
+msgid "Violet"
+msgstr ""
+
+#: nautilus-extension-gtk3/folder-color.py:43
+msgid "White"
+msgstr ""
+
+#: nautilus-extension-gtk3/folder-color.py:44
+msgid "Yellow"
+msgstr "Sarı"
+
+#: nautilus-extension-gtk3/folder-color.py:47
+msgid "Important"
+msgstr "Önemli"
+
+#: nautilus-extension-gtk3/folder-color.py:48
+msgid "In Progress"
+msgstr ""
+
+#: nautilus-extension-gtk3/folder-color.py:49
+msgid "Favorite"
+msgstr "Gözde"
+
+#: nautilus-extension-gtk3/folder-color.py:50
+msgid "Finished"
+msgstr ""
+
+#: nautilus-extension-gtk3/folder-color.py:51
+msgid "New"
+msgstr ""
+
+#: nautilus-extension-gtk3/folder-color.py:217
+msgid "Color"
+msgstr ""
+
+#: nautilus-extension-gtk3/folder-color.py:229
+msgid "Emblem:"
+msgstr ""
+
+#: nautilus-extension-gtk3/folder-color.py:240
+#: nautilus-extension-gtk3/folder-color.py:261
+msgid "Restore:"
+msgstr "Geri Yükle:"
+
+#: nautilus-extension-gtk3/folder-color.py:242
+#: nautilus-extension-gtk3/folder-color.py:263
+msgid "Default"
+msgstr "Varsayılan"
+
+#: nautilus-extension-gtk3/folder-color.py:249
+msgid "Emblem"
+msgstr ""
+
+#~ msgid "Custom"
+#~ msgstr "Kişisel"
