@@ -1,3 +1,44 @@
+Folder Color © 2012-2023 Marcos Alvarez Costales
+================================================
+
+WHAT IS IT?
+===========
+A file browser extension for choosing the color of a folder.
+
+
+
+
+HOW DO I INSTALL & RUN IT?
+==========================
+From a PPA:
+    # add-apt-repository ppa:costales/folder-color
+    # apt-get update && sudo apt-get install folder-color
+From the code (take a look to the dependencies):
+    $ bzr branch lp:folder-color && cd folder-color && sudo python3 setup.py install --prefix=/usr
+
+Then, restart Nautilus
+    $ nautilus -q
+You'll need also to refresh the system icons:
+    # gtk-update-icon-cache /usr/share/icons/Humanity/
+
+    
+
+
+DEPENDENCIES
+============
+For Nautilus:
+    python3-nautilus, nautilus
+For Nemo:
+    python-nemo, nemo
+For Caja:
+    python3-caja, caja
+
+
+    
+
+HOW TO CREATE A NEW THEME
+=========================
+
 HOW TO CREATE A NEW THEME
 =========================
 Folder color will work (you'll see the entry menu) if AT LEAST exists the icon: "blue-color".
@@ -71,3 +112,12 @@ DOUBTS?
 Do you have any doubt or problem? Contact me here: https://costales.github.io/
 I'll try to help you :)
 
+
+
+
+
+LICENSES
+====================
+Folder Color code is licensed under the GPL v3.
+http://www.gnu.org/licenses
+See file LICENSE.txt for the complete license.

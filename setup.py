@@ -1,22 +1,14 @@
 #!/usr/bin/env python3
 
-# Folder Color 0.3.0 - https://github.com/costales/folder-color
-# Copyright (C) 2012-2022 Marcos Alvarez Costales - https://costales.github.io/
-#
-# folder-color is free software; you can redistribute it and/or modify
+# This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License, or
 # (at your option) any later version.
-# 
-# Folder Color is distributed in the hope that it will be useful,
+
+# This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with Folder Color; if not, see http://www.gnu.org/licenses 
-# for more information.
-
 
 import os, sys, glob, DistUtilsExtra.auto
 
