@@ -40,6 +40,7 @@ class FolderColor:
             'purple' : _("Purple"),
             'red'    : _("Red"),
             'violet' : _("Violet"),
+            'white'  : _("White"),
             'yellow' : _("Yellow")
         }
         self.EMBLEMS_ALL = {

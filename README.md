@@ -1,123 +1,142 @@
-Folder Color © 2012-2023 Marcos Alvarez Costales
-================================================
+# Folder Color for Linux
 
-WHAT IS IT?
-===========
-A file browser extension for choosing the color of a folder.
+A file browser extension for choosing the color/emblems of a folder/files in Linux (Nautilus/Nemo/Caja file browsers).
+
+# INSTALL
+
+With Nautilus:
+
+```
+# add-apt-repository ppa:costales/folder-color
+# apt-get update
+# sudo apt install python3-nautilus nautilus
+# sudo apt-get install folder-color
+# gtk-update-icon-cache /usr/share/icons/Yaru/
+$ nautilus -q
+```
+
+With Nemo:
+
+```
+# add-apt-repository ppa:costales/folder-color
+# apt-get update
+# sudo apt install python-nemo nemo
+# sudo apt-get install folder-color-nemo
+# gtk-update-icon-cache /usr/share/icons/Yaru/
+$ nemo -q
+```
+
+With Caja:
+
+```
+# add-apt-repository ppa:costales/folder-color
+# apt-get update
+# sudo apt install python3-caja caja
+# sudo apt-get install folder-color-caja
+# gtk-update-icon-cache /usr/share/icons/Yaru/
+$ caja -q
+```
+
+# LICENSES
+
+Folder Color & (Yaru icons)[https://github.com/ubuntu/yaru] are licensed under the GPL v3.
+
+See file LICENSE.txt for the complete terms.
 
 
-
-
-HOW DO I INSTALL & RUN IT?
-==========================
-From a PPA:
-    # add-apt-repository ppa:costales/folder-color
-    # apt-get update && sudo apt-get install folder-color
-From the code (take a look to the dependencies):
-    $ bzr branch lp:folder-color && cd folder-color && sudo python3 setup.py install --prefix=/usr
-
-Then, restart Nautilus
-    $ nautilus -q
-You'll need also to refresh the system icons:
-    # gtk-update-icon-cache /usr/share/icons/Humanity/
-
-    
-
-
-DEPENDENCIES
-============
-For Nautilus:
-    python3-nautilus, nautilus
-For Nemo:
-    python-nemo, nemo
-For Caja:
-    python3-caja, caja
-
-
-    
-
-HOW TO CREATE A NEW THEME
+# CREATE A NEW THEME
 =========================
 
-HOW TO CREATE A NEW THEME
-=========================
-Folder color will work (you'll see the entry menu) if AT LEAST exists the icon: "blue-color".
-You can use any compatible icon format (like SVG or PNG).
+Are you an icon designer? Let's see how to create an icon theme compatible with Folder Color.
+
+### 1. FOLDER COLORS
+
+File name: `folder-<color>.svg` or `folder-<color>.png`.
+
+`<color>` can be:
+
+ * `blue` (Mandatory)
+ * `black`
+ * `brown`
+ * `cyan`
+ * `green`
+ * `grey`
+ * `magenta`
+ * `orange`
+ * `pink`
+ * `purple`
+ * `red`
+ * `violet`
+ * `white`
+ * `yellow`
+
+Folder color will work (you'll see the entry menu) if AT LEAST exists the icon: "folder-blue".
+
+Final filename path:
+
+```
+/usr/share/icons/MyAwesomeTheme/48x48/places/folder-blue.svg
+/usr/share/icons/MyAwesomeTheme/48x48/places/folder-green.svg
+```
+
+The entries menu will use this icon name from the default theme: `undo`.
 
 
+## 2. DEFAULT FOLDERS (OPTIONAL)
 
-1. FOLDER COLORS (MANDATORY)
-Icon nomenclature: folder-<color>.
-<color>: brown, blue, green, grey, orange, pink, red, purple, yellow, cyan, black, violet, magenta
+These folders have emblems inside.
 
-The unique mandatory color is blue in size 48px. The other are optionals.
+They could be:
 
-For example: Blue folder color would be: /usr/share/icons/<MyAwesomeTheme>/48x48/<places>/folder-blue.svg
-
-OTHER ICONS:
-The entries menu will use these icons from the default theme: undo
-
-
-
-2. DEFAULT FOLDERS (OPTIONAL)
-These folders have icons inside. They are: Desktop, Documents, Downloads, Music, Pictures, Public, Templates, Videos.
+ * `desktop`
+ * `documents`
+ * `downloads`
+ * `music`
+ * `pictures`
+ * `public`
+ * `templates`
+ * `videos`
 
 Icon nomenclature: folder-<color>-<emblem>
-<color>: brown, blue, green, grey, orange, pink, red, purple, yellow, cyan, black, violet, magenta
-<emblem>: desktop, documents, downloads, music, pictures, public, templates, videos
 
-For example, the blue 'Pictures' folder would be: /usr/share/icons/<MyAwesomeTheme>/48x48/<places>/folder-blue-pictures.svg
+Final filename path:
 
-
-
-3. EMBLEMS (OPTIONAL)
-Folder Color will use any of these standard emblems from the current theme:
- - emblem-favorite
- - emblem-important
- - emblem-new
- - emblem-urgent
+```
+/usr/share/icons/MyAwesomeTheme/48x48/places/folder-blue-desktop.svg
+/usr/share/icons/MyAwesomeTheme/48x48/places/folder-blue-documents.svg
+```
 
 
+## 3. EMBLEMS (OPTIONAL)
 
-4. ALL RESOLUTIONS (OPTIONAL)
+Folder Color will use any of these standard emblems:
+
+ * `emblem-important`
+ * `emblem-urgent`
+ * `emblem-favorite`
+ * `emblem-default`
+ * `emblem-new`
+
+## 4. ALL RESOLUTIONS (OPTIONAL)
+
 Reply the previous sections for all resolutions (not only 48px) in points 1, 2 and 3.
 
 
+## CHECK
 
+Copy your icons into: `~/.icons/<your_theme>/`.
 
-
-
-
-
-HOW TO CHECK YOUR NEW THEME?
-Copy your icons into:
-    ~/.icons/<your_theme>/
 After install them, remember to refresh your theme:
-    # gtk-update-icon-cache ~/.icons/<your_theme>
+
+```
+$ gtk-update-icon-cache `~/.icons/<your_theme>`
+```
+
 Set your theme as default system theme.
-And restart your file browser:
-    $ [nautilus|caja|nemo] -q
 
+Restart your file browser:
 
+```
+$ [nautilus|caja|nemo] -q
+```
 
-
-MY PERSONAL RECOMMENDATION
-Make all the icons is a really big work.
-I'd recommend you to create just the icons of point 1. If you are full of beans, create the others.
-
-
-
-
-DOUBTS?
-Do you have any doubt or problem? Contact me here: https://costales.github.io/
-I'll try to help you :)
-
-
-
-
-
-LICENSES
-====================
-Folder Color code is licensed under the GPL v3.
-http://www.gnu.org/licenses
-See file LICENSE.txt for the complete license.
