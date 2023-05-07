@@ -5,7 +5,7 @@ rm -rf ../.git
 rm -r ../icons
 
 # setup
-sed -i '25,34d' ../setup.py
+sed -i '17,26d' ../setup.py
 sed -i 's/]),/])]/' ../setup.py
 sed -i 's/nautilus-python/caja-python/' ../setup.py
 sed -i 's/nautilus-extension/caja-extension/' ../setup.py
