@@ -1,9 +1,12 @@
 #!/bin/bash
 
-echo "Call as ./caja.sh GTK4 or ./caja.sh GTK3"
+if [ -z "$1" ]; then
+    echo "Call as ./caja.sh GTK4 or ./caja.sh GTK3"
+    exit 1
+fi
 
 # GTK
-if [ $1="GTK4" ]; then
+if [ "$1" == "GTK4" ]; then
     echo "It's GTK4"
     rm -rf ../nautilus-extension-gtk3
 else
@@ -12,6 +15,7 @@ else
     mv ../nautilus-extension-gtk3 ../nautilus-extension
 fi
 
+mv ../nautilus-extension/ ../caja-extension
 rm -rf ../.git
 rm ../README.md
 rm -r ../icons
@@ -19,7 +23,7 @@ rm -r ../icons
 # setup
 sed -i '17,26d' ../setup.py
 sed -i 's/]),/])]/' ../setup.py
-sed -i 's/nautilus/caja/' ../setup.py
+sed -i 's/nautilus/caja/g' ../setup.py
 sed -i 's/"folder-color"/"folder-color-caja"/' ../setup.py
 
 # po
@@ -42,9 +46,11 @@ sed -i 's/python3-nautilus, nautilus, /python3-caja, caja, /' ../debian/control
 sed -i 's/Folder Color for Nautilus/Folder Color for Caja/' ../debian/control
 
 sed -i 's/folder-color/folder-color-caja/' ../debian/changelog
+if [ "$1" == "GTK3" ]; then
+    sed -i 's/kinetic/focal/' ../debian/changelog
+fi
 
 # extension
-mv ../nautilus-extension/ ../caja-extension
 sed -i 's/nautilus/caja/g' ../caja-extension/folder-color.py
 sed -i 's/Nautilus/Caja/g' ../caja-extension/folder-color.py
 sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../caja-extension/folder-color.py
@@ -53,3 +59,5 @@ sed -i '15d' ../caja-extension/folder-color.py
 
 # myself
 rm -rf ../install-scripts
+
+echo "Done"
