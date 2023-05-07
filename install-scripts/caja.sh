@@ -1,25 +1,26 @@
 #!/bin/bash
-rm ../README*
-rm -rf ../nautilus-extension-gtk3
+
+echo "Call as ./caja.sh GTK4 or ./caja.sh GTK3"
+
+# GTK
+if [ $1="GTK4" ]; then
+    echo "It's GTK4"
+    rm -rf ../nautilus-extension-gtk3
+else
+    echo "It's GTK3"
+    rm -rf ../nautilus-extension
+    mv ../nautilus-extension-gtk3 ../nautilus-extension
+fi
+
 rm -rf ../.git
+rm ../README.md
 rm -r ../icons
 
 # setup
 sed -i '17,26d' ../setup.py
 sed -i 's/]),/])]/' ../setup.py
-sed -i 's/nautilus-python/caja-python/' ../setup.py
-sed -i 's/nautilus-extension/caja-extension/' ../setup.py
+sed -i 's/nautilus/caja/' ../setup.py
 sed -i 's/"folder-color"/"folder-color-caja"/' ../setup.py
-
-# extension
-mv ../nautilus-extension/ ../caja-extension
-sed -i 's/nautilus/caja/g' ../caja-extension/folder-color.py
-sed -i 's/Nautilus/Caja/g' ../caja-extension/folder-color.py
-sed -i 's/is_uri=False/is_uri=True/' ../caja-extension/folder-color.py
-sed -i "s/self.foldercolor.set_color(item_path, self._get_skel_folder(item_path, icon)\['name'\])/self.foldercolor.set_color(item_path, self._get_skel_folder(item_path, icon)\['filename'\], True)/" ../caja-extension/folder-color.py
-sed -i 's/Gtk.ColorChooserDialog()/Gtk.ColorSelectionDialog()/g' ../caja-extension/folder-color.py
-sed -i 's/dialog.set_use_alpha(False)//g' ../caja-extension/folder-color.py
-sed -i 's/color = dialog.get_rgba()/color = dialog.get_color_selection().get_current_color()/g' ../caja-extension/folder-color.py
 
 # po
 sed -i 's/folder_i18n/folder-color-caja/' ../caja-extension/folder-color.py
@@ -42,5 +43,13 @@ sed -i 's/Folder Color for Nautilus/Folder Color for Caja/' ../debian/control
 
 sed -i 's/folder-color/folder-color-caja/' ../debian/changelog
 
-# me
-rm -rf ../install_scripts
+# extension
+mv ../nautilus-extension/ ../caja-extension
+sed -i 's/nautilus/caja/g' ../caja-extension/folder-color.py
+sed -i 's/Nautilus/Caja/g' ../caja-extension/folder-color.py
+sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../caja-extension/folder-color.py
+sed -i "s/self._get_skel_folder(item, color)/'file:\/\/'+self._get_icon_name(color)['filename']/g" ../caja-extension/folder-color.py
+sed -i '15d' ../caja-extension/folder-color.py
+
+# myself
+rm -rf ../install-scripts

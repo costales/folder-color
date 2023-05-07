@@ -1,7 +1,19 @@
 #!/bin/bash
-rm ../README*
-rm -rf ../nautilus-extension-gtk3
+
+echo "Call as ./nemo.sh GTK4 or ./nemo GTK3"
+
+# GTK
+if [ $1="GTK4" ]; then
+    echo "It's GTK4"
+    rm -rf ../nautilus-extension-gtk3
+else
+    echo "It's GTK3"
+    rm -rf ../nautilus-extension
+    mv ../nautilus-extension-gtk3 ../nautilus-extension
+fi
+
 rm -rf ../.git
+rm ../README.md
 rm -r ../icons
 
 # setup
@@ -9,11 +21,6 @@ sed -i '17,26d' ../setup.py
 sed -i 's/]),/])]/' ../setup.py
 sed -i 's/nautilus/nemo/g' ../setup.py
 sed -i 's/"folder-color"/"folder-color-nemo"/' ../setup.py
-
-# extension
-mv ../nautilus-extension/ ../nemo-extension
-sed -i 's/nautilus/nemo/g' ../nemo-extension/folder-color.py
-sed -i 's/Nautilus/Nemo/g' ../nemo-extension/folder-color.py
 
 # po
 sed -i 's/folder_i18n/folder-color-nemo/' ../nemo-extension/folder-color.py
@@ -36,5 +43,11 @@ sed -i 's/Folder Color for Nautilus/Folder Color for Nemo/' ../debian/control
 
 sed -i 's/folder-color/folder-color-nemo/' ../debian/changelog
 
-# me
-rm -rf ../install_scripts
+# extension
+mv ../nautilus-extension/ ../nemo-extension
+sed -i 's/nautilus/nemo/g' ../nemo-extension/folder-color.py
+sed -i 's/Nautilus/Nemo/g' ../nemo-extension/folder-color.py
+sed -i '15d' ../nemo-extension/folder-color.py
+
+# myself
+rm -rf ../install-scripts
