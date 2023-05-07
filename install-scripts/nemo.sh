@@ -53,7 +53,6 @@ fi
 # extension
 sed -i 's/nautilus/nemo/g' ../nemo-extension/folder-color.py
 sed -i 's/Nautilus/Nemo/g' ../nemo-extension/folder-color.py
-sed -i '15d' ../nemo-extension/folder-color.py
 
 # myself
 rm -rf ../install-scripts
