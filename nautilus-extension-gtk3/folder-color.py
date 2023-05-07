@@ -52,6 +52,7 @@ class FolderColor:
         }
         self.colors = {}
         self.emblems = {}
+        self.is_modified = False
 
     def _get_skel_folder(self, folder, color):
         """Default directories"""
@@ -129,7 +130,8 @@ class FolderColor:
     def set_color(self, item, color):
         """Set color to a file/directory"""
         print(item + " " + color + " " + self._get_skel_folder(item, color))
-        self._set_restore_folder(item) # Needs
+        if self.is_modified:
+            self._set_restore_folder(item) # Needs
         item_aux = Gio.File.new_for_path(item)
         info = item_aux.query_info('metadata::custom-icon-name', 0, None)
         info.set_attribute_string("metadata::custom-icon-name", self._get_skel_folder(item, color))
@@ -138,7 +140,8 @@ class FolderColor:
     
     def set_emblem(self, item, emblem):
         """Set emblem"""
-        self._set_restore_emblem(item) # Needs
+        if self.is_modified:
+            self._set_restore_emblem(item) # Needs
         emblem_aux = []
         emblem_aux.append(emblem)
         emblems = list(emblem_aux)
@@ -171,6 +174,23 @@ class FolderColor:
     def _reload_icon(self, item):
         """Reload the current file/directory icon"""
         os.utime(item, None)
+
+    def _get_is_modified(self, items):
+        """Menu: Show restore?"""
+        # For each dir, search custom icon or emblem
+        for item in items:
+            # Get metadata file/folder
+            item_path = unquote(item.get_uri()[7:])
+            item = Gio.File.new_for_path(item_path)
+            info = item.query_info('metadata', 0, None)
+            # If any metadata > restore menu
+            if info.get_attribute_as_string('metadata::custom-icon-name') or \
+               info.get_attribute_as_string('metadata::custom-icon') or \
+               info.get_attribute_as_string('metadata::emblems'):
+                self.is_modified = True
+                return True
+        self.is_modified = False
+        return False
 
 class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
     """File Browser Menu"""
@@ -217,6 +237,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         # Directories
         colors = self.foldercolor.get_colors_theme()
         emblems = self.foldercolor.get_emblems_theme()
+        is_modified = self.foldercolor._get_is_modified(items)
 
         if len(colors) == 0 and len(emblems) == 0:
             return
@@ -245,7 +266,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
                 submenu.append_item(item)
         
             # Restore
-            if self._check_menu_restore(items):
+            if is_modified:
                 item = Nautilus.MenuItem(name='ChangeFolderEmblemMenu::separator', label=_("Restore:"), sensitive=False)
                 submenu.append_item(item)
                 item = Nautilus.MenuItem(name='FolderColorMenu::restore', label=_("Default"), icon='undo')
@@ -266,7 +287,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
                 submenu.append_item(item)
         
             # Restore
-            if self._check_menu_restore(items):
+            if is_modified:
                 item_sep = Nautilus.MenuItem(name='ChangeFolderEmblemMenu::separator', label=_("Restore:"), sensitive=False)
                 submenu.append_item(item_sep)
                 item_restore = Nautilus.MenuItem(name='FolderColorMenu::restore', label=_("Default"), icon='undo')
@@ -274,21 +295,6 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
                 submenu.append_item(item_restore)
 
         return top_menuitem,
-
-    def _check_menu_restore(self, items):
-        """Menu: Show restore?"""
-        # For each dir, search custom icon or emblem
-        for item in items:
-            # Get metadata file/folder
-            item_path = unquote(item.get_uri()[7:])
-            item = Gio.File.new_for_path(item_path)
-            info = item.query_info('metadata', 0, None)
-            # If any metadata > restore menu
-            if info.get_attribute_as_string('metadata::custom-icon-name') or \
-               info.get_attribute_as_string('metadata::custom-icon') or \
-               info.get_attribute_as_string('metadata::emblems'):
-                return True
-        return False
 
     def _menu_activate_color(self, menu, items, color):
         """Menu: Clicked color"""
