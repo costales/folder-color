@@ -37,6 +37,8 @@ With Caja:
 $ caja -q
 ```
 
+If you change your theme you'll need to restart your file browser.
+
 # LICENSES
 
 Folder Color, (Yaru-Colors)[https://github.com/Jannomag/Yaru-Colors] & (Yaru icons)[https://github.com/ubuntu/yaru] are licensed under the GPL v3.
