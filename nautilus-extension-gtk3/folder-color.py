@@ -214,7 +214,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         self.all_files = True
         self.all_dirs = True
 
-        if len(items) == 0:
+        if not items:
             return False
         
         for item in items:
@@ -239,7 +239,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         emblems = self.foldercolor.get_emblems_theme()
         is_modified = self.foldercolor._get_is_modified(items)
 
-        if len(colors) == 0 and len(emblems) == 0:
+        if not colors and not emblems:
             return
 
         if self.all_dirs:
@@ -255,7 +255,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
                 submenu.append_item(item)
             
             # Separator if there are emblems
-            if len(emblems) > 0:
+            if emblems:
                 item = Nautilus.MenuItem(name='FolderColorMenu::emblems', label=_("Emblem:"), sensitive=False)
                 submenu.append_item(item)
             
@@ -275,7 +275,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         # Files
         else:
             # Title menu
-            if len(emblems) > 0:
+            if emblems:
                 top_menuitem = Nautilus.MenuItem(name='FolderColorMenu::emblems', label=_("Emblem"), icon='folder_color_picker')
                 submenu = Nautilus.Menu()
                 top_menuitem.set_submenu(submenu)
