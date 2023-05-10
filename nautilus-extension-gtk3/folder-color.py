@@ -24,7 +24,6 @@ except ImportError:
 gettext.textdomain('folder_i18n')
 _ = gettext.gettext
 
-
 class FolderColor:
     """Folder Color Class"""
     def __init__(self):
