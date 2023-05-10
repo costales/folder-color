@@ -90,7 +90,7 @@ class FolderColor:
             for i, option in enumerate(icon_options):
                 icon_aux = self._get_icon_name(option+color)
                 # Theme priority
-                if i < 3 and icon_aux['icon'] and '/hicolor/' not in icon_aux['filename']:
+                if i < 3 and icon_aux['icon'] and not '/hicolor/' in icon_aux['filename']:
                     self.colors[icon_aux['icon']] = self.COLORS_ALL[color]
                     exit
                 # hicolor by default
@@ -112,10 +112,9 @@ class FolderColor:
         return self.emblems
 
     def set_color(self, item, color):
-        """Set color to a file/directory"""
         print(item + " " + color + " " + self._get_skel_folder(item, color))
         if self.is_modified:
-            self._set_restore_folder(item) # Needs
+            self._set_restore_folder(item)
         item_aux = Gio.File.new_for_path(item)
         info = item_aux.query_info('metadata::custom-icon-name', 0, None)
         info.set_attribute_string("metadata::custom-icon-name", self._get_skel_folder(item, color))
@@ -123,7 +122,6 @@ class FolderColor:
         self._reload_icon(item)
     
     def set_emblem(self, item, emblem):
-        """Set emblem"""
         emblem_aux = []
         emblem_aux.append(emblem)
         emblems = list(emblem_aux)
@@ -135,7 +133,6 @@ class FolderColor:
         self._reload_icon(item)
 
     def set_restore(self, item):
-        """Restore color/emblem to default"""
         self._set_restore_folder(item)
         self._set_restore_emblem(item)
         self._reload_icon(item)
@@ -154,11 +151,10 @@ class FolderColor:
         item_aux.set_attributes_from_info(info, 0, None)
 
     def _reload_icon(self, item):
-        """Reload the current file/directory icon"""
         os.utime(item, None)
 
     def get_is_modified(self, items):
-        """Menu: Show restore?"""
+        """Restore is enabled?"""
         # For each dir, search custom icon or emblem
         for item in items:
             # Get metadata file/folder
@@ -181,6 +177,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         self.all_files = True
         self.all_dirs = True
         self.foldercolor = FolderColor()
+        # Read available icons only at Nautilus startup
         self.foldercolor.set_colors_theme()
         self.foldercolor.set_emblems_theme()
         print(self.foldercolor.get_colors_theme())
@@ -192,7 +189,6 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
             return self._show_menu(items)
 
     def _check_show_menu(self, items):
-        """Show the menu?"""
         self.all_files = True
         self.all_dirs = True
 
@@ -229,24 +225,20 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
             top_menuitem = Nautilus.MenuItem(name='FolderColorMenu::colors', label=_("Color"), icon='folder_color_picker')
             submenu = Nautilus.Menu()
             top_menuitem.set_submenu(submenu)
-            
             # Colors
             for color in colors.keys():
                 item = Nautilus.MenuItem(name="FolderColorMenu::color_" + color, label=_(colors[color]), icon=color)
                 item.connect('activate', self._menu_activate_color, items, color)
                 submenu.append_item(item)
-            
             # Separator if there are emblems
             if emblems:
                 item = Nautilus.MenuItem(name='FolderColorMenu::emblems', label="―――", sensitive=False)
                 submenu.append_item(item)
-            
             # Emblems
             for emblem in emblems.keys():
                 item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=_(emblems[emblem]), icon=emblem)
                 item.connect('activate', self._menu_activate_emblem, items, emblem)
                 submenu.append_item(item)
-        
             # Restore
             if is_modified:
                 item = Nautilus.MenuItem(name='ChangeFolderEmblemMenu::separator', label="―――", sensitive=False)
@@ -254,20 +246,17 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
                 item = Nautilus.MenuItem(name='FolderColorMenu::restore', label=_("Default"), icon='undo')
                 item.connect('activate', self._menu_activate_restore, items)
                 submenu.append_item(item)
-        # Files
         else:
             # Title menu
             if emblems:
                 top_menuitem = Nautilus.MenuItem(name='FolderColorMenu::emblems', label=_("Emblem"), icon='folder_color_picker')
                 submenu = Nautilus.Menu()
                 top_menuitem.set_submenu(submenu)
-
             # Emblems
             for emblem in emblems.keys():
                 item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=_(emblems[emblem]), icon=emblem)
                 item.connect('activate', self._menu_activate_emblem, items, emblem)
                 submenu.append_item(item)
-        
             # Restore
             if is_modified:
                 item_sep = Nautilus.MenuItem(name='ChangeFolderEmblemMenu::separator', label="―――", sensitive=False)
