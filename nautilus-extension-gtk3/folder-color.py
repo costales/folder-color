@@ -29,27 +29,27 @@ class FolderColor:
     """Folder Color Class"""
     def __init__(self):
         self.COLORS_ALL = {
-            'black'  : _("Black"),
-            'blue'   : _("Blue"),
-            'brown'  : _("Brown"),
-            'cyan'   : _("Cyan"),
-            'green'  : _("Green"),
-            'grey'   : _("Grey"),
+            'black': _("Black"),
+            'blue': _("Blue"),
+            'brown': _("Brown"),
+            'cyan': _("Cyan"),
+            'green': _("Green"),
+            'grey': _("Grey"),
             'magenta': _("Magenta"),
-            'orange' : _("Orange"),
-            'pink'   : _("Pink"),
-            'purple' : _("Purple"),
-            'red'    : _("Red"),
-            'violet' : _("Violet"),
-            'white'  : _("White"),
-            'yellow' : _("Yellow")
+            'orange': _("Orange"),
+            'pink': _("Pink"),
+            'purple': _("Purple"),
+            'red': _("Red"),
+            'violet': _("Violet"),
+            'white': _("White"),
+            'yellow': _("Yellow")
         }
         self.EMBLEMS_ALL = {
             'emblem-important': _("Important"),
-            'emblem-urgent'   : _("In Progress"),
-            'emblem-favorite' : _("Favorite"),
-            'emblem-default'  : _("Finished"),
-            'emblem-new'      : _("New")
+            'emblem-urgent': _("In Progress"),
+            'emblem-favorite': _("Favorite"),
+            'emblem-default': _("Finished"),
+            'emblem-new': _("New")
         }
         self.USER_DIRS = {
             GLib.get_user_special_dir(GLib.USER_DIRECTORY_DESKTOP): "-desktop",
