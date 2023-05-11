@@ -83,7 +83,7 @@ msgstr "En proceso"
 
 #: nautilus-extension-gtk3/folder-color.py:49
 msgid "Favorite"
-msgstr "Favorita"
+msgstr "Favorito"
 
 #: nautilus-extension-gtk3/folder-color.py:50
 msgid "Finished"

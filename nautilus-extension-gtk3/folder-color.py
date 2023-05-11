@@ -228,7 +228,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
             top_menuitem.set_submenu(submenu)
             # Colors
             for color in colors.keys():
-                item = Nautilus.MenuItem(name="FolderColorMenu::color_" + color, label=_(colors[color]), icon=color)
+                item = Nautilus.MenuItem(name="FolderColorMenu::color_" + color, label=colors[color], icon=color)
                 item.connect('activate', self._menu_activate_color, items, color)
                 submenu.append_item(item)
             # Separator if there are emblems
@@ -237,7 +237,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
                 submenu.append_item(item)
             # Emblems
             for emblem in emblems.keys():
-                item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=_(emblems[emblem]), icon=emblem)
+                item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=emblems[emblem], icon=emblem)
                 item.connect('activate', self._menu_activate_emblem, items, emblem)
                 submenu.append_item(item)
             # Restore
@@ -255,7 +255,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
                 top_menuitem.set_submenu(submenu)
             # Emblems
             for emblem in emblems.keys():
-                item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=_(emblems[emblem]), icon=emblem)
+                item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=emblems[emblem], icon=emblem)
                 item.connect('activate', self._menu_activate_emblem, items, emblem)
                 submenu.append_item(item)
             # Restore
