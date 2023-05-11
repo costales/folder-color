@@ -14,61 +14,62 @@
 import os, gettext, gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Nautilus, Gtk, GObject, Gio, GLib
-# Python 2/3
 try:
-    from urllib import unquote
+    from urllib import unquote # python 3
 except ImportError:
-    from urllib.parse import unquote
+    from urllib.parse import unquote # python 2
 
 # i18n
 gettext.textdomain('folder_i18n')
 _ = gettext.gettext
 
+COLORS_ALL = {
+    'black': _("Black"),
+    'blue': _("Blue"),
+    'brown': _("Brown"),
+    'cyan': _("Cyan"),
+    'green': _("Green"),
+    'grey': _("Grey"),
+    'magenta': _("Magenta"),
+    'orange': _("Orange"),
+    'pink': _("Pink"),
+    'purple': _("Purple"),
+    'red': _("Red"),
+    'violet': _("Violet"),
+    'white': _("White"),
+    'yellow': _("Yellow")
+}
+EMBLEMS_ALL = {
+    'emblem-important': _("Important"),
+    'emblem-urgent': _("In Progress"),
+    'emblem-favorite': _("Favorite"),
+    'emblem-default': _("Finished"),
+    'emblem-new': _("New")
+}
+USER_DIRS = {
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_DESKTOP): "-desktop",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_DOCUMENTS): "-documents",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_DOWNLOAD): "-downloads",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_MUSIC): "-music",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_PICTURES): "-pictures",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_PUBLIC_SHARE): "-public",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_TEMPLATES): "-templates",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_VIDEOS): "-videos"
+}
+ICON_SIZE = 48
+
 class FolderColor:
     """Folder Color Class"""
     def __init__(self):
-        self.COLORS_ALL = {
-            'black': _("Black"),
-            'blue': _("Blue"),
-            'brown': _("Brown"),
-            'cyan': _("Cyan"),
-            'green': _("Green"),
-            'grey': _("Grey"),
-            'magenta': _("Magenta"),
-            'orange': _("Orange"),
-            'pink': _("Pink"),
-            'purple': _("Purple"),
-            'red': _("Red"),
-            'violet': _("Violet"),
-            'white': _("White"),
-            'yellow': _("Yellow")
-        }
-        self.EMBLEMS_ALL = {
-            'emblem-important': _("Important"),
-            'emblem-urgent': _("In Progress"),
-            'emblem-favorite': _("Favorite"),
-            'emblem-default': _("Finished"),
-            'emblem-new': _("New")
-        }
-        self.USER_DIRS = {
-            GLib.get_user_special_dir(GLib.USER_DIRECTORY_DESKTOP): "-desktop",
-            GLib.get_user_special_dir(GLib.USER_DIRECTORY_DOCUMENTS): "-documents",
-            GLib.get_user_special_dir(GLib.USER_DIRECTORY_DOWNLOAD): "-downloads",
-            GLib.get_user_special_dir(GLib.USER_DIRECTORY_MUSIC): "-music",
-            GLib.get_user_special_dir(GLib.USER_DIRECTORY_PICTURES): "-pictures",
-            GLib.get_user_special_dir(GLib.USER_DIRECTORY_PUBLIC_SHARE): "-public",
-            GLib.get_user_special_dir(GLib.USER_DIRECTORY_TEMPLATES): "-templates",
-            GLib.get_user_special_dir(GLib.USER_DIRECTORY_VIDEOS): "-videos"
-        }
+        self.is_modified = False
         self.colors = {}
         self.emblems = {}
-        self.is_modified = False
 
     def _get_skel_folder(self, folder, color):
         """Default directories"""
-        if folder in self.USER_DIRS:
+        if folder in USER_DIRS:
             # Exists icon for default folder
-            skel_color = color + self.USER_DIRS[folder]
+            skel_color = color + USER_DIRS[folder]
             if self._get_icon_name(skel_color):
                 print("User dir: " + folder + " " + skel_color)
                 return skel_color
@@ -77,7 +78,7 @@ class FolderColor:
     def _get_icon_name(self, icon_name):
         """Get icon name and filename"""
         icon_theme = Gtk.IconTheme.get_default()
-        icon = icon_theme.lookup_icon(icon_name, 48, 0)
+        icon = icon_theme.lookup_icon(icon_name, ICON_SIZE, 0)
         if icon is not None:
             return {'icon': os.path.splitext(os.path.basename(icon.get_filename()))[0], 'filename': icon.get_filename()}
         else:
@@ -86,24 +87,24 @@ class FolderColor:
     def set_colors_theme(self):
         """Available colors into system"""
         icon_options = ["folder-", "folder_color_", "folder_", "folder-", "folder_color_", "folder_"] # 3 iter for theme / 3 iter for hicolor
-        for color in self.COLORS_ALL.keys():
+        for color in COLORS_ALL.keys():
             for i, option in enumerate(icon_options):
                 icon_aux = self._get_icon_name(option+color)
                 # Theme priority
                 if i < 3 and icon_aux['icon'] and not '/hicolor/' in icon_aux['filename']:
-                    self.colors[icon_aux['icon']] = self.COLORS_ALL[color]
+                    self.colors[icon_aux['icon']] = COLORS_ALL[color]
                     exit
                 # hicolor by default
                 if i >= 3 and icon_aux['icon']:
-                    self.colors[icon_aux['icon']] = self.COLORS_ALL[color]
+                    self.colors[icon_aux['icon']] = COLORS_ALL[color]
                     exit
 
     def set_emblems_theme(self):
         """Available emblems into system"""
-        for emblem in self.EMBLEMS_ALL.keys():
+        for emblem in EMBLEMS_ALL.keys():
             icon = self._get_icon_name(emblem)
             if icon['icon']:
-                self.emblems[icon['icon']] = self.EMBLEMS_ALL[emblem]
+                self.emblems[icon['icon']] = EMBLEMS_ALL[emblem]
 
     def get_colors_theme(self):
         return self.colors
