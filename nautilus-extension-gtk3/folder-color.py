@@ -190,16 +190,13 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
     def get_file_items(self, window, items):
         """Click on directories or files"""
         if self._check_show_menu(items):
-            print('>>now ',self.current_theme)
-            print('>>new ',Gtk.Settings.get_default().get_property("gtk-icon-theme-name"))
             if self.current_theme != Gtk.Settings.get_default().get_property("gtk-icon-theme-name"):
                 self.current_theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
                 self._load_current_theme()
-                print("Change to theme: ",self.current_theme)
+                print("Changed theme: ",self.current_theme)
             return self._show_menu(items)
 
     def _load_current_theme(self):
-        print(self.current_theme, Gtk.IconTheme.get_default())
         self.foldercolor.set_colors_theme()
         self.foldercolor.set_emblems_theme()
 
