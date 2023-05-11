@@ -233,17 +233,19 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
                 submenu.append_item(item)
             # Separator if there are emblems
             if emblems:
-                item = Nautilus.MenuItem(name='FolderColorMenu::emblems', label="―――", sensitive=False)
-                submenu.append_item(item)
-            # Emblems
-            for emblem in emblems.keys():
-                item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=emblems[emblem], icon=emblem)
-                item.connect('activate', self._menu_activate_emblem, items, emblem)
-                submenu.append_item(item)
+                if colors:
+                    item = Nautilus.MenuItem(name='FolderColorMenu::emblems', label="―――", sensitive=False)
+                    submenu.append_item(item)
+                # Emblems
+                for emblem in emblems.keys():
+                    item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=emblems[emblem], icon=emblem)
+                    item.connect('activate', self._menu_activate_emblem, items, emblem)
+                    submenu.append_item(item)
             # Restore
             if is_modified:
-                item = Nautilus.MenuItem(name='ChangeFolderEmblemMenu::separator', label="―――", sensitive=False)
-                submenu.append_item(item)
+                if emblems or colors:
+                    item = Nautilus.MenuItem(name='ChangeFolderEmblemMenu::separator', label="―――", sensitive=False)
+                    submenu.append_item(item)
                 item = Nautilus.MenuItem(name='FolderColorMenu::restore', label=_("Default"), icon='undo')
                 item.connect('activate', self._menu_activate_restore, items)
                 submenu.append_item(item)
@@ -253,15 +255,16 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
                 top_menuitem = Nautilus.MenuItem(name='FolderColorMenu::emblems', label=_("Emblem"), icon='folder_color_picker')
                 submenu = Nautilus.Menu()
                 top_menuitem.set_submenu(submenu)
-            # Emblems
-            for emblem in emblems.keys():
-                item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=emblems[emblem], icon=emblem)
-                item.connect('activate', self._menu_activate_emblem, items, emblem)
-                submenu.append_item(item)
+                # Emblems
+                for emblem in emblems.keys():
+                    item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=emblems[emblem], icon=emblem)
+                    item.connect('activate', self._menu_activate_emblem, items, emblem)
+                    submenu.append_item(item)
             # Restore
             if is_modified:
-                item_sep = Nautilus.MenuItem(name='ChangeFolderEmblemMenu::separator', label="―――", sensitive=False)
-                submenu.append_item(item_sep)
+                if emblems:
+                    item_sep = Nautilus.MenuItem(name='ChangeFolderEmblemMenu::separator', label="―――", sensitive=False)
+                    submenu.append_item(item_sep)
                 item_restore = Nautilus.MenuItem(name='FolderColorMenu::restore', label=_("Default"), icon='undo')
                 item_restore.connect('activate', self._menu_activate_restore, items)
                 submenu.append_item(item_restore)
