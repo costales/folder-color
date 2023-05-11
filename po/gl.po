@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-05-06 19:20+0000\n"
+"X-Launchpad-Export-Date: 2023-05-11 15:28+0000\n"
 "X-Generator: Launchpad (build 90e2150bef31b411d7bae5c4032c7e320fcaaec8)\n"
 
 #: nautilus-extension-gtk3/folder-color.py:31
@@ -114,18 +114,3 @@ msgstr "Predeterminado"
 #: nautilus-extension-gtk3/folder-color.py:249
 msgid "Emblem"
 msgstr "Emblema"
-
-#~ msgid "Custom"
-#~ msgstr "Personalizar"
-
-#~ msgid "Folder's Color"
-#~ msgstr "Cor dos cartafoles"
-
-#~ msgid "Folders' Color"
-#~ msgstr "Cor dos cartafoles"
-
-#~ msgid "File's Emblem"
-#~ msgstr "Emblema do ficheiro"
-
-#~ msgid "Files' Emblem"
-#~ msgstr "Emblema dos ficheiros"
