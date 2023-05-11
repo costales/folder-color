@@ -86,6 +86,7 @@ class FolderColor:
 
     def set_colors_theme(self):
         """Available colors into system"""
+        self.colors = {}
         icon_options = ["folder-", "folder_color_", "folder_", "folder-", "folder_color_", "folder_"] # 3 iter for theme / 3 iter for hicolor
         for color in COLORS_ALL.keys():
             for i, option in enumerate(icon_options):
@@ -101,6 +102,7 @@ class FolderColor:
 
     def set_emblems_theme(self):
         """Available emblems into system"""
+        self.emblems = {}
         for emblem in EMBLEMS_ALL.keys():
             icon = self._get_icon_name(emblem)
             if icon['icon']:
@@ -177,17 +179,29 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         GObject.Object.__init__(self)
         self.all_files = True
         self.all_dirs = True
+        self.current_theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
         self.foldercolor = FolderColor()
+        self._load_current_theme()
         # Read available icons only at Nautilus startup
-        self.foldercolor.set_colors_theme()
-        self.foldercolor.set_emblems_theme()
         print(self.foldercolor.get_colors_theme())
         print(self.foldercolor.get_emblems_theme())
+        print("Set theme: ",self.current_theme)
 
     def get_file_items(self, window, items):
         """Click on directories or files"""
         if self._check_show_menu(items):
+            print('>>now ',self.current_theme)
+            print('>>new ',Gtk.Settings.get_default().get_property("gtk-icon-theme-name"))
+            if self.current_theme != Gtk.Settings.get_default().get_property("gtk-icon-theme-name"):
+                self.current_theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
+                self._load_current_theme()
+                print("Change to theme: ",self.current_theme)
             return self._show_menu(items)
+
+    def _load_current_theme(self):
+        print(self.current_theme, Gtk.IconTheme.get_default())
+        self.foldercolor.set_colors_theme()
+        self.foldercolor.set_emblems_theme()
 
     def _check_show_menu(self, items):
         self.all_files = True
