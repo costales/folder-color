@@ -47,7 +47,6 @@ See file LICENSE.txt for the complete terms.
 
 # COMPATIBLE THEMES
 
-
  * (Numix)[https://numixproject.org/]
  * (Papirus)[http://web.archive.org/web/20210823213922/https://github.com/PapirusDevelopmentTeam/papirus-icon-theme]
  * (Vibrancy Colors)[https://www.ravefinity.com/p/vibrancy-colors-gtk-icon-theme.html]

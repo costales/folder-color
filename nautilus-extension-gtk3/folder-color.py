@@ -68,8 +68,10 @@ class FolderColor:
     def _get_skel_folder(self, folder, color):
         """Default directories"""
         if folder in USER_DIRS:
-            # Exists icon for default folder
+            # Check icon for default folder
             skel_color = color + USER_DIRS[folder]
+            if "_" in color: # Legacy themes
+                skel_color = skel_color.replace("-", "_")
             if self._get_icon_name(skel_color):
                 return skel_color
         return color
@@ -114,7 +116,6 @@ class FolderColor:
         return self.emblems
 
     def set_color(self, item, color):
-        print("Set color: " + item + " | " + color + " | " + self._get_skel_folder(item, color))
         if self.is_modified:
             self._set_restore_folder(item)
         item_aux = Gio.File.new_for_path(item)
@@ -182,9 +183,6 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         self.foldercolor = FolderColor()
         self._load_current_theme()
         # Read available icons only at Nautilus startup
-        print(self.foldercolor.get_colors_theme())
-        print(self.foldercolor.get_emblems_theme())
-        print("Set theme: ",self.current_theme)
 
     def get_file_items(self, window, items):
         """Click on directories or files"""
@@ -192,9 +190,6 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
             if self.current_theme != Gtk.Settings.get_default().get_property("gtk-icon-theme-name"):
                 self.current_theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
                 self._load_current_theme()
-                print(self.foldercolor.get_colors_theme())
-                print(self.foldercolor.get_emblems_theme())
-                print("Changed theme: ",self.current_theme)
             return self._show_menu(items)
 
     def _load_current_theme(self):
@@ -263,7 +258,6 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
             item.connect('activate', self._menu_activate_restore, items)
             submenu.append_item(item)
 
-        print("Generate menu")
         return top_menuitem,
 
     def _menu_activate_color(self, menu, items, color):
