@@ -4,7 +4,7 @@ A file browser extension for choosing the color/emblems of a folder/files in Lin
 
 # INSTALL
 
-With Nautilus:
+For Nautilus:
 
 ```
 # add-apt-repository ppa:costales/folder-color
@@ -15,7 +15,7 @@ With Nautilus:
 $ nautilus -q
 ```
 
-With Nemo:
+For Nemo:
 
 ```
 # add-apt-repository ppa:costales/folder-color
@@ -26,7 +26,7 @@ With Nemo:
 $ nemo -q
 ```
 
-With Caja:
+For Caja:
 
 ```
 # add-apt-repository ppa:costales/folder-color
@@ -38,6 +38,7 @@ $ caja -q
 ```
 
 If you change your theme you'll need to restart your file browser.
+
 
 # LICENSES
 
