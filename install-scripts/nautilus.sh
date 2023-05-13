@@ -24,9 +24,7 @@ sed -i 's/folder_path/nautilus-extension/' ../po/POTFILES.in
 sed -i 's/folder_i18n/folder-color/' ../nautilus-extension/folder-color.py
 
 # extension
-sed -i "s/self._get_skel_folder(item, color)/'file:\/\/'+self._get_icon_name(color)['filename']/g" ../caja-extension/folder-color.py
-
-self.foldercolor.set_color(unquote(item.get_uri()[7:]), color, True)
+sed -i "s/self.foldercolor.set_color(unquote(item.get_uri()\[7:\]), color, True)/self.foldercolor.set_color(unquote(item.get_uri()\[7:\]), color, False)/g" ../nautilus-extension/folder-color.py
 
 # debian
 if [ "$1" == "GTK3" ]; then
