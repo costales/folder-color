@@ -62,8 +62,8 @@ class FolderColor:
     """Folder Color Class"""
     def __init__(self):
         self.is_modified = False
-        self.colors = {}
-        self.emblems = {}
+        self.colors = []
+        self.emblems = []
 
     def _get_skel_folder(self, folder, color):
         """Default directories"""
@@ -87,27 +87,27 @@ class FolderColor:
 
     def set_colors_theme(self):
         """Available colors into system"""
-        self.colors = {}
+        self.colors.clear()
         icon_options = ["folder-", "folder_color_", "folder_", "folder-", "folder_color_", "folder_"] # 3 iter for theme / 3 iter for hicolor
         for color in COLORS_ALL.keys():
             for i, option in enumerate(icon_options):
                 icon_aux = self._get_icon_name(option+color)
                 # Theme priority
                 if i < 3 and icon_aux["icon"] and not "/hicolor/" in icon_aux["filename"]:
-                    self.colors[icon_aux["icon"]] = {"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["filename"]}
-                    exit
+                    self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["filename"]})
+                    break
                 # hicolor by default
                 if i >= 3 and icon_aux["icon"]:
-                    self.colors[icon_aux["icon"]] = {"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["filename"]}
-                    exit
+                    self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["filename"]})
+                    break
 
     def set_emblems_theme(self):
         """Available emblems into system"""
-        self.emblems = {}
+        self.emblems.clear()
         for emblem in EMBLEMS_ALL.keys():
             icon_aux = self._get_icon_name(emblem)
             if icon_aux["icon"]:
-                self.emblems[icon_aux["icon"]] = {"icon": icon_aux["icon"], "label": EMBLEMS_ALL[emblem], "uri": icon_aux["filename"]}
+                self.emblems.append({"icon": icon_aux["icon"], "label": EMBLEMS_ALL[emblem], "uri": icon_aux["filename"]})
 
     def get_colors_theme(self):
         return self.colors
@@ -237,18 +237,18 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
 
         # Colors
         if self.all_dirs:
-            for color in colors.keys():
-                item = Nautilus.MenuItem(name="FolderColorMenu::color_" + color, label=colors[color]["label"], icon=colors[color]["icon"])
-                item.connect("activate", self._menu_activate_color, items, colors[color])
+            for color in colors:
+                item = Nautilus.MenuItem(name="FolderColorMenu::color_" + color["icon"], label=color["label"], icon=color["icon"])
+                item.connect("activate", self._menu_activate_color, items, color)
                 submenu.append_item(item)
         # Emblems
         if emblems:
             if self.all_dirs and colors:
                 item = Nautilus.MenuItem(name="FolderColorMenu::emblems", label="―――", sensitive=False)
                 submenu.append_item(item)
-            for emblem in emblems.keys():
-                item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem, label=emblems[emblem]["label"], icon=emblems[emblem]["icon"])
-                item.connect("activate", self._menu_activate_emblem, items, emblems[emblem])
+            for emblem in emblems:
+                item = Nautilus.MenuItem(name="FolderColorMenu::emblem_" + emblem["icon"], label=emblem["label"], icon=emblem["icon"])
+                item.connect("activate", self._menu_activate_emblem, items, emblem)
                 submenu.append_item(item)
         # Restore
         if is_modified:
