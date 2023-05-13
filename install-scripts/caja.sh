@@ -54,7 +54,6 @@ fi
 sed -i 's/nautilus/caja/g' ../caja-extension/folder-color.py
 sed -i 's/Nautilus/Caja/g' ../caja-extension/folder-color.py
 sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../caja-extension/folder-color.py
-sed -i "s/self._get_skel_folder(item, color)/'file:\/\/'+self._get_icon_name(color)['filename']/g" ../caja-extension/folder-color.py
 
 # myself
 rm -rf ../install-scripts

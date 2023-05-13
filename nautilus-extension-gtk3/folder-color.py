@@ -106,6 +106,7 @@ class FolderColor:
 
     def _get_skel_folder(self, folder, color, uri=False):
         """Default directories"""
+        color_param = color
         if folder in USER_DIRS:
             # Check icon for default folder
             skel_color = color["icon"] + USER_DIRS[folder]
@@ -113,11 +114,11 @@ class FolderColor:
                 skel_color = skel_color.replace("-", "_")
             color_aux = self._get_icon_name(skel_color)
             if color_aux["icon"]:
-                color = color_aux
+                color_param = color_aux
         if uri:
-            return color["uri"]
+            return color_param["uri"]
         else:
-            return color["icon"]
+            return color_param["icon"]
 
     def set_color(self, item, color, uri=False):
         if self.is_modified:
@@ -125,10 +126,10 @@ class FolderColor:
         item_aux = Gio.File.new_for_path(item)
         if uri:
             info = item_aux.query_info("metadata::custom-icon", 0, None)
-            info.set_attribute_string("metadata::custom-icon", self._get_skel_folder(item, color, True))
+            info.set_attribute_string("metadata::custom-icon", self._get_skel_folder(item, color, uri))
         else:
             info = item_aux.query_info("metadata::custom-icon-name", 0, None)
-            info.set_attribute_string("metadata::custom-icon-name", self._get_skel_folder(item, color, False))
+            info.set_attribute_string("metadata::custom-icon-name", self._get_skel_folder(item, color, uri))
         item_aux.set_attributes_from_info(info, 0, None)
         self._reload_icon(item)
     
