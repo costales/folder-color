@@ -119,9 +119,9 @@ class FolderColor:
         if self.is_modified:
             self._set_restore_folder(item)
         item_aux = Gio.File.new_for_path(item)
-        info = item_aux.query_info("metadata::custom-icon-name", 0, None)
-        info.set_attribute_string("metadata::custom-icon-name", self._get_skel_folder(item, color["icon"]))
-        item_aux.set_attributes_from_info(info, 0, None)
+        # TODO info = item_aux.query_info("metadata::custom-icon-name", 0, None)
+        # TODO info.set_attribute_string("metadata::custom-icon-name", # TODO self._get_skel_folder(item, color["icon"]))
+        # TODO item_aux.set_attributes_from_info(info, 0, None)
         self._reload_icon(item)
     
     def set_emblem(self, item, emblem):
@@ -179,20 +179,20 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         GObject.Object.__init__(self)
         self.all_files = True
         self.all_dirs = True
-        self.current_theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
         self.foldercolor = FolderColor()
-        self._load_current_theme()
+        self.theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
+        self._load_theme()
         # Read available icons only at Nautilus startup
 
     def get_file_items(self, window, items):
         """Click on directories or files"""
         if self._check_show_menu(items):
-            if self.current_theme != Gtk.Settings.get_default().get_property("gtk-icon-theme-name"):
-                self.current_theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
-                self._load_current_theme()
+            if self.theme != Gtk.Settings.get_default().get_property("gtk-icon-theme-name"):
+                self.theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
+                self._load_theme()
             return self._show_menu(items)
 
-    def _load_current_theme(self):
+    def _load_theme(self):
         self.foldercolor.set_colors_theme()
         self.foldercolor.set_emblems_theme()
 
