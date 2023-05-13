@@ -70,9 +70,9 @@ class FolderColor:
         icon_theme = Gtk.IconTheme.get_default()
         icon = icon_theme.lookup_icon(icon_name, ICON_SIZE, 0)
         if icon is not None:
-            return {"icon": os.path.splitext(os.path.basename(icon.get_filename()))[0], "filename": "file://" + icon.get_filename()}
+            return {"icon": os.path.splitext(os.path.basename(icon.get_filename()))[0], "uri": "file://" + icon.get_filename()}
         else:
-            return {"icon": "", "filename": ""}
+            return {"icon": "", "uri": ""}
 
     def set_colors_theme(self):
         """Available colors into system"""
@@ -82,12 +82,12 @@ class FolderColor:
             for i, option in enumerate(icon_options):
                 icon_aux = self._get_icon_name(option+color)
                 # Theme priority
-                if i < 3 and icon_aux["icon"] and not "/hicolor/" in icon_aux["filename"]:
-                    self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["filename"]})
+                if i < 3 and icon_aux["icon"] and not "/hicolor/" in icon_aux["uri"]:
+                    self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["uri"]})
                     break
                 # hicolor by default
                 if i >= 3 and icon_aux["icon"]:
-                    self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["filename"]})
+                    self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["uri"]})
                     break
 
     def set_emblems_theme(self):
@@ -96,7 +96,7 @@ class FolderColor:
         for emblem in EMBLEMS_ALL.keys():
             icon_aux = self._get_icon_name(emblem)
             if icon_aux["icon"]:
-                self.emblems.append({"icon": icon_aux["icon"], "label": EMBLEMS_ALL[emblem], "uri": icon_aux["filename"]})
+                self.emblems.append({"icon": icon_aux["icon"], "label": EMBLEMS_ALL[emblem], "uri": icon_aux["uri"]})
 
     def get_colors_theme(self):
         return self.colors
@@ -114,9 +114,8 @@ class FolderColor:
             color_aux = self._get_icon_name(skel_color)
             if color_aux["icon"]:
                 color = color_aux
-        print(color)
         if uri:
-            return color["filename"]
+            return color["uri"]
         else:
             return color["icon"]
 
