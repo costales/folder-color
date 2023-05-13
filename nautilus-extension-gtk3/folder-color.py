@@ -65,23 +65,12 @@ class FolderColor:
         self.colors = []
         self.emblems = []
 
-    def _get_skel_folder(self, folder, color):
-        """Default directories"""
-        if folder in USER_DIRS:
-            # Check icon for default folder
-            skel_color = color + USER_DIRS[folder]
-            if "_" in color: # Legacy themes
-                skel_color = skel_color.replace("-", "_")
-            if self._get_icon_name(skel_color):
-                return skel_color
-        return color
-
     def _get_icon_name(self, icon_name):
         """Get icon name and filename"""
         icon_theme = Gtk.IconTheme.get_default()
         icon = icon_theme.lookup_icon(icon_name, ICON_SIZE, 0)
         if icon is not None:
-            return {"icon": os.path.splitext(os.path.basename(icon.get_filename()))[0], "filename": icon.get_filename()}
+            return {"icon": os.path.splitext(os.path.basename(icon.get_filename()))[0], "filename": "file://" + icon.get_filename()}
         else:
             return {"icon": "", "filename": ""}
 
@@ -115,13 +104,33 @@ class FolderColor:
     def get_emblems_theme(self):
         return self.emblems
 
-    def set_color(self, item, color):
+    def _get_skel_folder(self, folder, color, uri=False):
+        """Default directories"""
+        if folder in USER_DIRS:
+            # Check icon for default folder
+            skel_color = color["icon"] + USER_DIRS[folder]
+            if "_" in skel_color: # Legacy themes
+                skel_color = skel_color.replace("-", "_")
+            color_aux = self._get_icon_name(skel_color)
+            if color_aux["icon"]:
+                color = color_aux
+        print(color)
+        if uri:
+            return color["filename"]
+        else:
+            return color["icon"]
+
+    def set_color(self, item, color, uri=False):
         if self.is_modified:
             self._set_restore_folder(item)
         item_aux = Gio.File.new_for_path(item)
-        # TODO info = item_aux.query_info("metadata::custom-icon-name", 0, None)
-        # TODO info.set_attribute_string("metadata::custom-icon-name", # TODO self._get_skel_folder(item, color["icon"]))
-        # TODO item_aux.set_attributes_from_info(info, 0, None)
+        if uri:
+            info = item_aux.query_info("metadata::custom-icon", 0, None)
+            info.set_attribute_string("metadata::custom-icon", self._get_skel_folder(item, color, True))
+        else:
+            info = item_aux.query_info("metadata::custom-icon-name", 0, None)
+            info.set_attribute_string("metadata::custom-icon-name", self._get_skel_folder(item, color, False))
+        item_aux.set_attributes_from_info(info, 0, None)
         self._reload_icon(item)
     
     def set_emblem(self, item, emblem):
@@ -264,7 +273,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         """Menu: Clicked color"""
         for item in items:
             if not item.is_gone():
-                self.foldercolor.set_color(unquote(item.get_uri()[7:]), color)
+                self.foldercolor.set_color(unquote(item.get_uri()[7:]), color, True)
 
     def _menu_activate_emblem(self, menu, items, emblem):
         """Menu: Clicked emblem"""
