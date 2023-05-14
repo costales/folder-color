@@ -101,7 +101,7 @@ class FolderColor:
     def get_emblems_theme(self):
         return self.emblems
 
-    def _get_skel_folder(self, folder, color, uri=False):
+    def _get_skel_folder(self, folder, color, uri=True):
         """Default directories"""
         color_param = color
         if folder in USER_DIRS:
@@ -117,7 +117,7 @@ class FolderColor:
         else:
             return color_param["icon"]
 
-    def set_color(self, item, color, uri=False):
+    def set_color(self, item, color, uri=True):
         if self.is_modified:
             self._set_restore_folder(item)
         item_aux = Gio.File.new_for_path(item)
@@ -259,7 +259,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         """Menu: Clicked color"""
         for item in items:
             if not item.is_gone():
-                self.foldercolor.set_color(item.get_location().get_path(), color, True)
+                self.foldercolor.set_color(item.get_location().get_path(), color)
 
     def _menu_activate_emblem(self, menu, items, emblem):
         """Menu: Clicked emblem"""
