@@ -22,9 +22,30 @@ License: GPL-3
   The full text of the can be found in the file
   '/usr/share/common-licenses/GPL-3'.
 
-Files: *.png
+Files: *.svg
 Copyright: 2020 https://github.com/Jannomag/Yaru-Colors
 Copyright: Jan Schröder
+License: GPL-3
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; version 3 dated June, 2007.
+ .
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+ .
+  You should have received a copy of the GNU General Public License
+  along with this program;  if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+  MA 02110-1301, USA.
+ .
+  The full text of the can be found in the file
+  '/usr/share/common-licenses/GPL-3'.
+
+Files: color-picker.svg
+Copyright: 2022 https://github.com/ubuntu/yaru
+Copyright: Ubuntu
 License: GPL-3
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by

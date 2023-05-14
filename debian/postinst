@@ -2,3 +2,4 @@
 set -e
 
 gtk-update-icon-cache /usr/share/icons/Yaru/
+gtk-update-icon-cache /usr/share/icons/hicolor/

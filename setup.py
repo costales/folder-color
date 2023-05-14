@@ -14,6 +14,8 @@ import os, sys, glob, DistUtilsExtra.auto
 
 # Create data files
 data = [ ('/usr/share/nautilus-python/extensions',   ['nautilus-extension/folder-color.py']),
+         ('/usr/share/icons/hicolor/16x16/actions',  glob.glob('icons/hicolor/16x16/actions/*.svg')),
+         ('/usr/share/icons/hicolor/24x24/actions',  glob.glob('icons/hicolor/24x24/actions/*.svg')),
          ('/usr/share/icons/Yaru/16x16/places',      glob.glob('icons/Yaru/16x16/places/*.svg')),
          ('/usr/share/icons/Yaru/16x16@2x/places',   glob.glob('icons/Yaru/16x16@2x/places/*.svg')),
          ('/usr/share/icons/Yaru/24x24/places',      glob.glob('icons/Yaru/24x24/places/*.svg')),

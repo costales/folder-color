@@ -21,7 +21,7 @@ rm ../README.md
 rm -r ../icons
 
 # setup
-sed -i '17,26d' ../setup.py
+sed -i '17,28d' ../setup.py
 sed -i 's/]),/])]/' ../setup.py
 sed -i 's/nautilus/caja/g' ../setup.py
 sed -i 's/"folder-color"/"folder-color-caja"/' ../setup.py
