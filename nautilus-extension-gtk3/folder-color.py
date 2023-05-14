@@ -12,12 +12,9 @@
 # GNU General Public License for more details.
 
 import os, gettext, gi
+from pathlib import Path
 gi.require_version("Gtk", "3.0")
 from gi.repository import Nautilus, Gtk, GObject, Gio, GLib
-try:
-    from urllib import unquote # python 3
-except ImportError:
-    from urllib.parse import unquote # python 2
 
 # i18n
 gettext.textdomain("folder_i18n")
@@ -47,14 +44,14 @@ EMBLEMS_ALL = {
     "emblem-new": _("New")
 }
 USER_DIRS = {
-    GLib.get_user_special_dir(GLib.USER_DIRECTORY_DESKTOP): "-desktop",
-    GLib.get_user_special_dir(GLib.USER_DIRECTORY_DOCUMENTS): "-documents",
-    GLib.get_user_special_dir(GLib.USER_DIRECTORY_DOWNLOAD): "-downloads",
-    GLib.get_user_special_dir(GLib.USER_DIRECTORY_MUSIC): "-music",
-    GLib.get_user_special_dir(GLib.USER_DIRECTORY_PICTURES): "-pictures",
-    GLib.get_user_special_dir(GLib.USER_DIRECTORY_PUBLIC_SHARE): "-public",
-    GLib.get_user_special_dir(GLib.USER_DIRECTORY_TEMPLATES): "-templates",
-    GLib.get_user_special_dir(GLib.USER_DIRECTORY_VIDEOS): "-videos"
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_DESKTOP): "desktop",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_DOCUMENTS): "documents",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_DOWNLOAD): "downloads",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_MUSIC): "music",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_PICTURES): "pictures",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_PUBLIC_SHARE): "public",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_TEMPLATES): "templates",
+    GLib.get_user_special_dir(GLib.USER_DIRECTORY_VIDEOS): "videos"
 }
 ICON_SIZE = 48
 
@@ -65,12 +62,12 @@ class FolderColor:
         self.colors = []
         self.emblems = []
 
-    def _get_icon_name(self, icon_name):
-        """Get icon name and filename"""
+    def _get_icon(self, icon_name):
+        """Get icon, label and URI"""
         icon_theme = Gtk.IconTheme.get_default()
         icon = icon_theme.lookup_icon(icon_name, ICON_SIZE, 0)
         if icon is not None:
-            return {"icon": os.path.splitext(os.path.basename(icon.get_filename()))[0], "uri": "file://" + icon.get_filename()}
+            return {"icon": Path(icon.get_filename()).stem, "uri": "file://" + icon.get_filename()}
         else:
             return {"icon": "", "uri": ""}
 
@@ -80,7 +77,7 @@ class FolderColor:
         icon_options = ["folder-", "folder_color_", "folder_", "folder-", "folder_color_", "folder_"] # 3 iter for theme / 3 iter for hicolor
         for color in COLORS_ALL.keys():
             for i, option in enumerate(icon_options):
-                icon_aux = self._get_icon_name(option+color)
+                icon_aux = self._get_icon(option + color)
                 # Theme priority
                 if i < 3 and icon_aux["icon"] and not "/hicolor/" in icon_aux["uri"]:
                     self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["uri"]})
@@ -94,7 +91,7 @@ class FolderColor:
         """Available emblems into system"""
         self.emblems.clear()
         for emblem in EMBLEMS_ALL.keys():
-            icon_aux = self._get_icon_name(emblem)
+            icon_aux = self._get_icon(emblem)
             if icon_aux["icon"]:
                 self.emblems.append({"icon": icon_aux["icon"], "label": EMBLEMS_ALL[emblem], "uri": icon_aux["uri"]})
 
@@ -109,10 +106,10 @@ class FolderColor:
         color_param = color
         if folder in USER_DIRS:
             # Check icon for default folder
-            skel_color = color["icon"] + USER_DIRS[folder]
+            skel_color = "-".join([color["icon"], USER_DIRS[folder]])
             if "_" in skel_color: # Legacy themes
                 skel_color = skel_color.replace("-", "_")
-            color_aux = self._get_icon_name(skel_color)
+            color_aux = self._get_icon(skel_color)
             if color_aux["icon"]:
                 color_param = color_aux
         if uri:
@@ -170,7 +167,7 @@ class FolderColor:
         # For each dir, search custom icon or emblem
         for item in items:
             # Get metadata file/folder
-            item_path = unquote(item.get_uri()[7:])
+            item_path = item.get_location().get_path()
             item = Gio.File.new_for_path(item_path)
             info = item.query_info("metadata", 0, None)
             # If any metadata then restore menu
@@ -186,7 +183,6 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
     """File Browser Menu"""
     def __init__(self):
         GObject.Object.__init__(self)
-        self.all_files = True
         self.all_dirs = True
         self.foldercolor = FolderColor()
         self.theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
@@ -205,25 +201,16 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         self.foldercolor.set_emblems_theme()
 
     def _check_show_menu(self, items):
-        self.all_files = True
-        self.all_dirs = True
-
         if not items:
             return False
         
+        self.all_dirs = True
         for item in items:
             # GNOME can only handle files
             if item.get_uri_scheme() != "file":
                 return False
-
-            if item.is_directory():
-                self.all_files = False
-            else:
+            if not item.is_directory():
                 self.all_dirs = False
-
-            if not self.all_files and not self.all_dirs:
-                return True
-        
         return True
 
     def _show_menu(self, items):
@@ -272,16 +259,16 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         """Menu: Clicked color"""
         for item in items:
             if not item.is_gone():
-                self.foldercolor.set_color(unquote(item.get_uri()[7:]), color, True)
+                self.foldercolor.set_color(item.get_location().get_path(), color, True)
 
     def _menu_activate_emblem(self, menu, items, emblem):
         """Menu: Clicked emblem"""
         for item in items:
             if not item.is_gone():
-                self.foldercolor.set_emblem(unquote(item.get_uri()[7:]), emblem)
+                self.foldercolor.set_emblem(item.get_location().get_path(), emblem)
 
     def _menu_activate_restore(self, menu, items):
         """Menu: Clicked restore"""
         for item in items:
             if not item.is_gone():
-                self.foldercolor.set_restore(unquote(item.get_uri()[7:]))
+                self.foldercolor.set_restore(item.get_location().get_path())
