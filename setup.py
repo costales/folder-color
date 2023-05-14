@@ -1,27 +1,20 @@
 #!/usr/bin/env python3
 
-# Folder Color 0.2.7 - https://github.com/costales/folder-color
-# Copyright (C) 2012-2022 Marcos Alvarez Costales - https://costales.github.io/
-#
-# folder-color is free software; you can redistribute it and/or modify
+# This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License, or
 # (at your option) any later version.
-# 
-# Folder Color is distributed in the hope that it will be useful,
+
+# This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with Folder Color; if not, see http://www.gnu.org/licenses 
-# for more information.
-
 
 import os, sys, glob, DistUtilsExtra.auto
 
 # Create data files
 data = [ ('/usr/share/nautilus-python/extensions',   ['nautilus-extension/folder-color.py']),
+         ('/usr/share/icons/hicolor/16x16/actions',  glob.glob('icons/hicolor/16x16/actions/*.svg')),
          ('/usr/share/icons/Yaru/16x16/places',      glob.glob('icons/Yaru/16x16/places/*.svg')),
          ('/usr/share/icons/Yaru/16x16@2x/places',   glob.glob('icons/Yaru/16x16@2x/places/*.svg')),
          ('/usr/share/icons/Yaru/24x24/places',      glob.glob('icons/Yaru/24x24/places/*.svg')),
@@ -36,7 +29,7 @@ data = [ ('/usr/share/nautilus-python/extensions',   ['nautilus-extension/folder
 # Setup stage
 DistUtilsExtra.auto.setup(
     name         = "folder-color",
-    version      = "0.2.7",
+    version      = "0.3.1",
     description  = "Change your folder color with just a click",
     author       = "Marcos Alvarez Costales",
     author_email = "marcos.costales@gmail.com",
