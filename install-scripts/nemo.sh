@@ -53,6 +53,7 @@ fi
 # extension
 sed -i 's/nautilus/nemo/g' ../nemo-extension/folder-color.py
 sed -i 's/Nautilus/Nemo/g' ../nemo-extension/folder-color.py
+sed -i "s/self.foldercolor.set_color(item.get_location().get_path(), color, True)/self.foldercolor.set_color(item.get_location().get_path(), color, True)/g" ../nautilus-extension/folder-color.py
 
 # myself
 rm -rf ../install-scripts

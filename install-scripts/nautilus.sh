@@ -23,9 +23,6 @@ sed -i 's/folder_i18n/folder-color/' ../po/POTFILES.in
 sed -i 's/folder_path/nautilus-extension/' ../po/POTFILES.in
 sed -i 's/folder_i18n/folder-color/' ../nautilus-extension/folder-color.py
 
-# extension
-sed -i "s/self.foldercolor.set_color(unquote(item.get_uri()\[7:\]), color, True)/self.foldercolor.set_color(unquote(item.get_uri()\[7:\]), color, False)/g" ../nautilus-extension/folder-color.py
-
 # debian
 if [ "$1" == "GTK3" ]; then
     sed -i 's/kinetic/focal/' ../debian/changelog
