@@ -1,4 +1,4 @@
-# Folder Color 0.3.1 - https://github.com/costales/folder-color
+# Folder Color 0.3.2 - https://github.com/costales/folder-color
 # Copyright (C) 2012-2023 Marcos Alvarez Costales
 #
 # This program is free software; you can redistribute it and/or modify
@@ -67,7 +67,7 @@ class FolderColor:
         icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
         icon = icon_theme.lookup_icon(icon_name, None, 48, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
         if icon_theme.has_icon(icon_name):
-            return {"icon": Path(icon.get_icon_name()).stem, "uri": "file://" + icon.get_file().get_uri()}
+            return {"icon": Path(icon.get_icon_name()).stem, "uri": icon.get_file().get_uri()}
         else:
             return {"icon": "", "uri": ""}
 
