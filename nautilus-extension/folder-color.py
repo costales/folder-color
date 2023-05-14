@@ -13,8 +13,8 @@
 
 import os, gettext, gi
 from pathlib import Path
-gi.require_version("Gtk", "3.0")
-from gi.repository import Nautilus, Gtk, GObject, Gio, GLib
+gi.require_version("Gtk", "4.0")
+from gi.repository import Nautilus, Gtk, Gdk, GObject, Gio, GLib
 
 # i18n
 gettext.textdomain("folder_i18n")
@@ -64,10 +64,10 @@ class FolderColor:
 
     def _get_icon(self, icon_name):
         """Get icon, label and URI"""
-        icon_theme = Gtk.IconTheme.get_default()
-        icon = icon_theme.lookup_icon(icon_name, ICON_SIZE, 0)
-        if icon is not None:
-            return {"icon": Path(icon.get_filename()).stem, "uri": "file://" + icon.get_filename()}
+        icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
+        icon = icon_theme.lookup_icon(icon_name, None, 48, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
+        if icon_theme.has_icon(icon_name):
+            return {"icon": Path(icon.get_icon_name()).stem, "uri": "file://" + get_file().get_uri()}
         else:
             return {"icon": "", "uri": ""}
 
@@ -188,7 +188,7 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         self.theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
         self._load_theme()
 
-    def get_file_items(self, window, items):
+    def get_file_items(self, items):
         """Click on directories or files"""
         if self._check_show_menu(items):
             if self.theme != Gtk.Settings.get_default().get_property("gtk-icon-theme-name"):
