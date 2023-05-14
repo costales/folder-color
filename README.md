@@ -11,7 +11,6 @@ For Nautilus:
 # apt-get update
 # sudo apt install python3-nautilus nautilus
 # sudo apt-get install folder-color
-# gtk-update-icon-cache /usr/share/icons/Yaru/
 $ nautilus -q
 ```
 
@@ -22,7 +21,6 @@ For Nemo:
 # apt-get update
 # sudo apt install python-nemo nemo
 # sudo apt-get install folder-color-nemo
-# gtk-update-icon-cache /usr/share/icons/Yaru/
 $ nemo -q
 ```
 
@@ -33,7 +31,6 @@ For Caja:
 # apt-get update
 # sudo apt install python3-caja caja
 # sudo apt-get install folder-color-caja
-# gtk-update-icon-cache /usr/share/icons/Yaru/
 $ caja -q
 ```
 
