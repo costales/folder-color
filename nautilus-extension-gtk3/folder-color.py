@@ -191,7 +191,6 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         self.foldercolor = FolderColor()
         self.theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
         self._load_theme()
-        # Read available icons only at Nautilus startup
 
     def get_file_items(self, window, items):
         """Click on directories or files"""
