@@ -39,16 +39,16 @@ If you change your theme you'll need to restart your file browser.
 
 # LICENSES
 
-Folder Color, (Yaru-Colors)[https://github.com/Jannomag/Yaru-Colors] & (Yaru icons)[https://github.com/ubuntu/yaru] are licensed under the GPL v3.
+Folder Color, [Yaru-Colors](https://github.com/Jannomag/Yaru-Colors) & [Yaru icons](https://github.com/ubuntu/yaru) are licensed under the GPL v3.
 
 See file LICENSE.txt for the complete terms.
 
 # COMPATIBLE THEMES
 
- * (Numix)[https://numixproject.org/]
- * (Papirus)[http://web.archive.org/web/20210823213922/https://github.com/PapirusDevelopmentTeam/papirus-icon-theme]
- * (Vibrancy Colors)[https://www.ravefinity.com/p/vibrancy-colors-gtk-icon-theme.html]
- * (Vivacious Colors)[https://www.ravefinity.com/p/vivacious-colors-gtk-icon-theme.html]
+ * [Numix](https://numixproject.org/)
+ * [Papirus](http://web.archive.org/web/20210823213922/https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
+ * [Vibrancy Colors](https://www.ravefinity.com/p/vibrancy-colors-gtk-icon-theme.html)
+ * [Vivacious Colors](https://www.ravefinity.com/p/vivacious-colors-gtk-icon-theme.html)
 
 
 # CREATE A NEW THEME
