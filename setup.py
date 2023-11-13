@@ -15,16 +15,16 @@ import os, sys, glob, DistUtilsExtra.auto
 # Create data files
 data = [ ('/usr/share/nautilus-python/extensions',   ['nautilus-extension/folder-color.py']),
          ('/usr/share/icons/hicolor/16x16/actions',  glob.glob('icons/hicolor/16x16/actions/*.svg')),
-         ('/usr/share/icons/Yaru/16x16/places',      glob.glob('icons/Yaru/16x16/places/*.svg')),
-         ('/usr/share/icons/Yaru/16x16@2x/places',   glob.glob('icons/Yaru/16x16@2x/places/*.svg')),
-         ('/usr/share/icons/Yaru/24x24/places',      glob.glob('icons/Yaru/24x24/places/*.svg')),
-         ('/usr/share/icons/Yaru/24x24@2x/places',   glob.glob('icons/Yaru/24x24@2x/places/*.svg')),
-         ('/usr/share/icons/Yaru/32x32/places',      glob.glob('icons/Yaru/32x32/places/*.svg')),
-         ('/usr/share/icons/Yaru/32x32@2x/places',   glob.glob('icons/Yaru/32x32@2x/places/*.svg')),
-         ('/usr/share/icons/Yaru/48x48/places',      glob.glob('icons/Yaru/48x48/places/*.svg')),
-         ('/usr/share/icons/Yaru/48x48@2x/places',   glob.glob('icons/Yaru/48x48@2x/places/*.svg')),
-         ('/usr/share/icons/Yaru/256x256/places',    glob.glob('icons/Yaru/256x256/places/*.svg')),
-         ('/usr/share/icons/Yaru/256x256@2x/places', glob.glob('icons/Yaru/256x256@2x/places/*.svg')) ]
+         ('/usr/share/icons/Yaru/16x16/places',      glob.glob('icons/Yaru/16x16/places/*.png')),
+         ('/usr/share/icons/Yaru/16x16@2x/places',   glob.glob('icons/Yaru/16x16@2x/places/*.png')),
+         ('/usr/share/icons/Yaru/24x24/places',      glob.glob('icons/Yaru/24x24/places/*.png')),
+         ('/usr/share/icons/Yaru/24x24@2x/places',   glob.glob('icons/Yaru/24x24@2x/places/*.png')),
+         ('/usr/share/icons/Yaru/32x32/places',      glob.glob('icons/Yaru/32x32/places/*.png')),
+         ('/usr/share/icons/Yaru/32x32@2x/places',   glob.glob('icons/Yaru/32x32@2x/places/*.png')),
+         ('/usr/share/icons/Yaru/48x48/places',      glob.glob('icons/Yaru/48x48/places/*.png')),
+         ('/usr/share/icons/Yaru/48x48@2x/places',   glob.glob('icons/Yaru/48x48@2x/places/*.png')),
+         ('/usr/share/icons/Yaru/256x256/places',    glob.glob('icons/Yaru/256x256/places/*.png')),
+         ('/usr/share/icons/Yaru/256x256@2x/places', glob.glob('icons/Yaru/256x256@2x/places/*.png')) ]
 
 # Setup stage
 DistUtilsExtra.auto.setup(
