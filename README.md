@@ -103,7 +103,7 @@ They could be:
  * `templates`
  * `videos`
 
-Icon nomenclature: folder-<color>-<emblem>
+Icon nomenclature: `folder-<color>-<emblem>`
 
 Final filename path:
 
