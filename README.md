@@ -52,7 +52,6 @@ See file LICENSE.txt for the complete terms.
 
 
 # CREATE A NEW THEME
-=========================
 
 Are you an icon designer? Let's see how to create an icon theme compatible with Folder Color.
 
