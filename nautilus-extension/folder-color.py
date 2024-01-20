@@ -22,20 +22,20 @@ gettext.textdomain("folder_i18n")
 _ = gettext.gettext
 
 COLORS_ALL = {
-    "black": _("Black"),
-    "blue": _("Blue"),
-    "brown": _("Brown"),
-    "cyan": _("Cyan"),
-    "green": _("Green"),
-    "grey": _("Grey"),
+    "black": _("Black"),xxxxx
+    "blue": _("Blue"), <<<
+    "brown": _("Brown"),<<<<
+    "cyan": _("Cyan"), aqua
+    "green": _("Green"),<<<
+    "grey": _("Grey"),<<<
     "magenta": _("Magenta"),
-    "orange": _("Orange"),
-    "pink": _("Pink"),
+    "orange": _("Orange"),nnnnnn
+    "pink": _("Pink"),<<<<
     "purple": _("Purple"),
-    "red": _("Red"),
+    "red": _("Red"),<<<<
     "violet": _("Violet"),
     "white": _("White"),
-    "yellow": _("Yellow")
+    "yellow": _("Yellow")<<<<
 }
 EMBLEMS_ALL = {
     "emblem-important": _("Important"),
@@ -69,15 +69,15 @@ class FolderColor:
         self.colors = []
         self.emblems = []
 
-        # Read file browser icon size
+        # Auto reload file browser icon size
         self.gio_settings = Gio.Settings.new("org.gnome.nautilus.icon-view")
         self.gio_settings.connect("changed::default-zoom-level", self.on_changed_zoom_level)
         self.icon_size = 48
 
-    def on_changed_zoom_level(self, settings, property):
+    def on_changed_zoom_level(self, settings, key="default-zoom-level"):
         self.set_colors_theme()
         self.set_emblems_theme()
-        self.icon_size = ICON_SIZES[self.gio_settings.get_string("default-zoom-level")]
+        self.icon_size = ICON_SIZES[self.gio_settings.get_string(key)]
         print("on_default_zoom_level")
     
     def _get_icon(self, icon_name):

@@ -61,7 +61,7 @@ File name: `folder-<color>.svg` or `folder-<color>.png`.
 
 `<color>` can be:
 
- * `blue` (Mandatory)
+ * `blue`
  * `black`
  * `brown`
  * `cyan`
