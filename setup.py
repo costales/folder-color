@@ -29,7 +29,7 @@ data = [ ('/usr/share/nautilus-python/extensions',   ['nautilus-extension/folder
 # Setup stage
 DistUtilsExtra.auto.setup(
     name         = "folder-color",
-    version      = "0.3.2",
+    version      = "0.3.3",
     description  = "Change your folder color with just a click",
     author       = "Marcos Alvarez Costales",
     author_email = "marcos.costales@gmail.com",
