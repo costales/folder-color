@@ -55,11 +55,11 @@ sed -i 's/nautilus/nemo/g' ../nemo-extension/folder-color.py
 sed -i 's/Nautilus/Nemo/g' ../nemo-extension/folder-color.py
 #sed -i "s/, uri=True)/, uri=False/g" ../nemo-extension/folder-color.py
 
-sed -i 's/org.gnome.nautilus.icon-view/org.nemo.icon-view/g' ../nemo-extension/folder-color.py
-sed -i 's/default-zoom-level/default-zoom-level/g' ../nemo-extension/folder-color.py
-sed -i '73,81d' ../nemo-extension/folder-color.py
-sed -i '57,63d' ../nemo-extension/folder-color.py
-sed -i '17d' ../nemo-extension/folder-color.py
+#sed -i 's/org.gnome.nautilus.icon-view/org.nemo.icon-view/g' ../nemo-extension/folder-color.py
+#sed -i 's/default-zoom-level/default-zoom-level/g' ../nemo-extension/folder-color.py
+#sed -i '73,81d' ../nemo-extension/folder-color.py
+#sed -i '57,63d' ../nemo-extension/folder-color.py
+#sed -i '17d' ../nemo-extension/folder-color.py
 
 # myself
 rm -rf ../install-scripts
