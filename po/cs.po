@@ -7,110 +7,101 @@ msgid ""
 msgstr ""
 "Project-Id-Version: folder-color\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2023-05-06 21:09+0200\n"
-"PO-Revision-Date: 2020-01-19 13:40+0000\n"
+"POT-Creation-Date: 2023-05-11 17:26+0200\n"
+"PO-Revision-Date: 2023-05-15 21:52+0000\n"
 "Last-Translator: Tomáš Marný <tomik.marny@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-05-11 15:28+0000\n"
-"X-Generator: Launchpad (build 90e2150bef31b411d7bae5c4032c7e320fcaaec8)\n"
+"X-Launchpad-Export-Date: 2024-01-20 12:16+0000\n"
+"X-Generator: Launchpad (build e1eeab5b20e19239bd7d5f36676f7a52988db88b)\n"
 
-#: nautilus-extension-gtk3/folder-color.py:31
+#: nautilus-extension-gtk3/folder-color.py:27
 msgid "Black"
 msgstr "Černá"
 
-#: nautilus-extension-gtk3/folder-color.py:32
+#: nautilus-extension-gtk3/folder-color.py:28
 msgid "Blue"
 msgstr "Modrá"
 
-#: nautilus-extension-gtk3/folder-color.py:33
+#: nautilus-extension-gtk3/folder-color.py:29
 msgid "Brown"
 msgstr "Hnědá"
 
-#: nautilus-extension-gtk3/folder-color.py:34
+#: nautilus-extension-gtk3/folder-color.py:30
 msgid "Cyan"
 msgstr "Tyrkysová"
 
-#: nautilus-extension-gtk3/folder-color.py:35
+#: nautilus-extension-gtk3/folder-color.py:31
 msgid "Green"
 msgstr "Zelená"
 
-#: nautilus-extension-gtk3/folder-color.py:36
+#: nautilus-extension-gtk3/folder-color.py:32
 msgid "Grey"
 msgstr "Šedá"
 
-#: nautilus-extension-gtk3/folder-color.py:37
+#: nautilus-extension-gtk3/folder-color.py:33
 msgid "Magenta"
 msgstr "Purpurová"
 
-#: nautilus-extension-gtk3/folder-color.py:38
+#: nautilus-extension-gtk3/folder-color.py:34
 msgid "Orange"
 msgstr "Oranžová"
 
-#: nautilus-extension-gtk3/folder-color.py:39
+#: nautilus-extension-gtk3/folder-color.py:35
 msgid "Pink"
 msgstr "Růžová"
 
-#: nautilus-extension-gtk3/folder-color.py:40
+#: nautilus-extension-gtk3/folder-color.py:36
 msgid "Purple"
 msgstr "Fialová"
 
-#: nautilus-extension-gtk3/folder-color.py:41
+#: nautilus-extension-gtk3/folder-color.py:37
 msgid "Red"
 msgstr "Červená"
 
-#: nautilus-extension-gtk3/folder-color.py:42
+#: nautilus-extension-gtk3/folder-color.py:38
 msgid "Violet"
 msgstr "Fialová"
 
-#: nautilus-extension-gtk3/folder-color.py:43
+#: nautilus-extension-gtk3/folder-color.py:39
 msgid "White"
-msgstr ""
+msgstr "Bílá"
 
-#: nautilus-extension-gtk3/folder-color.py:44
+#: nautilus-extension-gtk3/folder-color.py:40
 msgid "Yellow"
 msgstr "Žlutá"
 
-#: nautilus-extension-gtk3/folder-color.py:47
+#: nautilus-extension-gtk3/folder-color.py:43
 msgid "Important"
 msgstr "Důležité"
 
-#: nautilus-extension-gtk3/folder-color.py:48
+#: nautilus-extension-gtk3/folder-color.py:44
 msgid "In Progress"
 msgstr "Rozpracováno"
 
-#: nautilus-extension-gtk3/folder-color.py:49
+#: nautilus-extension-gtk3/folder-color.py:45
 msgid "Favorite"
 msgstr "Oblíbené"
 
-#: nautilus-extension-gtk3/folder-color.py:50
+#: nautilus-extension-gtk3/folder-color.py:46
 msgid "Finished"
 msgstr "Hotovo"
 
-#: nautilus-extension-gtk3/folder-color.py:51
+#: nautilus-extension-gtk3/folder-color.py:47
 msgid "New"
 msgstr "Nové"
 
-#: nautilus-extension-gtk3/folder-color.py:217
+#: nautilus-extension-gtk3/folder-color.py:226
 msgid "Color"
-msgstr ""
+msgstr "Barva"
 
-#: nautilus-extension-gtk3/folder-color.py:229
-msgid "Emblem:"
-msgstr "Symbol:"
-
-#: nautilus-extension-gtk3/folder-color.py:240
-#: nautilus-extension-gtk3/folder-color.py:261
-msgid "Restore:"
-msgstr "Obnovit:"
-
-#: nautilus-extension-gtk3/folder-color.py:242
-#: nautilus-extension-gtk3/folder-color.py:263
+#: nautilus-extension-gtk3/folder-color.py:247
+#: nautilus-extension-gtk3/folder-color.py:265
 msgid "Default"
 msgstr "Výchozí"
 
-#: nautilus-extension-gtk3/folder-color.py:249
+#: nautilus-extension-gtk3/folder-color.py:253
 msgid "Emblem"
 msgstr "Symbol"
