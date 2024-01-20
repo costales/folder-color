@@ -28,6 +28,9 @@ if [ "$1" == "GTK3" ]; then
     sed -i 's/kinetic/focal/' ../debian/changelog
 fi
 
+# extension
+sed -i '64,81d' ../nautilus-extension/folder-color.py
+
 # myself
 rm -rf ../install-scripts
 

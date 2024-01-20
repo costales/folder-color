@@ -22,20 +22,20 @@ gettext.textdomain("folder_i18n")
 _ = gettext.gettext
 
 COLORS_ALL = {
-    "black": _("Black"),xxxxx
-    "blue": _("Blue"), <<<
-    "brown": _("Brown"),<<<<
-    "cyan": _("Cyan"), aqua
-    "green": _("Green"),<<<
-    "grey": _("Grey"),<<<
+    "black": _("Black"),
+    "blue": _("Blue"), 
+    "brown": _("Brown"),
+    "cyan": _("Cyan"),
+    "green": _("Green"),
+    "grey": _("Grey"),
     "magenta": _("Magenta"),
-    "orange": _("Orange"),nnnnnn
-    "pink": _("Pink"),<<<<
+    "orange": _("Orange"),
+    "pink": _("Pink"),
     "purple": _("Purple"),
-    "red": _("Red"),<<<<
+    "red": _("Red"),
     "violet": _("Violet"),
     "white": _("White"),
-    "yellow": _("Yellow")<<<<
+    "yellow": _("Yellow")
 }
 EMBLEMS_ALL = {
     "emblem-important": _("Important"),
@@ -54,12 +54,30 @@ USER_DIRS = {
     GLib.get_user_special_dir(GLib.USER_DIRECTORY_TEMPLATES): "templates",
     GLib.get_user_special_dir(GLib.USER_DIRECTORY_VIDEOS): "videos"
 }
-ICON_SIZES = {
+ICON_SIZES = { # Nautilus
     "extra-large": 256,
     "large": 128,
     "medium": 96,
     "small-plus": 64, 
     "small": 48
+}
+ICON_SIZES = { # Nemo
+    "smallest": 24,
+    "smaller": 32,
+    "small": 48,
+    "standard": 64,
+    "large": 96,
+    "larger": 128,
+    "largest": 256 
+}
+ICON_SIZES = { # Caja
+    "smallest": 16,
+    "smaller":  24,
+    "small": 32,
+    "standard": 48,
+    "large": 72,
+    "larger": 96, 
+    "largest": 192
 }
 
 class FolderColor:
@@ -72,19 +90,19 @@ class FolderColor:
         # Auto reload file browser icon size
         self.gio_settings = Gio.Settings.new("org.gnome.nautilus.icon-view")
         self.gio_settings.connect("changed::default-zoom-level", self.on_changed_zoom_level)
-        self.icon_size = 48
+        self.icon_size = ICON_SIZES[self.gio_settings.get_string("default-zoom-level")]
 
     def on_changed_zoom_level(self, settings, key="default-zoom-level"):
         self.set_colors_theme()
         self.set_emblems_theme()
         self.icon_size = ICON_SIZES[self.gio_settings.get_string(key)]
-        print("on_default_zoom_level")
+        print("on_default_zoom_level" + str(self.gio_settings.get_string(key)))
     
     def _get_icon(self, icon_name):
         """Get icon, label and URI"""
         icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
         icon = icon_theme.lookup_icon(icon_name, None, self.icon_size, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
-        print(icon.get_file().get_uri())
+        print(icon.get_file().get_uri() + " " + str(ICON_SIZES[self.gio_settings.get_string("default-zoom-level")]))
         if icon_theme.has_icon(icon_name):
             return {"icon": Path(icon.get_icon_name()).stem, "uri": icon.get_file().get_uri()}
         else:
