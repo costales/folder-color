@@ -96,13 +96,11 @@ class FolderColor:
         self.set_colors_theme()
         self.set_emblems_theme()
         self.icon_size = ICON_SIZES[self.gio_settings.get_string(key)]
-        print("on_default_zoom_level" + str(self.gio_settings.get_string(key)))
     
     def _get_icon(self, icon_name):
         """Get icon, label and URI"""
         icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
         icon = icon_theme.lookup_icon(icon_name, None, self.icon_size, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
-        print(icon.get_file().get_uri() + " " + str(ICON_SIZES[self.gio_settings.get_string("default-zoom-level")]))
         if icon_theme.has_icon(icon_name):
             return {"icon": Path(icon.get_icon_name()).stem, "uri": icon.get_file().get_uri()}
         else:
