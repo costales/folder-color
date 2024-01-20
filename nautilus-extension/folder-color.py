@@ -14,6 +14,7 @@
 import os, gettext, gi
 from pathlib import Path
 gi.require_version("Gtk", "4.0")
+gi.require_version("Gdk", "4.0")
 from gi.repository import Nautilus, Gtk, Gdk, GObject, Gio, GLib
 
 # i18n
@@ -53,7 +54,13 @@ USER_DIRS = {
     GLib.get_user_special_dir(GLib.USER_DIRECTORY_TEMPLATES): "templates",
     GLib.get_user_special_dir(GLib.USER_DIRECTORY_VIDEOS): "videos"
 }
-ICON_SIZE = 48
+ICON_SIZES = {
+    "extra-large": 256,
+    "large": 128,
+    "medium": 96,
+    "small-plus": 64, 
+    "small": 48
+}
 
 class FolderColor:
     """Folder Color Class"""
@@ -62,10 +69,22 @@ class FolderColor:
         self.colors = []
         self.emblems = []
 
+        # Read file browser icon size
+        self.gio_settings = Gio.Settings.new("org.gnome.nautilus.icon-view")
+        self.gio_settings.connect("changed::default-zoom-level", self.on_changed_zoom_level)
+        self.icon_size = 48
+
+    def on_changed_zoom_level(self, settings, property):
+        self.set_colors_theme()
+        self.set_emblems_theme()
+        self.icon_size = ICON_SIZES[self.gio_settings.get_string("default-zoom-level")]
+        print("on_default_zoom_level")
+    
     def _get_icon(self, icon_name):
         """Get icon, label and URI"""
         icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
-        icon = icon_theme.lookup_icon(icon_name, None, 48, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
+        icon = icon_theme.lookup_icon(icon_name, None, self.icon_size, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
+        print(icon.get_file().get_uri())
         if icon_theme.has_icon(icon_name):
             return {"icon": Path(icon.get_icon_name()).stem, "uri": icon.get_file().get_uri()}
         else:
