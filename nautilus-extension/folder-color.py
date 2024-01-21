@@ -118,7 +118,6 @@ class FolderColor:
                 self.emblems.append({"icon": icon_aux["icon"], "label": EMBLEMS_ALL[emblem], "uri": icon_aux["uri"]})
 
     def get_colors_theme(self):
-        print("colors: ",self.colors)
         return self.colors
 
     def get_emblems_theme(self):
