@@ -76,9 +76,9 @@ class FolderColor:
 
     # Needs for size in icon theme lookup
     def on_changed_zoom_level(self, settings, key="default-zoom-level"):
+        self.icon_size = ICON_SIZES[self.gio_settings.get_string(key)]
         self.set_colors_theme()
         self.set_emblems_theme()
-        self.icon_size = ICON_SIZES[self.gio_settings.get_string(key)]
     
     def _get_icon(self, icon_name):
         """Get icon, label and URI"""
