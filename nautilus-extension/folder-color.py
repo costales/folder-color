@@ -80,7 +80,7 @@ class FolderColor:
         self.set_colors_theme()
         self.set_emblems_theme()
     
-    def _get_icon(self, icon_name, is_color: True):
+    def _get_icon(self, icon_name, is_color=True):
         """Get icon, label and URI"""
         icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
         if is_color:
@@ -108,6 +108,7 @@ class FolderColor:
                 if i >= 3 and icon_aux["icon"]:
                     self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["uri"]})
                     break
+        print(icon_aux["uri"])
 
     def set_emblems_theme(self):
         """Available emblems into system"""
