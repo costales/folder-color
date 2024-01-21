@@ -121,7 +121,6 @@ class FolderColor:
         return self.colors
 
     def get_emblems_theme(self):
-        print("Emblemas: ",self.emblems)
         return self.emblems
 
     def _get_skel_folder(self, folder, color, uri=True):
