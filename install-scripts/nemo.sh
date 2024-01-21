@@ -9,31 +9,19 @@ fi
 if [ "$1" == "GTK4" ]; then
     echo "It's GTK4"
     rm -rf ../nautilus-extension-gtk3
-    mv ../nautilus-extension/ ../nemo-extension
-
-    # extension
-    sed -i 's/org.gnome.nautilus.icon-view/org.nemo.icon-view/' ../nemo-extension/folder-color.py
-    sed -i 's/default-zoom-level/default-zoom-level/g' ../nemo-extension/folder-color.py
-    sed -i '73,81d' ../nemo-extension/folder-color.py
-    sed -i '57,63d' ../nemo-extension/folder-color.py
 else
     echo "It's GTK3"
     rm -rf ../nautilus-extension
-    mv ../nautilus-extension-gtk3 ../nemo-extension
-
-    # extension
-    sed -i 's/org.gnome.nautilus.icon-view/org.nemo.icon-view/' ../nemo-extension/folder-color.py
-    sed -i 's/default-zoom-level/default-zoom-level/g' ../nemo-extension/folder-color.py
-    sed -i '72,80d' ../nemo-extension/folder-color.py
-    sed -i '56,62d' ../nemo-extension/folder-color.py
+    mv ../nautilus-extension-gtk3 ../nautilus-extension
 fi
 
+mv ../nautilus-extension/ ../nemo-extension
 rm -rf ../.git
 rm ../README.md
 rm -r ../icons
 
 # setup
-sed -i '17,29d' ../setup.py
+sed -i '17,27d' ../setup.py
 sed -i 's/]),/])]/' ../setup.py
 sed -i 's/nautilus/nemo/g' ../setup.py
 sed -i 's/"folder-color"/"folder-color-nemo"/' ../setup.py
