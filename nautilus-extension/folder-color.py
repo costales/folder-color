@@ -108,7 +108,6 @@ class FolderColor:
                 if i >= 3 and icon_aux["icon"]:
                     self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["uri"]})
                     break
-        print(icon_aux["uri"])
 
     def set_emblems_theme(self):
         """Available emblems into system"""
@@ -119,9 +118,11 @@ class FolderColor:
                 self.emblems.append({"icon": icon_aux["icon"], "label": EMBLEMS_ALL[emblem], "uri": icon_aux["uri"]})
 
     def get_colors_theme(self):
+        print("colors: ",self.colors)
         return self.colors
 
     def get_emblems_theme(self):
+        print("Emblemas: ",self.emblems)
         return self.emblems
 
     def _get_skel_folder(self, folder, color, uri=True):
