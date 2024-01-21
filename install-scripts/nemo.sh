@@ -21,7 +21,7 @@ rm ../README.md
 rm -r ../icons
 
 # setup
-sed -i '17,27d' ../setup.py
+sed -i '17,29d' ../setup.py
 sed -i 's/]),/])]/' ../setup.py
 sed -i 's/nautilus/nemo/g' ../setup.py
 sed -i 's/"folder-color"/"folder-color-nemo"/' ../setup.py
