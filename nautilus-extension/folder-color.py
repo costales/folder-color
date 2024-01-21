@@ -23,7 +23,7 @@ _ = gettext.gettext
 
 COLORS_ALL = {
     "black": _("Black"),
-    "blue": _("Blue"), 
+    "blue": _("Blue"),
     "brown": _("Brown"),
     "cyan": _("Cyan"),
     "green": _("Green"),
