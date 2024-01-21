@@ -61,24 +61,24 @@ ICON_SIZES = { # Nautilus
     "small-plus": 64, 
     "small": 48
 }
-ICON_SIZES = { # Nemo
-    "smallest": 24,
-    "smaller": 32,
-    "small": 48,
-    "standard": 64,
-    "large": 96,
-    "larger": 128,
-    "largest": 256 
-}
-ICON_SIZES = { # Caja
-    "smallest": 16,
-    "smaller":  24,
-    "small": 32,
-    "standard": 48,
-    "large": 72,
-    "larger": 96, 
-    "largest": 192
-}
+# ICON_SIZES = { # Nemo
+#     "smallest": 24,
+#     "smaller": 32,
+#     "small": 48,
+#     "standard": 64,
+#     "large": 96,
+#     "larger": 128,
+#     "largest": 256 
+# }
+# ICON_SIZES = { # Caja
+#     "smallest": 16,
+#     "smaller":  24,
+#     "small": 32,
+#     "standard": 48,
+#     "large": 72,
+#     "larger": 96, 
+#     "largest": 192
+# }
 
 class FolderColor:
     """Folder Color Class"""
@@ -92,6 +92,7 @@ class FolderColor:
         self.gio_settings.connect("changed::default-zoom-level", self.on_changed_zoom_level)
         self.icon_size = ICON_SIZES[self.gio_settings.get_string("default-zoom-level")]
 
+    # Needs for size in icon theme lookup
     def on_changed_zoom_level(self, settings, key="default-zoom-level"):
         self.set_colors_theme()
         self.set_emblems_theme()
