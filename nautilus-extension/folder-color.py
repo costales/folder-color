@@ -61,24 +61,24 @@ ICON_SIZES = { # Nautilus
     "small-plus": 64, 
     "small": 48
 }
-# ICON_SIZES = { # Nemo
-#     "smallest": 24,
-#     "smaller": 32,
-#     "small": 48,
-#     "standard": 64,
-#     "large": 96,
-#     "larger": 128,
-#     "largest": 256 
-# }
-# ICON_SIZES = { # Caja
-#     "smallest": 16,
-#     "smaller":  24,
-#     "small": 32,
-#     "standard": 48,
-#     "large": 72,
-#     "larger": 96, 
-#     "largest": 192
-# }
+ICON_SIZES = { # Nemo
+    "smallest": 24,
+    "smaller": 32,
+    "small": 48,
+    "standard": 64,
+    "large": 96,
+    "larger": 128,
+    "largest": 256 
+}
+ICON_SIZES = { # Caja
+    "smallest": 16,
+    "smaller":  24,
+    "small": 32,
+    "standard": 48,
+    "large": 72,
+    "larger": 96, 
+    "largest": 192
+}
 
 class FolderColor:
     """Folder Color Class"""

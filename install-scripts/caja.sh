@@ -51,14 +51,14 @@ if [ "$1" == "GTK3" ]; then
 fi
 
 # extension
-sed -i 's/nautilus/caja/g' ../caja-extension/folder-color.py
-sed -i 's/Nautilus/Caja/g' ../caja-extension/folder-color.py
-sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../caja-extension/folder-color.py
-
 sed -i 's/org.gnome.nautilus.icon-view/org.mate.caja.icon-view/g' ../caja-extension/folder-color.py
 sed -i 's/default-zoom-level/default-zoom-level/g' ../caja-extension/folder-color.py
 sed -i '57,72d' ../caja-extension/folder-color.py
 sed -i '17d' ../caja-extension/folder-color.py
+
+sed -i 's/nautilus/caja/g' ../caja-extension/folder-color.py
+sed -i 's/Nautilus/Caja/g' ../caja-extension/folder-color.py
+sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../caja-extension/folder-color.py
 
 # myself
 rm -rf ../install-scripts
