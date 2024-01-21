@@ -9,16 +9,10 @@ fi
 if [ "$1" == "GTK4" ]; then
     echo "It's GTK4"
     rm -rf ../nautilus-extension-gtk3
-
-    # extension
-    sed -i '64,81d' ../nautilus-extension/folder-color.py
 else
     echo "It's GTK3"
     rm -rf ../nautilus-extension
     mv ../nautilus-extension-gtk3 ../nautilus-extension
-
-    # extension
-    sed -i '63,80d' ../nautilus-extension/folder-color.py
 fi
 
 rm -rf ../.git
