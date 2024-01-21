@@ -17,6 +17,8 @@ data = [ ('/usr/share/nautilus-python/extensions',   ['nautilus-extension/folder
          ('/usr/share/icons/hicolor/16x16/actions',  glob.glob('icons/hicolor/16x16/actions/*.svg')),
          ('/usr/share/icons/Yaru/16x16/places',      glob.glob('icons/Yaru/16x16/places/*.png')),
          ('/usr/share/icons/Yaru/16x16@2x/places',   glob.glob('icons/Yaru/16x16@2x/places/*.png')),
+         ('/usr/share/icons/Yaru/22x22/places',      glob.glob('icons/Yaru/22x22/places/*.png')),
+         ('/usr/share/icons/Yaru/22x22@2x/places',   glob.glob('icons/Yaru/22x22@2x/places/*.png')),
          ('/usr/share/icons/Yaru/24x24/places',      glob.glob('icons/Yaru/24x24/places/*.png')),
          ('/usr/share/icons/Yaru/24x24@2x/places',   glob.glob('icons/Yaru/24x24@2x/places/*.png')),
          ('/usr/share/icons/Yaru/32x32/places',      glob.glob('icons/Yaru/32x32/places/*.png')),
@@ -29,7 +31,7 @@ data = [ ('/usr/share/nautilus-python/extensions',   ['nautilus-extension/folder
 # Setup stage
 DistUtilsExtra.auto.setup(
     name         = "folder-color",
-    version      = "0.3.2",
+    version      = "0.4.1",
     description  = "Change your folder color with just a click",
     author       = "Marcos Alvarez Costales",
     author_email = "marcos.costales@gmail.com",

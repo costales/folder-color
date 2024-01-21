@@ -1,6 +1,8 @@
-folder-color (0.3.2) kinetic; urgency=low
+folder-color (0.4.1) lunar; urgency=low
 
-  * Improved speed
+  * Fix #38: Icons resolution with a few themes
+  * Migrated icons colors
+  * Updated translations
 
- -- costales <costales.marcos@gmail.com>  Sat, 6 May 2023 20:16:31 +0000
+ -- costales <costales.marcos@gmail.com>  Sat, 20 January 2024 12:16:31 +0000
 

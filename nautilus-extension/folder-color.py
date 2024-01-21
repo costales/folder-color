@@ -1,5 +1,5 @@
-# Folder Color 0.3.2 - https://github.com/costales/folder-color
-# Copyright (C) 2012-2023 Marcos Alvarez Costales
+# Folder Color 0.4.1 - https://github.com/costales/folder-color
+# Copyright (C) 2012-2024 Marcos Alvarez Costales
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,6 +14,7 @@
 import os, gettext, gi
 from pathlib import Path
 gi.require_version("Gtk", "4.0")
+gi.require_version("Gdk", "4.0")
 from gi.repository import Nautilus, Gtk, Gdk, GObject, Gio, GLib
 
 # i18n
@@ -53,7 +54,13 @@ USER_DIRS = {
     GLib.get_user_special_dir(GLib.USER_DIRECTORY_TEMPLATES): "templates",
     GLib.get_user_special_dir(GLib.USER_DIRECTORY_VIDEOS): "videos"
 }
-ICON_SIZE = 48
+ICON_SIZES = {
+    "extra-large": 256,
+    "large": 128,
+    "medium": 96,
+    "small-plus": 64, 
+    "small": 48
+}
 
 class FolderColor:
     """Folder Color Class"""
@@ -62,10 +69,25 @@ class FolderColor:
         self.colors = []
         self.emblems = []
 
-    def _get_icon(self, icon_name):
+        # Auto reload file browser icon size
+        self.gio_settings = Gio.Settings.new("org.gnome.nautilus.icon-view")
+        self.gio_settings.connect("changed::default-zoom-level", self.on_changed_zoom_level)
+        self.icon_size = ICON_SIZES[self.gio_settings.get_string("default-zoom-level")]
+
+    # Needs for size in icon theme lookup
+    def on_changed_zoom_level(self, settings, key="default-zoom-level"):
+        self.icon_size = ICON_SIZES[self.gio_settings.get_string(key)]
+        self.set_colors_theme()
+        self.set_emblems_theme()
+    
+    def _get_icon(self, icon_name, is_color=True):
         """Get icon, label and URI"""
         icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
-        icon = icon_theme.lookup_icon(icon_name, None, 48, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
+        if is_color:
+            size_aux = self.icon_size
+        else:
+            size_aux = 24
+        icon = icon_theme.lookup_icon(icon_name, None, size_aux, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
         if icon_theme.has_icon(icon_name):
             return {"icon": Path(icon.get_icon_name()).stem, "uri": icon.get_file().get_uri()}
         else:
@@ -91,7 +113,7 @@ class FolderColor:
         """Available emblems into system"""
         self.emblems.clear()
         for emblem in EMBLEMS_ALL.keys():
-            icon_aux = self._get_icon(emblem)
+            icon_aux = self._get_icon(emblem, False)
             if icon_aux["icon"]:
                 self.emblems.append({"icon": icon_aux["icon"], "label": EMBLEMS_ALL[emblem], "uri": icon_aux["uri"]})
 
