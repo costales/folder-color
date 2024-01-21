@@ -9,13 +9,23 @@ fi
 if [ "$1" == "GTK4" ]; then
     echo "It's GTK4"
     rm -rf ../nautilus-extension-gtk3
+    mv ../nautilus-extension/ ../caja-extension
+
+    # extension
+    sed -i 's/org.gnome.nautilus.icon-view/org.mate.caja.icon-view/g' ../caja-extension/folder-color.py
+    sed -i 's/default-zoom-level/default-zoom-level/g' ../caja-extension/folder-color.py
+    sed -i '57,72d' ../caja-extension/folder-color.py
 else
     echo "It's GTK3"
     rm -rf ../nautilus-extension
-    mv ../nautilus-extension-gtk3 ../nautilus-extension
+    mv ../nautilus-extension-gtk3 ../caja-extension
+
+    # extension
+    sed -i 's/org.gnome.nautilus.icon-view/org.mate.caja.icon-view/g' ../caja-extension/folder-color.py
+    sed -i 's/default-zoom-level/default-zoom-level/g' ../caja-extension/folder-color.py
+    sed -i '56,71d' ../caja-extension/folder-color.py
 fi
 
-mv ../nautilus-extension/ ../caja-extension
 rm -rf ../.git
 rm ../README.md
 rm -r ../icons
@@ -51,11 +61,6 @@ if [ "$1" == "GTK3" ]; then
 fi
 
 # extension
-sed -i 's/org.gnome.nautilus.icon-view/org.mate.caja.icon-view/g' ../caja-extension/folder-color.py
-sed -i 's/default-zoom-level/default-zoom-level/g' ../caja-extension/folder-color.py
-sed -i '57,72d' ../caja-extension/folder-color.py
-sed -i '17d' ../caja-extension/folder-color.py
-
 sed -i 's/nautilus/caja/g' ../caja-extension/folder-color.py
 sed -i 's/Nautilus/Caja/g' ../caja-extension/folder-color.py
 sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../caja-extension/folder-color.py
