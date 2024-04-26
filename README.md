@@ -2,6 +2,12 @@
 
 A file browser extension for choosing the color/emblems of a folder/files in Linux (Nautilus/Nemo/Caja file browsers).
 
+# Screenshot
+
+Depends of the theme, with Yaru could be like this:
+
+![example](https://github.com/costales/folder-color/assets/5886786/ac95efbf-3195-46a9-abfd-e048d27440b7)
+
 # INSTALL
 
 For Nautilus:
