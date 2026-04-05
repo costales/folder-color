@@ -7,7 +7,7 @@ rm ../README.md
 sed -i 's/python3-nautilus, nautilus, /python3-caja, caja, /' ../debian/control
 
 # folder-color to folder-color-nemo
-find . -type f | xargs sed -i 's/folder-color/folder-color-caja/g'
+find .. -type f | xargs sed -i 's/folder-color/folder-color-caja/g'
 
 # nautilus to nemo
 find .. -type f | xargs sed -i 's/nautilus/caja/g'
