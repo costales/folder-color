@@ -1,3 +1,4 @@
 extension-GTK3/folder-color.py usr/share/folder-color/extensions/gtk3
 extension-GTK4/folder-color.py usr/share/folder-color/extensions/gtk4
-icons usr/share/
+icons/Yaru usr/share/folder-color/icons
+icons/hicolor usr/share/icons

@@ -3,6 +3,8 @@ set -e
 
 EXTENSIONS_DIR="/usr/share/folder-color/extensions"
 EXTENSION_LINK="/usr/share/nautilus-python/extensions/folder-color.py"
+PACKAGE_YARU_DIR="/usr/share/folder-color/icons/Yaru"
+SYSTEM_YARU_DIR="/usr/share/icons/Yaru"
 
 select_extension() {
     if ldconfig -p 2>/dev/null | grep -q 'libgtk-3\.so'; then
@@ -15,5 +17,9 @@ select_extension() {
 install -d "$(dirname "$EXTENSION_LINK")"
 ln -sf "$(select_extension)" "$EXTENSION_LINK"
 
-gtk-update-icon-cache /usr/share/icons/Yaru/
+if [ -d "$SYSTEM_YARU_DIR" ] && [ -d "$PACKAGE_YARU_DIR" ]; then
+    cp -a "$PACKAGE_YARU_DIR"/. "$SYSTEM_YARU_DIR"/
+    gtk-update-icon-cache "$SYSTEM_YARU_DIR"
+fi
+
 gtk-update-icon-cache /usr/share/icons/hicolor/
