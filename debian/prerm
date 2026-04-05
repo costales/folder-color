@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-EXTENSION_LINK="/usr/share/nautilus-python/extensions/folder-color.py"
+EXTENSION_TARGET="/usr/share/nautilus-python/extensions/folder-color.py"
 
 case "$1" in
     remove|deconfigure|upgrade|failed-upgrade)
-        rm -f "$EXTENSION_LINK"
+        rm -f "$EXTENSION_TARGET"
         ;;
 esac
 
