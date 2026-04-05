@@ -8,14 +8,14 @@ fi
 # GTK
 if [ "$1" == "GTK4" ]; then
     echo "It's GTK4"
-    rm -rf ../nautilus-extension-gtk3
+    rm -rf ../extension-GTK3
 else
     echo "It's GTK3"
-    rm -rf ../nautilus-extension
-    mv ../nautilus-extension-gtk3 ../nautilus-extension
+    rm -rf ../extension-GTK4
+    mv ../extension-GTK3 ../extension-GTK4
 fi
 
-mv ../nautilus-extension/ ../caja-extension
+mv ../extension-GTK4/ ../caja-extension
 rm -rf ../.git
 rm ../README.md
 rm -r ../icons
