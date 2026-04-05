@@ -1,8 +1,7 @@
 folder-color (0.4.2) lunar; urgency=low
 
-  * Fix #38: Icons resolution with a few themes
-  * Migrated icons colors
-  * Updated translations
+  * Install GTK3 or GTK4
+  * Install Yaru icons if system has it
 
  -- costales <costales.marcos@gmail.com>  Sat, 20 January 2024 12:16:31 +0000
 
