@@ -16,7 +16,8 @@ sed -i 's/folder_i18n/folder-color-nemo/' ../po/POTFILES.in
 sed -i 's/folder_path/nemo-extension/' ../po/POTFILES.in
 
 # debian
-sed -i 's/"folder-color"/"folder-color-nemo"/' ../debian/changelog
+sed -i 's/folder-color/folder-color-nemo/' ../debian/changelog
+sed -i 's/folder-color/folder-color-nemo/' ../debian/copyright
 
 sed -i 's/nautilus/nemo/g' ../debian/prerm
 

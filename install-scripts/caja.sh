@@ -17,7 +17,8 @@ sed -i 's/folder_i18n/folder-color-caja/' ../po/POTFILES.in
 sed -i 's/folder_path/caja-extension/' ../po/POTFILES.in
 
 # debian
-sed -i 's/Upstream-Name: folder-color/Upstream-Name: folder-color-caja/' ../debian/copyright
+sed -i 's/folder-color/folder-color-caja/' ../debian/changelog
+sed -i 's/folder-color/folder-color-caja/' ../debian/copyright
 
 sed -i 's/Source: folder-color/Source: folder-color-caja/' ../debian/control
 sed -i 's/Package: folder-color/Package: folder-color-caja/' ../debian/control
