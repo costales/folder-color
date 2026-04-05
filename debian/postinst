@@ -8,9 +8,9 @@ SYSTEM_YARU_DIR="/usr/share/icons/Yaru"
 
 select_extension() {
     if ldconfig -p 2>/dev/null | grep -q 'libgtk-3\.so'; then
-        printf '%s\n' "$EXTENSIONS_DIR/gtk3/folder-color.py"
+        printf '%s\n' "$EXTENSIONS_DIR/gtk3/extension.py"
     else
-        printf '%s\n' "$EXTENSIONS_DIR/gtk4/folder-color.py"
+        printf '%s\n' "$EXTENSIONS_DIR/gtk4/extension.py"
     fi
 }
 
