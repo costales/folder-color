@@ -1,2 +1,3 @@
-extension-GTK4/folder-color.py usr/share/nautilus-python/extensions
+extension-GTK3/folder-color.py usr/share/folder-color/extensions/gtk3
+extension-GTK4/folder-color.py usr/share/folder-color/extensions/gtk4
 icons usr/share/

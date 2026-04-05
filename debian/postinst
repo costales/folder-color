@@ -1,5 +1,19 @@
 #!/bin/sh
 set -e
 
+EXTENSIONS_DIR="/usr/share/folder-color/extensions"
+EXTENSION_LINK="/usr/share/nautilus-python/extensions/folder-color.py"
+
+select_extension() {
+    if ldconfig -p 2>/dev/null | grep -q 'libgtk-3\.so'; then
+        printf '%s\n' "$EXTENSIONS_DIR/gtk3/folder-color.py"
+    else
+        printf '%s\n' "$EXTENSIONS_DIR/gtk4/folder-color.py"
+    fi
+}
+
+install -d "$(dirname "$EXTENSION_LINK")"
+ln -sf "$(select_extension)" "$EXTENSION_LINK"
+
 gtk-update-icon-cache /usr/share/icons/Yaru/
 gtk-update-icon-cache /usr/share/icons/hicolor/
