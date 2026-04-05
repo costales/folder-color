@@ -1,21 +1,5 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
-    echo "Call as ./caja.sh GTK4 or ./caja.sh GTK3"
-    exit 1
-fi
-
-# GTK
-if [ "$1" == "GTK4" ]; then
-    echo "It's GTK4"
-    rm -rf ../extension-GTK3
-else
-    echo "It's GTK3"
-    rm -rf ../extension-GTK4
-    mv ../extension-GTK3 ../extension-GTK4
-fi
-
-mv ../extension-GTK4/ ../caja-extension
 rm -rf ../.git
 rm ../README.md
 rm -r ../icons
@@ -27,28 +11,16 @@ sed -i 's/nautilus/caja/g' ../setup.py
 sed -i 's/"folder-color"/"folder-color-caja"/' ../setup.py
 
 # po
-sed -i 's/folder_i18n/folder-color-caja/' ../caja-extension/folder-color.py
+sed -i 's/folder_i18n/folder-color-caja/' ../extension-GTK3/folder-color.py
+sed -i 's/folder_i18n/folder-color-caja/' ../extension-GTK4/folder-color.py
 sed -i 's/folder_i18n/folder-color-caja/' ../po/POTFILES.in
 sed -i 's/folder_path/caja-extension/' ../po/POTFILES.in
 
 # debian
-rm ../debian/postinst
-
-sed -i '2d' ../debian/install
-sed -i 's/nautilus/caja/g' ../debian/install
-
-sed -i '25,44d' ../debian/copyright
-sed -i 's/Upstream-Name: folder-color/Upstream-Name: folder-color-caja/' ../debian/copyright
-
-sed -i 's/Source: folder-color/Source: folder-color-caja/' ../debian/control
-sed -i 's/Package: folder-color/Package: folder-color-caja/' ../debian/control
-sed -i 's/python3-nautilus, nautilus, /python3-caja, caja, /' ../debian/control
-sed -i 's/Folder Color for Nautilus/Folder Color for Caja/' ../debian/control
-
-sed -i 's/folder-color/folder-color-caja/' ../debian/changelog
-if [ "$1" == "GTK3" ]; then
-    sed -i 's/kinetic/focal/' ../debian/changelog
-fi
+sed -i 's/"folder-color"/"folder-color-caja"/' ../debian/changelog
+sed -i 's/"folder-color"/"folder-color-caja"/' ../debian/control
+sed -i 's/"folder-color"/"folder-color-caja"/' ../debian/copyright
+sed -i 's/nautilus/caja/g' ../debian/prerm
 
 # extension
 sed -i 's/nautilus/caja/g' ../caja-extension/folder-color.py
