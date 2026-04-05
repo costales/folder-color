@@ -3,36 +3,15 @@
 rm -rf ../.git
 rm ../README.md
 
-# setup
-sed -i '17,29d' ../setup.py
-sed -i 's/]),/])]/' ../setup.py
-sed -i 's/nautilus/nemo/g' ../setup.py
-sed -i 's/"folder-color"/"folder-color-nemo"/' ../setup.py
-
-# po
-sed -i 's/folder_i18n/folder-color-nemo/' ../extension-GTK3/folder-color.py
-sed -i 's/folder_i18n/folder-color-nemo/' ../extension-GTK4/folder-color.py
-sed -i 's/folder_i18n/folder-color-nemo/' ../po/POTFILES.in
-sed -i 's/folder_path/nemo-extension/' ../po/POTFILES.in
-
-# debian
-sed -i 's/folder-color/folder-color-nemo/' ../debian/changelog
-sed -i 's/folder-color/folder-color-nemo/' ../debian/copyright
-
-sed -i 's/nautilus/nemo/g' ../debian/prerm
-
-sed -i 's/Source: folder-color/Source: folder-color-nemo/' ../debian/control
-sed -i 's/Package: folder-color/Package: folder-color-nemo/' ../debian/control
+# Special
 sed -i 's/python3-nautilus, nautilus, /python-nemo, nemo, /' ../debian/control
-sed -i 's/Folder Color for Nautilus/Folder Color for Nemo/' ../debian/control
 
-# extension
-sed -i 's/nautilus/nemo/g' ../extension-GTK3/folder-color.py
-sed -i 's/Nautilus/Nemo/g' ../extension-GTK3/folder-color.py
-sed -i 's/nautilus/nemo/g' ../extension-GTK4/folder-color.py
-sed -i 's/Nautilus/Nemo/g' ../extension-GTK4/folder-color.py
+# folder-color to folder-color-nemo
+find . -type f -name "*.txt" | xargs sed -i 's/folder-color/folder-color-nemo/g'
 
-# myself
+# nautilus to nemo
+find . -type f -name "*.txt" | xargs sed -i 's/nautilus/nemo/g'
+find . -type f -name "*.txt" | xargs sed -i 's/Nautilus/Nemo/g'
+
+# Delete myself
 rm -rf ../install-scripts
-
-echo "Done"

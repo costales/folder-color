@@ -18,7 +18,7 @@ gi.require_version("Gdk", "4.0")
 from gi.repository import Nautilus, Gtk, Gdk, GObject, Gio, GLib
 
 # i18n
-gettext.textdomain("folder_i18n")
+gettext.textdomain("folder-color")
 _ = gettext.gettext
 
 COLORS_ALL = {
