@@ -2,10 +2,12 @@
 set -e
 
 EXTENSION_TARGET="/usr/share/nautilus-python/extensions/folder-color.py"
+LEGACY_EXTENSION_TARGET="/usr/share/nautilus-python/extensions/extension.py"
 
 case "$1" in
     remove|deconfigure|upgrade|failed-upgrade)
         rm -f "$EXTENSION_TARGET"
+        rm -f "$LEGACY_EXTENSION_TARGET"
         ;;
 esac
 

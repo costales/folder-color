@@ -1,5 +1,6 @@
 #!/usr/bin/make -f
 
+export FOLDER_COLOR_SKIP_DIRECT_EXTENSION_INSTALL = 1
+
 %:
 	dh $@ --buildsystem=pybuild
-

@@ -3,6 +3,7 @@ set -e
 
 EXTENSIONS_DIR="/usr/share/folder-color/extensions"
 EXTENSION_TARGET="/usr/share/nautilus-python/extensions/folder-color.py"
+LEGACY_EXTENSION_TARGET="/usr/share/nautilus-python/extensions/extension.py"
 PACKAGE_YARU_DIR="/usr/share/folder-color/icons/Yaru"
 SYSTEM_YARU_DIR="/usr/share/icons/Yaru"
 
@@ -15,8 +16,15 @@ select_extension() {
 }
 
 install -d "$(dirname "$EXTENSION_TARGET")"
+rm -f "$LEGACY_EXTENSION_TARGET"
 rm -f "$EXTENSION_TARGET"
 cp "$(select_extension)" "$EXTENSION_TARGET"
+
+if ldconfig -p 2>/dev/null | grep -q 'libgtk-3\.so'; then
+    rm -rf "$EXTENSIONS_DIR/gtk4"
+else
+    rm -rf "$EXTENSIONS_DIR/gtk3"
+fi
 
 if [ -d "$SYSTEM_YARU_DIR" ] && [ -d "$PACKAGE_YARU_DIR" ]; then
     cp -a "$PACKAGE_YARU_DIR"/. "$SYSTEM_YARU_DIR"/

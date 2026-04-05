@@ -13,8 +13,7 @@
 import os, sys, glob, DistUtilsExtra.auto
 
 # Create data files
-data = [ ('/usr/share/nautilus-python/extensions',   ['GTK4/extension.py']),
-         ('/usr/share/icons/hicolor/16x16/actions',  glob.glob('icons/hicolor/16x16/actions/*.svg')),
+data = [ ('/usr/share/icons/hicolor/16x16/actions',  glob.glob('icons/hicolor/16x16/actions/*.svg')),
          ('/usr/share/icons/Yaru/16x16/places',      glob.glob('icons/Yaru/16x16/places/*.png')),
          ('/usr/share/icons/Yaru/16x16@2x/places',   glob.glob('icons/Yaru/16x16@2x/places/*.png')),
          ('/usr/share/icons/Yaru/22x22/places',      glob.glob('icons/Yaru/22x22/places/*.png')),
@@ -27,6 +26,9 @@ data = [ ('/usr/share/nautilus-python/extensions',   ['GTK4/extension.py']),
          ('/usr/share/icons/Yaru/48x48@2x/places',   glob.glob('icons/Yaru/48x48@2x/places/*.png')),
          ('/usr/share/icons/Yaru/256x256/places',    glob.glob('icons/Yaru/256x256/places/*.png')),
          ('/usr/share/icons/Yaru/256x256@2x/places', glob.glob('icons/Yaru/256x256@2x/places/*.png')) ]
+
+if os.environ.get("FOLDER_COLOR_SKIP_DIRECT_EXTENSION_INSTALL") != "1":
+    data.insert(0, ('/usr/share/nautilus-python/extensions', ['GTK4/extension.py']))
 
 # Setup stage
 DistUtilsExtra.auto.setup(
