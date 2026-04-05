@@ -23,9 +23,12 @@ sed -i 's/"folder-color"/"folder-color-caja"/' ../debian/copyright
 sed -i 's/nautilus/caja/g' ../debian/prerm
 
 # extension
-sed -i 's/nautilus/caja/g' ../caja-extension/folder-color.py
-sed -i 's/Nautilus/Caja/g' ../caja-extension/folder-color.py
-sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../caja-extension/folder-color.py
+sed -i 's/nautilus/caja/g' ../extension-GTK3/folder-color.py
+sed -i 's/Nautilus/Caja/g' ../extension-GTK3/folder-color.py
+sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../extension-GTK3/folder-color.py
+sed -i 's/nautilus/caja/g' ../extension-GTK4/folder-color.py
+sed -i 's/Nautilus/Caja/g' ../extension-GTK4/folder-color.py
+sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../extension-GTK4/folder-color.py
 
 # myself
 rm -rf ../install-scripts

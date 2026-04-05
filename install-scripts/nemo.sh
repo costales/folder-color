@@ -22,8 +22,10 @@ sed -i 's/"folder-color"/"folder-color-nemo"/' ../debian/copyright
 sed -i 's/nautilus/nemo/g' ../debian/prerm
 
 # extension
-sed -i 's/nautilus/nemo/g' ../nemo-extension/folder-color.py
-sed -i 's/Nautilus/Nemo/g' ../nemo-extension/folder-color.py
+sed -i 's/nautilus/nemo/g' ../extension-GTK3/folder-color.py
+sed -i 's/Nautilus/Nemo/g' ../extension-GTK3/folder-color.py
+sed -i 's/nautilus/nemo/g' ../extension-GTK4/folder-color.py
+sed -i 's/Nautilus/Nemo/g' ../extension-GTK4/folder-color.py
 
 # myself
 rm -rf ../install-scripts
