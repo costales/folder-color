@@ -17,9 +17,13 @@ sed -i 's/folder_path/nemo-extension/' ../po/POTFILES.in
 
 # debian
 sed -i 's/"folder-color"/"folder-color-nemo"/' ../debian/changelog
-sed -i 's/"folder-color"/"folder-color-nemo"/' ../debian/control
-sed -i 's/"folder-color"/"folder-color-nemo"/' ../debian/copyright
+
 sed -i 's/nautilus/nemo/g' ../debian/prerm
+
+sed -i 's/Source: folder-color/Source: folder-color-nemo/' ../debian/control
+sed -i 's/Package: folder-color/Package: folder-color-nemo/' ../debian/control
+sed -i 's/python3-nautilus, nautilus, /python-nemo, nemo, /' ../debian/control
+sed -i 's/Folder Color for Nautilus/Folder Color for Nemo/' ../debian/control
 
 # extension
 sed -i 's/nautilus/nemo/g' ../extension-GTK3/folder-color.py
