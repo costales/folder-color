@@ -31,7 +31,7 @@ data = [ ('/usr/share/nautilus-python/extensions',   ['extension-GTK4/folder-col
 # Setup stage
 DistUtilsExtra.auto.setup(
     name         = "folder-color",
-    version      = "0.4.1",
+    version      = "0.4.2",
     description  = "Change your folder color with just a click",
     author       = "Marcos Alvarez Costales",
     author_email = "marcos.costales@gmail.com",
