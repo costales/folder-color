@@ -19,7 +19,7 @@ ln -sf "$(select_extension)" "$EXTENSION_LINK"
 
 if [ -d "$SYSTEM_YARU_DIR" ] && [ -d "$PACKAGE_YARU_DIR" ]; then
     cp -a "$PACKAGE_YARU_DIR"/. "$SYSTEM_YARU_DIR"/
-    gtk-update-icon-cache "$SYSTEM_YARU_DIR"
+    gtk-update-icon-cache "$SYSTEM_YARU_DIR" || true
 fi
 
 gtk-update-icon-cache /usr/share/icons/hicolor/
