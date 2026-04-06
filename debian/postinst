@@ -1,5 +1,38 @@
 #!/bin/sh
 set -e
 
-gtk-update-icon-cache /usr/share/icons/Yaru/
-gtk-update-icon-cache /usr/share/icons/hicolor/
+PACKAGE_DATA_DIR="/usr/lib/folder-color"
+EXTENSIONS_DIR="/usr/share/nautilus-python/extensions"
+TARGET_EXTENSION="${EXTENSIONS_DIR}/folder-color.py"
+
+install_extension() {
+    source_file="$1"
+
+    if [ -f "$source_file" ]; then
+        mkdir -p "$EXTENSIONS_DIR"
+        install -m 0644 "$source_file" "$TARGET_EXTENSION"
+    fi
+}
+
+deploy_yaru_icons() {
+    source_dir="${PACKAGE_DATA_DIR}/icons/Yaru"
+    target_dir="/usr/share/icons/Yaru"
+
+    if [ -d "$target_dir" ] && [ -d "$source_dir" ]; then
+        cp -a "${source_dir}/." "$target_dir/"
+        gtk-update-icon-cache "$target_dir" || true
+    fi
+}
+
+if ls /usr/lib/*/girepository-1.0/Gtk-3.0.typelib >/dev/null 2>&1 || \
+   dpkg-query -W -f='${Status}' gir1.2-gtk-3.0 2>/dev/null | grep -q "install ok installed"; then
+    install_extension "${PACKAGE_DATA_DIR}/extensions/GTK3.py"
+else
+    install_extension "${PACKAGE_DATA_DIR}/extensions/GTK4.py"
+fi
+
+deploy_yaru_icons
+
+if [ -d /usr/share/icons/hicolor ]; then
+    gtk-update-icon-cache /usr/share/icons/hicolor/ || true
+fi

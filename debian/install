@@ -1,2 +1,4 @@
-extension/GTK4.py usr/share/nautilus-python/extensions
-icons usr/share/
+extension/GTK3.py usr/lib/folder-color/extensions/
+extension/GTK4.py usr/lib/folder-color/extensions/
+icons/Yaru usr/lib/folder-color/icons/
+icons/hicolor usr/share/icons/
