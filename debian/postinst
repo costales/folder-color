@@ -1,14 +1,6 @@
 #!/bin/sh
 set -e
 
-EXTENSIONS_DIR="/usr/share/nautilus-python/extensions"
-LEGACY_GTK3_EXTENSION="${EXTENSIONS_DIR}/GTK3.py"
-LEGACY_GTK4_EXTENSION="${EXTENSIONS_DIR}/GTK4.py"
-
-remove_legacy_extensions() {
-    rm -f "$LEGACY_GTK3_EXTENSION" "$LEGACY_GTK4_EXTENSION"
-}
-
 deploy_yaru_icons() {
     source_dir="/usr/share/folder-color/icons/Yaru"
     target_dir="/usr/share/icons/Yaru"
@@ -18,8 +10,6 @@ deploy_yaru_icons() {
         gtk-update-icon-cache "$target_dir" || true
     fi
 }
-
-remove_legacy_extensions
 
 deploy_yaru_icons
 

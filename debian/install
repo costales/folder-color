@@ -1,3 +1,2 @@
 extension/folder-color.py usr/share/nautilus-python/extensions/
-icons/Yaru/ usr/share/folder-color/icons/Yaru/
-icons/hicolor/ usr/share/icons/hicolor/
+icons usr/share/folder-color/icons
