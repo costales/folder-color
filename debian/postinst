@@ -4,6 +4,8 @@ set -e
 PACKAGE_DATA_DIR="/usr/lib/folder-color"
 EXTENSIONS_DIR="/usr/share/nautilus-python/extensions"
 TARGET_EXTENSION="${EXTENSIONS_DIR}/folder-color.py"
+LEGACY_GTK3_EXTENSION="${EXTENSIONS_DIR}/GTK3.py"
+LEGACY_GTK4_EXTENSION="${EXTENSIONS_DIR}/GTK4.py"
 
 install_extension() {
     source_file="$1"
@@ -12,6 +14,10 @@ install_extension() {
         mkdir -p "$EXTENSIONS_DIR"
         install -m 0644 "$source_file" "$TARGET_EXTENSION"
     fi
+}
+
+remove_legacy_extensions() {
+    rm -f "$LEGACY_GTK3_EXTENSION" "$LEGACY_GTK4_EXTENSION"
 }
 
 deploy_yaru_icons() {
@@ -23,6 +29,8 @@ deploy_yaru_icons() {
         gtk-update-icon-cache "$target_dir" || true
     fi
 }
+
+remove_legacy_extensions
 
 if ls /usr/lib/*/girepository-1.0/Gtk-3.0.typelib >/dev/null 2>&1 || \
    dpkg-query -W -f='${Status}' gir1.2-gtk-3.0 2>/dev/null | grep -q "install ok installed"; then
