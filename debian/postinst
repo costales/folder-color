@@ -32,11 +32,12 @@ deploy_yaru_icons() {
 
 remove_legacy_extensions
 
-if ls /usr/lib/*/girepository-1.0/Gtk-3.0.typelib >/dev/null 2>&1 || \
-   dpkg-query -W -f='${Status}' gir1.2-gtk-3.0 2>/dev/null | grep -q "install ok installed"; then
-    install_extension "${PACKAGE_DATA_DIR}/extensions/GTK3.py"
-else
+if ls /usr/lib/*/girepository-1.0/Gtk-4.0.typelib >/dev/null 2>&1 || \
+   dpkg-query -W -f='${Status}' gir1.2-gtk-4.0 2>/dev/null | grep -q "install ok installed"; then
     install_extension "${PACKAGE_DATA_DIR}/extensions/GTK4.py"
+elif ls /usr/lib/*/girepository-1.0/Gtk-3.0.typelib >/dev/null 2>&1 || \
+     dpkg-query -W -f='${Status}' gir1.2-gtk-3.0 2>/dev/null | grep -q "install ok installed"; then
+    install_extension "${PACKAGE_DATA_DIR}/extensions/GTK3.py"
 fi
 
 deploy_yaru_icons
