@@ -13,9 +13,13 @@
 
 import os, gettext, gi
 from pathlib import Path
-gi.require_version("Gtk", "4.0")
-gi.require_version("Gdk", "4.0")
-from gi.repository import Nautilus, Gtk, Gdk, GObject, Gio, GLib
+try:
+    gi.require_version("Gtk", "4.0")
+    gi.require_version("Gdk", "4.0")
+    from gi.repository import Nautilus, GObject, Gio, GLib, Gtk, Gdk
+except:
+    gi.require_version("Gtk", "3.0")
+    from gi.repository import Nautilus, GObject, Gio, GLib, Gtk
 
 # i18n
 gettext.textdomain("folder-color")
