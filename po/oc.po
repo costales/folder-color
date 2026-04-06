@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: folder-color\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2023-05-11 17:26+0200\n"
-"PO-Revision-Date: 2021-04-11 14:11+0000\n"
+"PO-Revision-Date: 2024-05-17 07:30+0000\n"
 "Last-Translator: Quentin PAGÈS <Unknown>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2024-01-20 12:16+0000\n"
-"X-Generator: Launchpad (build e1eeab5b20e19239bd7d5f36676f7a52988db88b)\n"
+"X-Launchpad-Export-Date: 2026-04-05 09:32+0000\n"
+"X-Generator: Launchpad (build 9aaa5bcdb7f1a411456d080b227371e0556b2411)\n"
 
 #: nautilus-extension-gtk3/folder-color.py:27
 msgid "Black"
@@ -67,7 +67,7 @@ msgstr "Violet"
 
 #: nautilus-extension-gtk3/folder-color.py:39
 msgid "White"
-msgstr ""
+msgstr "Blanc"
 
 #: nautilus-extension-gtk3/folder-color.py:40
 msgid "Yellow"
@@ -95,7 +95,7 @@ msgstr "Nòu"
 
 #: nautilus-extension-gtk3/folder-color.py:226
 msgid "Color"
-msgstr ""
+msgstr "Color"
 
 #: nautilus-extension-gtk3/folder-color.py:247
 #: nautilus-extension-gtk3/folder-color.py:265
