@@ -1,5 +1,5 @@
 # intltool-update -p -g folder-color
 # also done automatically with setup.py build or install
 [encoding: UTF-8]
-extension/GKT3.py
-extension/GKT4.py
+extension/GTK3.py
+extension/GTK4.py
