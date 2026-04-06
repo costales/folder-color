@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+EXTENSIONS_DIR="/usr/share/nautilus-python/extensions"
+TARGET_EXTENSION="${EXTENSIONS_DIR}/folder-color.py"
+LEGACY_GTK3_EXTENSION="${EXTENSIONS_DIR}/GTK3.py"
+LEGACY_GTK4_EXTENSION="${EXTENSIONS_DIR}/GTK4.py"
+
+remove_extensions() {
+    rm -f "$TARGET_EXTENSION" "$LEGACY_GTK3_EXTENSION" "$LEGACY_GTK4_EXTENSION"
+}
+
+case "$1" in
+    remove|purge|abort-install|disappear)
+        remove_extensions
+        ;;
+esac
+
+if [ -d /usr/share/icons/hicolor ]; then
+    gtk-update-icon-cache /usr/share/icons/hicolor/ || true
+fi
