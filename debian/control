@@ -1,7 +1,7 @@
 Source: folder-color
 Section: utils
 Priority: extra
-Standards-Version: 0.1.1
+Standards-Version: 4.6.2
 Maintainer: costales <costales.marcos@gmail.com>
 Build-Depends: debhelper (>= 8.0.0), dh-python, python3-all, python3-distutils-extra
 Homepage: https://github.com/costales/folder-color
@@ -10,8 +10,8 @@ Package: folder-color
 Architecture: all
 Section: utils
 Priority: extra
-Depends: python3-nautilus, nautilus, ${python:Depends}
+Depends: python3, python3-nautilus, nautilus, ${python3:Depends}
 Replaces: folder-color-common, folder-color-yaru
 Breaks: folder-color-common, folder-color-yaru
-Description: Folder Color
- Change a folder color
+Description: Extension to change folder colors
+ Change the color of folders into your file browser.
