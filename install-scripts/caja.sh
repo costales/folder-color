@@ -15,6 +15,4 @@ find . -type f -name "*.txt" -print0 | xargs -0 sed -i 's/folder-color/folder-co
 find . -type f -name "*.txt" -print0 | xargs -0 sed -i 's/nautilus/caja/g'
 find . -type f -name "*.txt" -print0 | xargs -0 sed -i 's/Nautilus/Caja/g'
 
-echo "Done"
-
-cd ..
+echo "Done. Go to parent directory and run dpkg-buildpackage"
