@@ -8,12 +8,66 @@ LEGACY_GTK3_EXTENSION="${EXTENSIONS_DIR}/GTK3.py"
 LEGACY_GTK4_EXTENSION="${EXTENSIONS_DIR}/GTK4.py"
 
 install_extension() {
-    source_file="$1"
+    mkdir -p "$EXTENSIONS_DIR"
+    cat > "$TARGET_EXTENSION" <<EOF
+import importlib
+import importlib.util
+import os
 
-    if [ -f "$source_file" ]; then
-        mkdir -p "$EXTENSIONS_DIR"
-        install -m 0644 "$source_file" "$TARGET_EXTENSION"
-    fi
+import gi
+
+gi.require_version("GIRepository", "2.0")
+from gi.repository import GIRepository
+
+BROWSER_NAMESPACE = "Nautilus"
+
+
+def _load_browser_namespace():
+    return importlib.import_module("gi.repository." + BROWSER_NAMESPACE)
+
+
+def _get_preferred_modules():
+    repo = GIRepository.Repository.get_default()
+
+    if "Gtk" in repo.get_loaded_namespaces():
+        gtk_version = repo.get_version("Gtk")
+        if gtk_version.startswith("3"):
+            return ("GTK3.py", "GTK4.py")
+        if gtk_version.startswith("4"):
+            return ("GTK4.py", "GTK3.py")
+
+    return ("GTK4.py", "GTK3.py")
+
+
+def _load_module(module_name):
+    module_path = os.path.join("${PACKAGE_DATA_DIR}", "extensions", module_name)
+    spec = importlib.util.spec_from_file_location(__name__ + "_impl", module_path)
+
+    if spec is None or spec.loader is None:
+        raise ImportError("Unable to load Folder Color extension")
+
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+last_error = None
+_load_browser_namespace()
+for module_name in _get_preferred_modules():
+    try:
+        module = _load_module(module_name)
+        break
+    except (ImportError, ValueError) as error:
+        last_error = error
+else:
+    raise last_error
+
+for name, value in module.__dict__.items():
+    if name.startswith("__") and name not in ("__doc__", "__all__"):
+        continue
+    globals()[name] = value
+EOF
+    chmod 0644 "$TARGET_EXTENSION"
 }
 
 remove_legacy_extensions() {
@@ -31,16 +85,7 @@ deploy_yaru_icons() {
 }
 
 remove_legacy_extensions
-
-if python3 -c 'import gi; gi.require_version("Gtk", "4.0"); from gi.repository import Gtk' >/dev/null 2>&1 || \
-   ls /usr/lib/*/girepository-1.0/Gtk-4.0.typelib >/dev/null 2>&1 || \
-   dpkg-query -W -f='${Status}' gir1.2-gtk-4.0 2>/dev/null | grep -q "install ok installed"; then
-    install_extension "${PACKAGE_DATA_DIR}/extensions/GTK4.py"
-elif python3 -c 'import gi; gi.require_version("Gtk", "3.0"); from gi.repository import Gtk' >/dev/null 2>&1 || \
-     ls /usr/lib/*/girepository-1.0/Gtk-3.0.typelib >/dev/null 2>&1 || \
-     dpkg-query -W -f='${Status}' gir1.2-gtk-3.0 2>/dev/null | grep -q "install ok installed"; then
-    install_extension "${PACKAGE_DATA_DIR}/extensions/GTK3.py"
-fi
+install_extension
 
 deploy_yaru_icons
 
