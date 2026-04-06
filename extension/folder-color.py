@@ -17,9 +17,11 @@ try:
     gi.require_version("Gtk", "4.0")
     gi.require_version("Gdk", "4.0")
     from gi.repository import Nautilus, GObject, Gio, GLib, Gtk, Gdk
+    GTK4 = True
 except:
     gi.require_version("Gtk", "3.0")
     from gi.repository import Nautilus, GObject, Gio, GLib, Gtk
+    GTK4 = False
 
 # i18n
 gettext.textdomain("folder-color")
@@ -86,16 +88,24 @@ class FolderColor:
     
     def _get_icon(self, icon_name, is_color=True):
         """Get icon, label and URI"""
-        icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
-        if is_color:
-            size_aux = self.icon_size
+        if GTK4:
+            icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default())
+            if is_color:
+                size_aux = self.icon_size
+            else:
+                size_aux = 24
+            icon = icon_theme.lookup_icon(icon_name, None, size_aux, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
+            if icon_theme.has_icon(icon_name):
+                return {"icon": Path(icon.get_icon_name()).stem, "uri": icon.get_file().get_uri()}
+            else:
+                return {"icon": "", "uri": ""}
         else:
-            size_aux = 24
-        icon = icon_theme.lookup_icon(icon_name, None, size_aux, 1, Gtk.TextDirection.LTR, Gtk.IconLookupFlags.FORCE_REGULAR)
-        if icon_theme.has_icon(icon_name):
-            return {"icon": Path(icon.get_icon_name()).stem, "uri": icon.get_file().get_uri()}
-        else:
-            return {"icon": "", "uri": ""}
+            icon_theme = Gtk.IconTheme.get_default()
+            icon = icon_theme.lookup_icon(icon_name, ICON_SIZE, 0)
+            if icon is not None:
+                return {"icon": Path(icon.get_filename()).stem, "uri": "file://" + icon.get_filename()}
+            else:
+                return {"icon": "", "uri": ""}
 
     def set_colors_theme(self):
         """Available colors into system"""
@@ -214,8 +224,14 @@ class FolderColorMenu(GObject.GObject, Nautilus.MenuProvider):
         self.theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
         self._load_theme()
 
-    def get_file_items(self, items):
+    def get_file_items(self, *args):
         """Click on directories or files"""
+        if len(args) == 2:
+            window, items = args
+        elif len(args) == 1:
+            items = args[0]
+            window = None
+            
         if self._check_show_menu(items):
             if self.theme != Gtk.Settings.get_default().get_property("gtk-icon-theme-name"):
                 self.theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
