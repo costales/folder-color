@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+if [ -d /usr/share/icons/hicolor ]; then
+    gtk-update-icon-cache /usr/share/icons/hicolor/ || true
+fi
+
+if [ -d /usr/share/icons/Yaru ]; then
+    gtk-update-icon-cache /usr/share/icons/Yaru/ || true
+fi

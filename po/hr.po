@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2024-01-20 12:16+0000\n"
-"X-Generator: Launchpad (build e1eeab5b20e19239bd7d5f36676f7a52988db88b)\n"
+"X-Launchpad-Export-Date: 2026-04-05 09:32+0000\n"
+"X-Generator: Launchpad (build 9aaa5bcdb7f1a411456d080b227371e0556b2411)\n"
 
 #: nautilus-extension-gtk3/folder-color.py:27
 msgid "Black"
