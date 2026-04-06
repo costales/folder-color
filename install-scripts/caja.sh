@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#rm -rf ../.git
-#rm ../README.md
+rm -rf ../.git
+rm ../README.md
 
 # Myself
-#rm -rf ../install-scripts
+rm -rf ../install-scripts
 
 # Extension
 sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../extension/GTK3.py
