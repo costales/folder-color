@@ -15,4 +15,4 @@ find .. -type f -print0 | xargs -0 sed -i 's/Nautilus/Caja/g'
 # Myself
 rm -rf ../install-scripts
 
-echo "Done. Go to parent directory and run dpkg-buildpackage"
+echo "Done. Go to parent directory"

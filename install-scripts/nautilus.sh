@@ -6,4 +6,4 @@ rm ../README.md
 # Myself
 rm -rf ../install-scripts
 
-echo "Done. Go to parent directory and run dpkg-buildpackage"
+echo "Done. Go to parent directory"
