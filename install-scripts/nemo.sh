@@ -3,6 +3,9 @@
 rm -rf ../.git
 rm ../README.md
 
+# Extension
+mv ../extension/folder-color.py ../extension/folder-color-nemo.py
+
 # Build
 find .. -type f -print0 | xargs -0 sed -i 's/folder-color/folder-color-nemo/g'
 find .. -type f -print0 | xargs -0 sed -i 's/python3-nautilus/python-nemo/g'
