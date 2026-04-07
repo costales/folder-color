@@ -4,7 +4,7 @@ rm -rf ../.git
 rm ../README.md
 
 # Extension
-sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../extension/folder-color.py
+sed -i "s/metadata::custom-icon-name/metadata::custom-icon/g" ../extension/file-browser.py
 
 # Build
 find .. -type f -print0 | xargs -0 sed -i 's/folder-color/folder-color-caja/g'
