@@ -1,25 +1,5 @@
 #!/bin/sh
 set -e
 
-deploy_icons_hicolor() {
-    source_dir="/usr/share/folder-color/icons/hicolor"
-    target_dir="/usr/share/icons/hicolor"
-
-    if [ -d "$target_dir" ] && [ -d "$source_dir" ]; then
-        cp -a "${source_dir}/." "$target_dir/"
-        gtk-update-icon-cache "$target_dir/" || true
-    fi
-}
-
-deploy_icons_yaru() {
-    source_dir="/usr/share/folder-color/icons/Yaru"
-    target_dir="/usr/share/icons/Yaru"
-
-    if [ -d "$target_dir" ] && [ -d "$source_dir" ]; then
-        cp -a "${source_dir}/." "$target_dir/"
-        gtk-update-icon-cache "$target_dir/" || true
-    fi
-}
-
-deploy_icons_hicolor
-deploy_icons_yaru
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor/ || true
+gtk-update-icon-cache -f -t /usr/share/icons/Yaru/ || true

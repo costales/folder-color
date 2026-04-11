@@ -1,33 +1,5 @@
 #!/bin/sh
 set -e
 
-rm_icons_hicolor() {
-    source_dir="/usr/share/folder-color/icons/hicolor"
-    target_dir="/usr/share/icons/hicolor"
-
-    if [ -d "$source_dir" ]; then
-        find "$source_dir" -type f | while read -r file; do
-            relative_path="${file#$source_dir/}"
-            target_file="$target_dir/$relative_path"
-            rm -f "$target_file"
-        done
-        gtk-update-icon-cache "$target_dir/" || true
-    fi
-}
-
-rm_icons_yaru() {
-    source_dir="/usr/share/folder-color/icons/Yaru"
-    target_dir="/usr/share/icons/Yaru"
-
-    if [ -d "$source_dir" ]; then
-        find "$source_dir" -type f | while read -r file; do
-            relative_path="${file#$source_dir/}"
-            target_file="$target_dir/$relative_path"
-            rm -f "$target_file"
-        done
-        gtk-update-icon-cache "$target_dir/" || true
-    fi
-}
-
-rm_icons_hicolor
-rm_icons_yaru
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor/ || true
+gtk-update-icon-cache -f -t /usr/share/icons/Yaru/ || true
