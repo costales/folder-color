@@ -1,2 +1,2 @@
-nautilus-extension/folder-color.py usr/share/nautilus-python/extensions
-icons usr/share/
+extension/folder-color.py usr/share/nautilus-python/extensions/
+icons/ usr/share/icons/

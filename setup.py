@@ -10,33 +10,36 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
-import os, sys, glob, DistUtilsExtra.auto
+import os, glob, DistUtilsExtra.auto
 
-# Create data files
-data = [ ('/usr/share/nautilus-python/extensions',   ['nautilus-extension/folder-color.py']),
-         ('/usr/share/icons/hicolor/16x16/actions',  glob.glob('icons/hicolor/16x16/actions/*.svg')),
-         ('/usr/share/icons/Yaru/16x16/places',      glob.glob('icons/Yaru/16x16/places/*.png')),
-         ('/usr/share/icons/Yaru/16x16@2x/places',   glob.glob('icons/Yaru/16x16@2x/places/*.png')),
-         ('/usr/share/icons/Yaru/22x22/places',      glob.glob('icons/Yaru/22x22/places/*.png')),
-         ('/usr/share/icons/Yaru/22x22@2x/places',   glob.glob('icons/Yaru/22x22@2x/places/*.png')),
-         ('/usr/share/icons/Yaru/24x24/places',      glob.glob('icons/Yaru/24x24/places/*.png')),
-         ('/usr/share/icons/Yaru/24x24@2x/places',   glob.glob('icons/Yaru/24x24@2x/places/*.png')),
-         ('/usr/share/icons/Yaru/32x32/places',      glob.glob('icons/Yaru/32x32/places/*.png')),
-         ('/usr/share/icons/Yaru/32x32@2x/places',   glob.glob('icons/Yaru/32x32@2x/places/*.png')),
-         ('/usr/share/icons/Yaru/48x48/places',      glob.glob('icons/Yaru/48x48/places/*.png')),
-         ('/usr/share/icons/Yaru/48x48@2x/places',   glob.glob('icons/Yaru/48x48@2x/places/*.png')),
-         ('/usr/share/icons/Yaru/256x256/places',    glob.glob('icons/Yaru/256x256/places/*.png')),
-         ('/usr/share/icons/Yaru/256x256@2x/places', glob.glob('icons/Yaru/256x256@2x/places/*.png')) ]
+def get_data_files(src_root, dst_root):
+    data_files = []
+    for root, dirs, files in os.walk(src_root):
+        if files:
+            src_files = [os.path.join(root, f) for f in files]
+            rel_path = os.path.relpath(root, src_root)
+            dst_path = os.path.join(dst_root, rel_path)
+            data_files.append((dst_path, src_files))
+    return data_files
 
-# Setup stage
+data = []
+
+# Copy icons/ into /usr/share/icons/
+data += get_data_files('icons', '/usr/share/icons')
+
+# Copy extension into /usr/share/nautilus-python/extensions
+data.append((
+    '/usr/share/nautilus-python/extensions',
+    ['extension/folder-color.py']
+))
+
 DistUtilsExtra.auto.setup(
-    name         = "folder-color",
-    version      = "0.4.1",
-    description  = "Change your folder color with just a click",
-    author       = "Marcos Alvarez Costales",
-    author_email = "marcos.costales@gmail.com",
-    url          = "https://github.com/costales/folder-color",
-    license      = "GPL3",
-    data_files   = data
+    name="folder-color",
+    version="0.4.2",
+    description="Change your folder color with just a click",
+    author="Marcos Alvarez Costales",
+    author_email="marcos.costales@gmail.com",
+    url="https://github.com/costales/folder-color",
+    license="GPL3",
+    data_files=data
 )
-
