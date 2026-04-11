@@ -1,18 +1,10 @@
 #!/bin/sh
 set -e
 
-deploy_yaru_icons() {
-    source_dir="/usr/share/folder-color/icons/Yaru"
-    target_dir="/usr/share/icons/Yaru"
-
-    if [ -d "$target_dir" ] && [ -d "$source_dir" ]; then
-        cp -a "${source_dir}/." "$target_dir/"
-        gtk-update-icon-cache "$target_dir" || true
-    fi
-}
-
-deploy_yaru_icons
-
 if [ -d /usr/share/icons/hicolor ]; then
     gtk-update-icon-cache /usr/share/icons/hicolor/ || true
+fi
+
+if [ -d /usr/share/icons/Yaru ]; then
+    gtk-update-icon-cache /usr/share/icons/Yaru/ || true
 fi
