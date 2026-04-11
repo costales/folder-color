@@ -7,7 +7,7 @@ deploy_icons_hicolor() {
 
     if [ -d "$target_dir" ] && [ -d "$source_dir" ]; then
         cp -a "${source_dir}/." "$target_dir/"
-        gtk-update-icon-cache "$target_dir" || true
+        gtk-update-icon-cache "$target_dir/" || true
     fi
 }
 
@@ -17,7 +17,7 @@ deploy_icons_yaru() {
 
     if [ -d "$target_dir" ] && [ -d "$source_dir" ]; then
         cp -a "${source_dir}/." "$target_dir/"
-        gtk-update-icon-cache "$target_dir" || true
+        gtk-update-icon-cache "$target_dir/" || true
     fi
 }
 

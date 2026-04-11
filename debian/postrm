@@ -11,7 +11,7 @@ rm_icons_hicolor() {
             target_file="$target_dir/$relative_path"
             rm -f "$target_file"
         done
-        gtk-update-icon-cache "$target_dir" || true
+        gtk-update-icon-cache "$target_dir/" || true
     fi
 }
 
@@ -25,7 +25,7 @@ rm_icons_yaru() {
             target_file="$target_dir/$relative_path"
             rm -f "$target_file"
         done
-        gtk-update-icon-cache "$target_dir" || true
+        gtk-update-icon-cache "$target_dir/" || true
     fi
 }
 
