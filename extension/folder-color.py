@@ -130,6 +130,9 @@ class FolderColor:
                 if i >= 3 and icon_aux["icon"]:
                     self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["uri"]})
                     break
+        if not self.colors:
+            current_theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
+            print(f"Error: Folder Color extension has no compatible icon theme (current: {current_theme})")
 
     def set_emblems_theme(self):
         """Available emblems into system"""
