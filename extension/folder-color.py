@@ -60,16 +60,13 @@ USER_DIRS = {
     GLib.get_user_special_dir(GLib.USER_DIRECTORY_TEMPLATES): "templates",
     GLib.get_user_special_dir(GLib.USER_DIRECTORY_VIDEOS): "videos"
 }
-if GTK4:
-    ICON_SIZES = {
-        "extra-large": 256,
-        "large": 128,
-        "medium": 96,
-        "small-plus": 64, 
-        "small": 48
-    }
-else:
-    ICON_SIZE = 48
+ICON_SIZES = {
+    "extra-large": 256,
+    "large": 128,
+    "medium": 96,
+    "small-plus": 64, 
+    "small": 48
+}
 
 class FolderColor:
     """Folder Color Class"""
@@ -112,7 +109,7 @@ class FolderColor:
     def _get_icon_gtk3(self, icon_name, dummy_is_color=False):
         """Get icon, label and URI"""
         icon_theme = Gtk.IconTheme.get_default()
-        icon = icon_theme.lookup_icon(icon_name, ICON_SIZE, 0)
+        icon = icon_theme.lookup_icon(icon_name, 48, 0)
         if icon is not None:
             return {"icon": Path(icon.get_filename()).stem, "uri": "file://" + icon.get_filename()}
         else:
