@@ -125,14 +125,15 @@ class FolderColor:
                 # Theme priority
                 if i < 3 and icon_aux["icon"] and not "/hicolor/" in icon_aux["uri"]:
                     self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["uri"]})
+                    if os.environ.get("DEBUG_FOLDER_COLOR", "") == "1":
+                        print(f"[DEBUG] Folder Color: Color '{color}': Selected '{option + color}' -> {icon_aux['uri']}")
                     break
                 # hicolor by default
                 if i >= 3 and icon_aux["icon"]:
                     self.colors.append({"icon": icon_aux["icon"], "label": COLORS_ALL[color], "uri": icon_aux["uri"]})
+                    if os.environ.get("DEBUG_FOLDER_COLOR", "") == "1":
+                        print(f"[DEBUG] Folder Color: Color '{color}': Selected '{option + color}' -> {icon_aux['uri']}")
                     break
-        if not self.colors:
-            current_theme = Gtk.Settings.get_default().get_property("gtk-icon-theme-name")
-            print(f"Error: Folder Color extension has no compatible icon theme (current: {current_theme})")
 
     def set_emblems_theme(self):
         """Available emblems into system"""
@@ -141,6 +142,8 @@ class FolderColor:
             icon_aux = self._get_icon(emblem, False)
             if icon_aux["icon"]:
                 self.emblems.append({"icon": icon_aux["icon"], "label": EMBLEMS_ALL[emblem], "uri": icon_aux["uri"]})
+                if os.environ.get("DEBUG_FOLDER_COLOR", "") == "1":
+                    print(f"[DEBUG] Folder Color: Emblem '{emblem}': Selected -> {icon_aux['uri']}")
 
     def get_colors_theme(self):
         return self.colors
