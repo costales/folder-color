@@ -1,4 +1,4 @@
-name: Build and Release Deb Package
+name: Build and Release Nemo Deb Package into Github Releases
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
             fakeroot
 
       - name: Run nautilus install script
-        run: bash install-scripts/nautilus.sh
+        run: bash install-scripts/nemo.sh
 
       - name: Build Debian package
         run: |
