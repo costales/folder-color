@@ -34,6 +34,22 @@ jobs:
         run: |
           dpkg-buildpackage -us -uc -b
 
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: deb-package
+          path: ../folder-color_*.deb
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: deb-package
+
       - name: Get tag name
         id: tag
         run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
@@ -41,7 +57,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ../folder-color_*.deb
+          files: folder-color_*.deb
           tag_name: ${{ steps.tag.outputs.TAG_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
