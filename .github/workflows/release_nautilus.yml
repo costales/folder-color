@@ -1,4 +1,4 @@
-name: Build and Release Nautilus Deb Package into Github Releases
+name: Release Nautilus
 
 on:
   push:
@@ -28,19 +28,19 @@ jobs:
             devscripts \
             fakeroot
 
-      - name: Run nautilus install script
+      - name: Run Nautilus install script
         run: bash install-scripts/nautilus.sh
 
       - name: Build Debian package
         run: |
           dpkg-buildpackage -us -uc -b
-          cp ../folder-color_*.deb .
+          cp ../folder-color*.deb .
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: deb-package
-          path: folder-color_*.deb
+          path: folder-color*.deb
 
   publish:
     needs: build
