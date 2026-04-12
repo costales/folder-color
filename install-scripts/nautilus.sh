@@ -1,9 +1,9 @@
 #!/bin/bash
 
-rm -rf ../.git
-rm ../README.md
+rm -rf .git
+rm README.md
 
 # Myself
-rm -rf ../install-scripts
+rm -rf install-scripts
 
 echo "Done. Go to parent directory"
