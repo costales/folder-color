@@ -1,0 +1,65 @@
+name: Release Nautilus
+
+on:
+  push:
+    tags:
+      - 'v*'
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            debhelper \
+            dh-python \
+            python3 \
+            python3-all \
+            python3-distutils-extra \
+            python3-setuptools \
+            devscripts \
+            fakeroot
+
+      - name: Run Nautilus install script
+        run: bash install-scripts/nautilus.sh
+
+      - name: Build Debian package
+        run: |
+          dpkg-buildpackage -us -uc -b
+          cp ../folder-color*.deb .
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-package
+          path: folder-color*.deb
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-package
+
+      - name: Get tag name
+        id: tag
+        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: folder-color*.deb
+          tag_name: ${{ steps.tag.outputs.TAG_NAME }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
